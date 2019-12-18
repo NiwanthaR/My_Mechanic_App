@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="round_button">#A4A4A4</color>
+    <color name="round_button_text">#000000</color>
+    <color name="black_text">#000000</color>
+    <color name="button_colour">#FFBD0E</color>
+    <color name="wrong_message">#F62609  </color>
 </resources>
