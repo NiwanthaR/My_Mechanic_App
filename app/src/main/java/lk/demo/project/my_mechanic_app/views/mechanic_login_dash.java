@@ -32,6 +32,13 @@ public class mechanic_login_dash extends AppCompatActivity {
                 startActivity(new Intent(mechanic_login_dash.this, forget_password_provider_dash.class));
             }
         });
+
+        goto_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mechanic_login_dash.this,mechanic_signup_dash.class));
+            }
+        });
     }
 
     void Assign_variable()

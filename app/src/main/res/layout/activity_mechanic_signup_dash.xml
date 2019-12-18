@@ -1,9 +1,507 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".views.mechanic_signup_dash">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:paddingTop="20dp"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Sign Up Service Provider"
+                android:textColor="@color/black_text"/>
+
+            <ImageView
+                android:id="@+id/img_profilepic_signup"
+                android:paddingTop="40dp"
+                android:paddingBottom="20dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@mipmap/signup_provider_logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="Shop Details"/>
+
+            <EditText
+                android:id="@+id/et_shopname_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Your Shop's Name"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_regnum_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="true"
+                    android:hint="Register Number"/>
+
+                <EditText
+                    android:id="@+id/et_start_date_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:background="@drawable/text_view_design"
+                    android:hint="Start Date"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_shopaddress_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Shop Address"
+                android:gravity="top|left"
+                android:maxLines="6"
+                android:layout_gravity="top|left"/>
+
+            <EditText
+                android:id="@+id/et_shopcontact_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Contact Number"/>
+
+            <EditText
+                android:id="@+id/et_shopemai_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Shop Email"/>
+
+            <EditText
+                android:id="@+id/et_shopweb_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Shop Web Site"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_starttime_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="true"
+                    android:hint="Open AM"/>
+
+                <EditText
+                    android:id="@+id/et_closetime_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:hint="Close PM"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poya Day"
+                    android:textColor="@color/black_text"
+                    android:paddingRight="20dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radio_poya_provider_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_open_poya"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="Open Full Day"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_cloes_poya"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="Cloesd"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_shopsnote_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Special Holidays"
+                android:gravity="top|left"
+                android:maxLines="6"
+                android:layout_gravity="top|left"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visits and Service"
+                    android:textColor="@color/black_text"
+                    android:paddingRight="20dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radio_breakdown_provider_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_yes_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="Yes"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_no_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="No"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Visite and service mean mechanisation go to break down place and do reparse"/>
+
+            <EditText
+                android:id="@+id/et_service_info_provider_signup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Special Service Information"
+                android:gravity="top|left"
+                android:maxLines="6"
+                android:layout_gravity="top|left"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="After verify Your Account You Can Complete Your Profile include more details."/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="Owner Details"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/et_fname_signup"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:hint="@string/fname"
+                    android:singleLine="true"
+                    android:background="@drawable/text_view_design"/>
+
+                <EditText
+                    android:id="@+id/et_lname_signup"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/lname"
+                    android:singleLine="true"
+                    android:background="@drawable/text_view_design"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_nic_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="true"
+                    android:hint="Your Nic Number"/>
+
+                <EditText
+                    android:id="@+id/et_dob_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:background="@drawable/text_view_design"
+                    android:hint="YYYY/MM/DD"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="@color/black_text"
+                    android:paddingRight="20dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radio_gender_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_sexmale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="Male"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_sexfemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:buttonTint="@color/button_colour"
+                        android:text="Female"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_address_signup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="@string/address"
+                android:gravity="top|left"
+                android:maxLines="6"
+                android:layout_gravity="top|left"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/et_city_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:hint="City"
+                    android:singleLine="true"
+                    android:layout_marginRight="5dp"/>
+
+                <EditText
+                    android:id="@+id/et_contact_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:singleLine="true"
+                    android:background="@drawable/text_view_design"
+                    android:hint="Contact Number"
+                    android:layout_marginLeft="5dp"/>
+
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_email_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_view_design"
+                android:hint="Your Email"/>
+
+            <EditText
+                android:id="@+id/et_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:background="@drawable/text_view_design"
+                android:hint="Your Password"/>
+
+            <EditText
+                android:id="@+id/et_repassword_signup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:background="@drawable/text_view_design"
+                android:hint="Again Password"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:gravity="center_horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_show_password_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show my password..!!"
+                    android:buttonTint="@color/button_colour"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_wrong_signup"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/wrong_message"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_registernow_signup"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/register"
+                android:background="@drawable/button_shape"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_alredysign_signup"
+                android:gravity="center_horizontal|center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nobackgroundbtn"
+                android:text="@string/signin"
+                android:textColor="@color/black_text" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
