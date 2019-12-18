@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class select_login_type extends AppCompatActivity {
+public class select_login_type_dash extends AppCompatActivity {
 
     private Button user_account_btn,service_provider_account_btn;
 
@@ -22,7 +22,7 @@ public class select_login_type extends AppCompatActivity {
         user_account_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(select_login_type.this,client_login.class));
+                startActivity(new Intent(select_login_type_dash.this, client_login_dash.class));
             }
         });
 
@@ -30,11 +30,12 @@ public class select_login_type extends AppCompatActivity {
         service_provider_account_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(select_login_type.this,mechanic_login.class));
+                startActivity(new Intent(select_login_type_dash.this, mechanic_login_dash.class));
             }
         });
     }
 
+    //Assign Variables
     private void Assign_varible()
     {
         user_account_btn=(Button)findViewById(R.id.btn_user_accont);

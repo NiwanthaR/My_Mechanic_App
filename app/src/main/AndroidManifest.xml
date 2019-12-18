@@ -9,22 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name=".views.select_login_type"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:name=".views.forget_password_provider_dash"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-
         <activity
-            android:name=".views.mechanic_login"
+            android:name=".views.forget_password_client_dash"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".views.select_login_type_dash"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".views.mechanic_login_dash"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
-            android:name=".views.client_login"
+            android:name=".views.client_login_dash"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
-            android:name=".views.splash_screen"
+            android:name=".views.splash_screen_dash"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

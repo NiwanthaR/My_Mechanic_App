@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">My_Mechanic_App</string>
+
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="address">Enter Your Address</string>
+    <string name="register">Register Now</string>
+    <string name="signin">I am already sign in..!</string>
+    <string name="goback">Go Back..!</string>
+    <string name="email">Enter Email Address</string>
+    <string name="password">Enter Password</string>
+    <string name="forgetbtn">Forget Password ?</string>
+    <string name="sendlink">Send Password Reset Email</string>
+    <string name="loginbtn">Login</string>
+
 </resources>
