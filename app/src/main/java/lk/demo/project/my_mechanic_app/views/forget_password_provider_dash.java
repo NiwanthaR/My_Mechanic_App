@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class forget_password_provider_dash extends AppCompatActivity {
 
-    private Button go_back;
+    private Button go_back,send_rest_mail;
+    private EditText provider_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class forget_password_provider_dash extends AppCompatActivity {
     }
     void Assign_Variable()
     {
+        send_rest_mail=(Button)findViewById(R.id.btn_resetsend_provider_forget);
         go_back=(Button)findViewById(R.id.btn_goback_provider_forget);
+        provider_email=(EditText)findViewById(R.id.et_resetmail_client_forget);
     }
 }

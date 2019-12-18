@@ -26,10 +26,19 @@ public class client_login_dash extends AppCompatActivity {
         //Assign Variable
         Assign_variable();
 
+        //go to forget password dashboard
         goto_forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(client_login_dash.this, forget_password_client_dash.class));
+            }
+        });
+
+        //go to register dashboard
+        goto_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(client_login_dash.this,client_signup_dash.class));
             }
         });
     }
