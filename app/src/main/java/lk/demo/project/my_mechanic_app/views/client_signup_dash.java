@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
+import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -25,6 +26,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -39,6 +42,7 @@ public class client_signup_dash extends AppCompatActivity {
 
     //firebase
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
 
     //datepicker
     Calendar calendar;
@@ -173,6 +177,7 @@ public class client_signup_dash extends AppCompatActivity {
         gender_group=(RadioGroup)findViewById(R.id.radio_gender_client_signup);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
     }
 
     //validation user data
@@ -223,6 +228,7 @@ public class client_signup_dash extends AppCompatActivity {
                     if (task.isSuccessful())
                     {
                         Toast.makeText(client_signup_dash.this,"Verification Mail Has Been Send..!!",Toast.LENGTH_SHORT).show();
+                        sendUserdata();
                         firebaseAuth.signOut();
                         finish();
                         startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
@@ -232,5 +238,12 @@ public class client_signup_dash extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void sendUserdata()
+    {
+        DatabaseReference myref = firebaseDatabase.getReference().child("users").child("user profile").child(firebaseAuth.getUid());
+        client_profile clientprofile = new client_profile(fname,lname,nic,dob,gender,address,city,contact);
+        myref.setValue(clientprofile);
     }
 }

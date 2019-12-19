@@ -2,6 +2,7 @@ package lk.demo.project.my_mechanic_app.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ public class mechanic_login_dash extends AppCompatActivity {
     private TextView wrong_details;
     private CheckBox password_show;
 
+    private String mechanic_email,mechanic_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         //call assign variable function
         Assign_variable();
 
+        //goto forget password
         goto_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +39,7 @@ public class mechanic_login_dash extends AppCompatActivity {
             }
         });
 
+        //goto signup
         goto_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +59,17 @@ public class mechanic_login_dash extends AppCompatActivity {
                 }
             }
         });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mechanic_email=provider_mail.getText().toString();
+                mechanic_password=provider_password.getText().toString();
+
+                validate(mechanic_email,mechanic_password);
+            }
+        });
     }
 
     void Assign_variable()
@@ -66,5 +82,15 @@ public class mechanic_login_dash extends AppCompatActivity {
         wrong_details=(TextView)findViewById(R.id.tv_wrong_service_details);
 
         password_show=(CheckBox)findViewById(R.id.cb_service_show_password_login);
+    }
+
+    private void validate(String email,String password)
+    {
+        if (validation_client_signup.is_fill(email,password))
+        {
+
+        }else {
+            wrong_details.setText("Please Fill All Details..!");
+        }
     }
 }
