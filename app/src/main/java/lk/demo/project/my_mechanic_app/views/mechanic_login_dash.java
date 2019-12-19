@@ -5,9 +5,11 @@ import lk.demo.project.my_mechanic_app.R;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,6 +41,19 @@ public class mechanic_login_dash extends AppCompatActivity {
                 startActivity(new Intent(mechanic_login_dash.this,mechanic_signup_dash.class));
             }
         });
+
+        //password show button press
+        password_show.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    provider_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else{
+                    provider_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
     }
 
     void Assign_variable()
@@ -49,6 +64,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         provider_mail=(EditText)findViewById(R.id.et_serviceemail_login);
         provider_password=(EditText)findViewById(R.id.et_servicepassword_login);
         wrong_details=(TextView)findViewById(R.id.tv_wrong_service_details);
+
         password_show=(CheckBox)findViewById(R.id.cb_service_show_password_login);
     }
 }

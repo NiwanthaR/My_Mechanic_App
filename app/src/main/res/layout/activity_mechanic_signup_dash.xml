@@ -30,7 +30,7 @@
                 android:textColor="@color/black_text"/>
 
             <ImageView
-                android:id="@+id/img_profilepic_signup"
+                android:id="@+id/img_profilepic_provider_signup"
                 android:paddingTop="40dp"
                 android:paddingBottom="20dp"
                 android:layout_width="200dp"

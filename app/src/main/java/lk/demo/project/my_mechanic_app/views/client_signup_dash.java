@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Calendar;
 
@@ -123,8 +124,9 @@ public class client_signup_dash extends AppCompatActivity {
 
                             if (task.isSuccessful())
                             {
-                                Toast.makeText(client_signup_dash.this,"Registration Successfully",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
+//                                Toast.makeText(client_signup_dash.this,"Registration Successfully",Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
+                                sendEmaiVerification();
                             }else{
                                 Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
                             }
@@ -207,5 +209,28 @@ public class client_signup_dash extends AppCompatActivity {
             worng_details.setText("Please Fill All Details...!!");
         }
         return false;
+    }
+
+    private void sendEmaiVerification()
+    {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser!=null)
+        {
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    if (task.isSuccessful())
+                    {
+                        Toast.makeText(client_signup_dash.this,"Verification Mail Has Been Send..!!",Toast.LENGTH_SHORT).show();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
+                    }else {
+                        Toast.makeText(client_signup_dash.this,"Verification Mail Hasn't Been Send..!!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }

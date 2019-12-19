@@ -111,8 +111,9 @@ public class client_login_dash extends AppCompatActivity {
                    if (task.isSuccessful())
                    {
                        progressDialog.dismiss();
-                       Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(client_login_dash.this,MainActivity.class));
+//                       Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
+//                       startActivity(new Intent(client_login_dash.this,MainActivity.class));
+                       checkEmailVerification();
                    }else{
                        progressDialog.dismiss();
                        wrong_details.setText("Login Failed Check your Details");
@@ -139,5 +140,21 @@ public class client_login_dash extends AppCompatActivity {
 
         //progress Dialog
         progressDialog= new ProgressDialog(this);
+    }
+
+    private void checkEmailVerification()
+    {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        Boolean emailflag = firebaseUser.isEmailVerified();
+
+        if(emailflag)
+        {
+            finish();
+            startActivity(new Intent(client_login_dash.this,MainActivity.class));
+        }else {
+            //Toast.makeText(client_login_dash.this,"Verify Your Email First..!!",Toast.LENGTH_SHORT).show();
+            wrong_details.setText("Verify Your Email First..!!");
+            firebaseAuth.signOut();
+        }
     }
 }
