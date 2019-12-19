@@ -101,25 +101,30 @@ public class client_login_dash extends AppCompatActivity {
     {
        if (validation_client_signup.is_fill(userEmail,userPassword))
        {
-           progressDialog.setMessage("Your Details in Processing Please waite..!");
-           progressDialog.show();
+           if(validation_client_signup.is_Validmail(user_email))
+           {
+               progressDialog.setMessage("Your Details in Processing Please waite..!");
+               progressDialog.show();
 
-           firebaseAuth.signInWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-               @Override
-               public void onComplete(@NonNull Task<AuthResult> task) {
+               firebaseAuth.signInWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
 
-                   if (task.isSuccessful())
-                   {
-                       progressDialog.dismiss();
+                       if (task.isSuccessful())
+                       {
+                           progressDialog.dismiss();
 //                       Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
 //                       startActivity(new Intent(client_login_dash.this,MainActivity.class));
-                       checkEmailVerification();
-                   }else{
-                       progressDialog.dismiss();
-                       wrong_details.setText("Login Failed Check your Details");
+                           checkEmailVerification();
+                       }else{
+                           progressDialog.dismiss();
+                           wrong_details.setText("Login Failed Check your Details");
+                       }
                    }
-               }
-           });
+               });
+           }else {
+               wrong_details.setText("Please Enter Valid Email");
+           }
        }else{
            wrong_details.setText("Please Fill All Details");
        }
