@@ -1,17 +1,28 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class client_login_dash extends AppCompatActivity {
 
@@ -22,6 +33,12 @@ public class client_login_dash extends AppCompatActivity {
 
     private String userEmail,userPassword;
 
+    //firebase Auth
+    private FirebaseAuth firebaseAuth;
+
+    //progreedialog
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +46,14 @@ public class client_login_dash extends AppCompatActivity {
 
         //Assign Variable
         Assign_variable();
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if (user!=null)
+        {
+            finish();
+            startActivity(new Intent(client_login_dash.this,MainActivity.class));
+        }
 
         //go to forget password dashboard
         goto_forget.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +82,46 @@ public class client_login_dash extends AppCompatActivity {
                 Validate_details(userEmail,userPassword);
             }
         });
+
+        //password show button press
+        password_show.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    user_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else{
+                    user_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
     }
 
     void Validate_details(String user_email,String user_password)
     {
-        if (user_email.equals("admin") && user_password.equals("123"))
-        {
-            Toast.makeText(client_login_dash.this,"Login Successfully....!",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(client_login_dash.this, MainActivity.class));
-        }else {
-            wrong_details.setText("Your Details Warning Check Again");
-        }
+       if (validation_client_signup.is_fill(userEmail,userPassword))
+       {
+           progressDialog.setMessage("Your Details in Processing Please waite..!");
+           progressDialog.show();
+
+           firebaseAuth.signInWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+               @Override
+               public void onComplete(@NonNull Task<AuthResult> task) {
+
+                   if (task.isSuccessful())
+                   {
+                       progressDialog.dismiss();
+                       Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
+                       startActivity(new Intent(client_login_dash.this,MainActivity.class));
+                   }else{
+                       progressDialog.dismiss();
+                       wrong_details.setText("Login Failed Check your Details");
+                   }
+               }
+           });
+       }else{
+           wrong_details.setText("Please Fill All Details");
+       }
     }
 
     void Assign_variable()
@@ -79,5 +133,11 @@ public class client_login_dash extends AppCompatActivity {
         user_email=(EditText)findViewById(R.id.et_clientemail_login);
         user_password=(EditText)findViewById(R.id.et_clientpassword_login);
         password_show=(CheckBox)findViewById(R.id.cb_show_password_client_login);
+
+        //firebase
+        firebaseAuth=FirebaseAuth.getInstance();
+
+        //progress Dialog
+        progressDialog= new ProgressDialog(this);
     }
 }

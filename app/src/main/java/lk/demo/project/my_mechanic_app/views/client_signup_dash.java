@@ -1,5 +1,6 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
@@ -19,6 +20,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
 
 public class client_signup_dash extends AppCompatActivity {
@@ -29,6 +35,9 @@ public class client_signup_dash extends AppCompatActivity {
     private TextView worng_details;
 
     private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword;
+
+    //firebase
+    private FirebaseAuth firebaseAuth;
 
     //datepicker
     Calendar calendar;
@@ -72,6 +81,7 @@ public class client_signup_dash extends AppCompatActivity {
             }
         });
 
+        //if password show checkbox click
         show_password_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -86,6 +96,7 @@ public class client_signup_dash extends AppCompatActivity {
             }
         });
 
+        //press the register butoon
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,13 +117,26 @@ public class client_signup_dash extends AppCompatActivity {
 
                 if (all_right())
                 {
-                    Toast.makeText(client_signup_dash.this,"Still Correct",Toast.LENGTH_SHORT).show();
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful())
+                            {
+                                Toast.makeText(client_signup_dash.this,"Registration Successfully",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
+                            }else{
+                                Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
 
             }
         });
     }
 
+    //read gender type
     private void read_gender()
     {
         // get selected radio button from radioGroup
@@ -145,8 +169,11 @@ public class client_signup_dash extends AppCompatActivity {
         worng_details=(TextView)findViewById(R.id.tv_wrong_client_signup);
 
         gender_group=(RadioGroup)findViewById(R.id.radio_gender_client_signup);
+
+        firebaseAuth=FirebaseAuth.getInstance();
     }
 
+    //validation user data
     private boolean all_right()
     {
         if (validation_client_signup.is_fill(fname,lname,nic,dob,address,city,contact,email,password))
