@@ -1,6 +1,7 @@
 package lk.demo.project.my_mechanic_app.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class client_login_dash extends AppCompatActivity {
 
@@ -17,6 +19,8 @@ public class client_login_dash extends AppCompatActivity {
     private TextView wrong_details;
     private EditText user_email,user_password;
     private CheckBox password_show;
+
+    private String userEmail,userPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,29 @@ public class client_login_dash extends AppCompatActivity {
                 startActivity(new Intent(client_login_dash.this,client_signup_dash.class));
             }
         });
+
+        //press login button
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userEmail=user_email.getText().toString().trim();
+                userPassword=user_password.getText().toString().trim();
+
+                //call validation function
+                Validate_details(userEmail,userPassword);
+            }
+        });
+    }
+
+    void Validate_details(String user_email,String user_password)
+    {
+        if (user_email.equals("admin") && user_password.equals("123"))
+        {
+            Toast.makeText(client_login_dash.this,"Login Successfully....!",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(client_login_dash.this, MainActivity.class));
+        }else {
+            wrong_details.setText("Your Details Warning Check Again");
+        }
     }
 
     void Assign_variable()

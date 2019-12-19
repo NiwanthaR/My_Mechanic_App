@@ -21,7 +21,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/login_logo"
+                android:src="@mipmap/main_logo3"
+                android:paddingTop="30dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:layout_marginTop="50dp" />
         </LinearLayout>
 

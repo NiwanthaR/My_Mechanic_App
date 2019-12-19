@@ -183,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:buttonTint="@color/button_colour"
-                        android:text="Open Full Day"
+                        android:text="Open"
                         android:checked="true"/>
 
                     <RadioButton
