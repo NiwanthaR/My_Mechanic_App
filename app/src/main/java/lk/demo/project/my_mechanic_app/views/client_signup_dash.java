@@ -130,7 +130,7 @@ public class client_signup_dash extends AppCompatActivity {
                             {
 //                                Toast.makeText(client_signup_dash.this,"Registration Successfully",Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
-                                sendEmaiVerification();
+                                  sendEmaiVerification();
                             }else{
                                 Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
                             }

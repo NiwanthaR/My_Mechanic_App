@@ -3,6 +3,7 @@ package lk.demo.project.my_mechanic_app.views;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
+import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 
 import android.content.Intent;
 import android.os.Bundle;
