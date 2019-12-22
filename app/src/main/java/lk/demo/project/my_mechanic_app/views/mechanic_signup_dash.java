@@ -5,6 +5,7 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -12,18 +13,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class mechanic_signup_dash extends AppCompatActivity {
 
     private EditText owner_fname,owner_lname,owner_nic,owner_dob,owner_address,owner_city,owner_contact,owner_email,owner_password,owner_repassword;
-    private EditText shop_name,shop_regno,shop_start_date,shop_address,shop_contact,shop_email,shop_web,shop_open,shop_close,special_holiday,special_service;
+    private EditText shop_name,shop_regno,shop_start_date,shop_address,shop_city,shop_post,shop_contact,shop_email,shop_web,shop_open,shop_close,special_holiday,special_service;
 
     private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword;
-    private String sname,sregno,sstartday,saddress,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service;
+    private String sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service;
 
     private Button go_back,register_now;
     private CheckBox show_password_cb;
@@ -41,6 +46,10 @@ public class mechanic_signup_dash extends AppCompatActivity {
     private RadioGroup visite_service_group;
     private RadioButton service_state;
 
+    //datepicker
+    Calendar calendar;
+    DatePickerDialog datePickerDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +63,42 @@ public class mechanic_signup_dash extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mechanic_signup_dash.this,mechanic_login_dash.class));
+            }
+        });
+
+        //Read user DOB
+        owner_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar= Calendar.getInstance();
+                int date=calendar.get(Calendar.DAY_OF_MONTH);
+                int month=calendar.get(Calendar.MONTH);
+                int year=calendar.get(Calendar.YEAR);
+                datePickerDialog=new DatePickerDialog(mechanic_signup_dash.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        owner_dob.setText(year +"/"+ (month+1) +"/"+ dayOfMonth);
+                    }
+                },year,month,date);
+                datePickerDialog.show();
+            }
+        });
+
+        //Read user DOB
+        shop_start_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar= Calendar.getInstance();
+                int date=calendar.get(Calendar.DAY_OF_MONTH);
+                int month=calendar.get(Calendar.MONTH);
+                int year=calendar.get(Calendar.YEAR);
+                datePickerDialog=new DatePickerDialog(mechanic_signup_dash.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        shop_start_date.setText(year +"/"+ (month+1) +"/"+ dayOfMonth);
+                    }
+                },year,month,date);
+                datePickerDialog.show();
             }
         });
 
@@ -94,18 +139,30 @@ public class mechanic_signup_dash extends AppCompatActivity {
                 sregno=shop_regno.getText().toString().trim();
                 sstartday=shop_start_date.getText().toString().trim();
                 saddress=shop_address.getText().toString().trim();
+                scity=shop_city.getText().toString().trim();
+                spost=shop_post.getText().toString().trim();
                 scontact=shop_contact.getText().toString().trim();
                 scontact=shop_contact.getText().toString().trim();
                 semail=shop_email.getText().toString().trim();
                 sweb=shop_web.getText().toString().trim();
                 sopen=shop_open.getText().toString().trim();
                 sclose=shop_close.getText().toString().trim();
+
                 //read poya day open or closed
                 read_poyaday();
+
                 sspecial_holiday=special_holiday.getText().toString().trim();
                 sspecial_service=special_service.getText().toString().trim();
+
                 //read visit site and service vehicle is possible
                 read_visite_service();
+
+                if (all_right_owner() && all_right_shop())
+                {
+                    Toast.makeText(mechanic_signup_dash.this,"Still correct",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mechanic_signup_dash.this,"Something wrong",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -189,11 +246,17 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
     private boolean all_right_shop()
     {
-        if (validation_provider_signup.is_fill_all(sname,sstartday,saddress,scontact,sopen,sclose))
+        if (validation_provider_signup.is_fill_all(sname,sstartday,saddress,scity,spost,scontact,sopen,sclose))
         {
             if (validation_provider_signup.is_valide_contact(scontact))
             {
-                return true;
+                if (validation_provider_signup.is_Validpostcode(spost))
+                {
+                    return true;
+                }else {
+                    worng_details.setText("Your postal code is wrong..!!");
+                    return false;
+                }
             }else {
                 worng_details.setText("Your shop contact is wrong..!!");
                 return false;
@@ -215,13 +278,15 @@ public class mechanic_signup_dash extends AppCompatActivity {
         owner_city=(EditText)findViewById(R.id.et_city_provider_signup);
         owner_contact=(EditText)findViewById(R.id.et_contact_provider_signup);
         owner_email=(EditText)findViewById(R.id.et_email_provider_signup);
-        owner_password=(EditText)findViewById(R.id.et_password_client_signup);
+        owner_password=(EditText)findViewById(R.id.et_password_provider_signup);
         owner_repassword=(EditText)findViewById(R.id.et_repassword_provider_signup);
 
         shop_name=(EditText)findViewById(R.id.et_shopname_provider_signup);
         shop_regno=(EditText)findViewById(R.id.et_shopregnum_provider_signup);
         shop_start_date=(EditText)findViewById(R.id.et_start_date_provider_signup);
         shop_address=(EditText)findViewById(R.id.et_shopaddress_provider_signup);
+        shop_city=(EditText)findViewById(R.id.et_shopcity_provider_signup);
+        shop_post=(EditText)findViewById(R.id.et_shoppost_provider_signup);
         shop_contact=(EditText)findViewById(R.id.et_shopcontact_provider_signup);
         shop_email=(EditText)findViewById(R.id.et_shopemai_provider_signup);
         shop_web=(EditText)findViewById(R.id.et_shopweb_provider_signup);

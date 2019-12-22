@@ -98,6 +98,34 @@
                 android:maxLines="6"
                 android:layout_gravity="top|left"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_shopcity_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="true"
+                    android:hint="City"/>
+
+                <EditText
+                    android:id="@+id/et_shoppost_provider_signup"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_view_design"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:hint="Postal Code"/>
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/et_shopcontact_provider_signup"
                 android:layout_width="match_parent"
@@ -153,6 +181,14 @@
                     android:hint="Close PM"/>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="You want to enter your service station open time and close time it's show your customer"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -447,6 +483,14 @@
                 android:singleLine="true"
                 android:background="@drawable/text_view_design"
                 android:hint="Your Password"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Your password want to have capital letter,simple letter,number,special character and more than 8 digits"/>
 
             <EditText
                 android:id="@+id/et_repassword_provider_signup"
