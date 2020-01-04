@@ -52,7 +52,7 @@ public class client_login_dash extends AppCompatActivity {
         if (user!=null)
         {
             finish();
-            startActivity(new Intent(client_login_dash.this,MainActivity.class));
+            startActivity(new Intent(client_login_dash.this,client_dashboard.class));
         }
 
         //go to forget password dashboard
@@ -155,7 +155,7 @@ public class client_login_dash extends AppCompatActivity {
         if(emailflag)
         {
             finish();
-            startActivity(new Intent(client_login_dash.this,MainActivity.class));
+            startActivity(new Intent(client_login_dash.this,client_dashboard.class));
         }else {
             //Toast.makeText(client_login_dash.this,"Verify Your Email First..!!",Toast.LENGTH_SHORT).show();
             wrong_details.setText("Verify Your Email First..!");

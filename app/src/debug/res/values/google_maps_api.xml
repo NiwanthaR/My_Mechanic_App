@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=23:BF:B9:C1:43:A2:3C:41:9F:55:C1:37:8E:04:8A:E4:E9:52:D5:3A%3Blk.demo.project.my_mechanic_app.views
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    23:BF:B9:C1:43:A2:3C:41:9F:55:C1:37:8E:04:8A:E4:E9:52:D5:3A
+
+    SHA-1 certificate fingerprint:
+    23:BF:B9:C1:43:A2:3C:41:9F:55:C1:37:8E:04:8A:E4:E9:52:D5:3A
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC6-w6gmE2yuypE0Qud50NyztsY2_GnmE0</string>
+</resources>

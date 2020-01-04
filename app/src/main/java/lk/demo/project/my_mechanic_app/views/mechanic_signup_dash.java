@@ -1,5 +1,6 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
@@ -19,6 +20,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -49,6 +56,10 @@ public class mechanic_signup_dash extends AppCompatActivity {
     //datepicker
     Calendar calendar;
     DatePickerDialog datePickerDialog;
+
+    //firebase
+    private FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,9 +170,18 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
                 if (all_right_owner() && all_right_shop())
                 {
-                    Toast.makeText(mechanic_signup_dash.this,"Still correct",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(mechanic_signup_dash.this,"Something wrong",Toast.LENGTH_SHORT).show();
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful())
+                            {
+                                Toast.makeText(mechanic_signup_dash.this,"Account has bee created",Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(mechanic_signup_dash.this,"Something wrong",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
 
             }
@@ -304,6 +324,9 @@ public class mechanic_signup_dash extends AppCompatActivity {
         gender_group=(RadioGroup)findViewById(R.id.radio_gender_provider_signup);
         poya_group=(RadioGroup)findViewById(R.id.radio_poya_provider_signup);
         visite_service_group=(RadioGroup)findViewById(R.id.radio_breakdown_provider_signup);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
     }
 
 
