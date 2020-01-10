@@ -1,10 +1,13 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -15,6 +18,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class mechanic_login_dash extends AppCompatActivity {
 
     private Button login, goto_forget_password,goto_signup;
@@ -24,6 +33,12 @@ public class mechanic_login_dash extends AppCompatActivity {
 
     private String mechanic_email,mechanic_password;
 
+    //firebase auth
+    private FirebaseAuth firebaseAuth;
+
+    //progessdialog box
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +47,21 @@ public class mechanic_login_dash extends AppCompatActivity {
         //call assign variable function
         Assign_variable();
 
+        // find firebase user
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        //if any user login still now ?
+        if(user != null)
+        {
+            finish();
+            startActivity(new Intent(mechanic_login_dash.this,MainActivity.class));
+        }
+
         //goto forget password
         goto_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mechanic_login_dash.this, forget_password_provider_dash.class));
+                startActivity(new Intent(mechanic_login_dash.this, client_map.class));
             }
         });
 
@@ -83,15 +108,60 @@ public class mechanic_login_dash extends AppCompatActivity {
         wrong_details=(TextView)findViewById(R.id.tv_wrong_service_details);
 
         password_show=(CheckBox)findViewById(R.id.cb_service_show_password_login);
+
+        //firbase assign
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //progess dialog
+        progressDialog = new ProgressDialog(this);
     }
 
     private void validate(String email,String password)
     {
         if (validation_client_signup.is_fill(email,password))
         {
+            if(validation_client_signup.is_Validmail(email))
+            {
+                progressDialog.setMessage("Your Details in Processing Please waite..!");
+                progressDialog.show();
 
+                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful())
+                        {
+                            progressDialog.dismiss();
+                            checkemail_verification();
+                        }else {
+                            progressDialog.dismiss();
+                            wrong_details.setText("Login Failed Check your Details");
+                        }
+                    }
+                });
+
+
+            }else {
+                wrong_details.setText("Please enter valid Email");
+            }
         }else {
             wrong_details.setText("Please Fill All Details..!");
         }
+    }
+
+    private void checkemail_verification()
+    {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        boolean emailflage = user.isEmailVerified();
+
+        if (emailflage)
+        {
+            finish();
+            startActivity(new Intent(mechanic_login_dash.this, MainActivity.class));
+        }else{
+            wrong_details.setText("Verify Your Email First..!");
+            firebaseAuth.signOut();
+        }
+
     }
 }

@@ -133,6 +133,7 @@ public class client_signup_dash extends AppCompatActivity {
                                   sendEmaiVerification();
                             }else{
                                 Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
+                                //worng_details.setText("Something Wrong");
                             }
                         }
                     });
@@ -242,7 +243,7 @@ public class client_signup_dash extends AppCompatActivity {
 
     private void sendUserdata()
     {
-        DatabaseReference myref = firebaseDatabase.getReference().child("users").child("user profile").child(firebaseAuth.getUid());
+        DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
         client_profile clientprofile = new client_profile(fname,lname,nic,dob,gender,address,city,contact);
         myref.setValue(clientprofile);
     }

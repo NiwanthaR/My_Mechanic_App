@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
+import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -25,6 +26,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
@@ -176,7 +179,12 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
                             if (task.isSuccessful())
                             {
-                                Toast.makeText(mechanic_signup_dash.this,"Account has bee created",Toast.LENGTH_SHORT).show();
+                                        if (task.isSuccessful())
+                                        {
+                                            sendWmail_verification();
+                                        }else{
+                                            worng_details.setText("Something Wrong");
+                                        }
                             }else {
                                 Toast.makeText(mechanic_signup_dash.this,"Something wrong",Toast.LENGTH_SHORT).show();
                             }
@@ -329,5 +337,36 @@ public class mechanic_signup_dash extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
     }
 
+    private  void sendWmail_verification()
+    {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user!=null)
+        {
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
 
+                    if (task.isSuccessful())
+                    {
+                        Toast.makeText(mechanic_signup_dash.this,"Verification Email Sended",Toast.LENGTH_SHORT).show();
+                        upload_mechanic_data();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(mechanic_signup_dash.this,mechanic_login_dash.class));
+                    }else {
+                        Toast.makeText(mechanic_signup_dash.this,"Verification Mail Hasn't Been Send..!!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }else {
+            worng_details.setText("user null error");
+        }
+    }
+
+    private void upload_mechanic_data()
+    {
+        DatabaseReference myref = firebaseDatabase.getReference().child("Mechanic's Details").child("Mechanical profile").child(firebaseAuth.getUid());
+        mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact);
+        myref.setValue(mechanicProfile);
+    }
 }
