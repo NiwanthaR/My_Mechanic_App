@@ -37,7 +37,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
     private EditText owner_fname,owner_lname,owner_nic,owner_dob,owner_address,owner_city,owner_contact,owner_email,owner_password,owner_repassword;
     private EditText shop_name,shop_regno,shop_start_date,shop_address,shop_city,shop_post,shop_contact,shop_email,shop_web,shop_open,shop_close,special_holiday,special_service;
 
-    private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword;
+    private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword,user_type="mechanic";
     private String sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service;
 
     private Button go_back,register_now;
@@ -366,7 +366,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
     private void upload_mechanic_data()
     {
         DatabaseReference myref = firebaseDatabase.getReference().child("Mechanic's Details").child("Mechanical profile").child(firebaseAuth.getUid());
-        mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact);
+        mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact,user_type);
         myref.setValue(mechanicProfile);
     }
 }

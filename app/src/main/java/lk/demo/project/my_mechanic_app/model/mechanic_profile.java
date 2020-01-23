@@ -2,9 +2,9 @@ package lk.demo.project.my_mechanic_app.model;
 
 public class mechanic_profile {
     String shop_name,shop_regno,shop_start_date,shop_address,shop_city,shop_postal_code,shop_contact,shop_email,shop_web,shop_open,shop_close,shop_poya_state,shop_special_holiday,shop_visite_service,shop_sevice;
-    String owner_fname,owner_sname,owner_nic,owner_dob,owner_gender,owner_address,owner_city,owner_contact;
+    String owner_fname,owner_sname,owner_nic,owner_dob,owner_gender,owner_address,owner_city,owner_contact,usertype;
 
-    public mechanic_profile(String shop_name, String shop_regno, String shop_start_date, String shop_address, String shop_city, String shop_postal_code, String shop_contact, String shop_email, String shop_web, String shop_open, String shop_close, String shop_poya_state, String shop_special_holiday, String shop_visite_service, String shop_sevice, String owner_fname, String owner_sname, String owner_nic, String owner_dob, String owner_gender, String owner_address, String owner_city, String owner_contact) {
+    public mechanic_profile(String shop_name, String shop_regno, String shop_start_date, String shop_address, String shop_city, String shop_postal_code, String shop_contact, String shop_email, String shop_web, String shop_open, String shop_close, String shop_poya_state, String shop_special_holiday, String shop_visite_service, String shop_sevice, String owner_fname, String owner_sname, String owner_nic, String owner_dob, String owner_gender, String owner_address, String owner_city, String owner_contact, String usertype) {
         this.shop_name = shop_name;
         this.shop_regno = shop_regno;
         this.shop_start_date = shop_start_date;
@@ -28,6 +28,7 @@ public class mechanic_profile {
         this.owner_address = owner_address;
         this.owner_city = owner_city;
         this.owner_contact = owner_contact;
+        this.usertype = usertype;
     }
 
     public String getShop_name() {
@@ -214,6 +215,14 @@ public class mechanic_profile {
         this.owner_contact = owner_contact;
     }
 
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
     @Override
     public String toString() {
         return "mechanic_profile{" +
@@ -240,6 +249,7 @@ public class mechanic_profile {
                 ", owner_address='" + owner_address + '\'' +
                 ", owner_city='" + owner_city + '\'' +
                 ", owner_contact='" + owner_contact + '\'' +
+                ", usertype='" + usertype + '\'' +
                 '}';
     }
 }

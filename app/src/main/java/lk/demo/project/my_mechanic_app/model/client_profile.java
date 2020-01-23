@@ -2,9 +2,9 @@ package lk.demo.project.my_mechanic_app.model;
 
 public class client_profile {
 
-    public String fname,lname,nic,dob,gender,address,city,contact;
+    public String fname,lname,nic,dob,gender,address,city,contact,usertype;
 
-    public client_profile(String fname, String lname, String nic, String dob, String gender, String address, String city, String contact) {
+    public client_profile(String fname, String lname, String nic, String dob, String gender, String address, String city, String contact, String usertype) {
         this.fname = fname;
         this.lname = lname;
         this.nic = nic;
@@ -13,6 +13,7 @@ public class client_profile {
         this.address = address;
         this.city = city;
         this.contact = contact;
+        this.usertype = usertype;
     }
 
     public String getFname() {
@@ -79,6 +80,14 @@ public class client_profile {
         this.contact = contact;
     }
 
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
     @Override
     public String toString() {
         return "client_profile{" +
@@ -90,6 +99,7 @@ public class client_profile {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", contact='" + contact + '\'' +
+                ", usertype='" + usertype + '\'' +
                 '}';
     }
 }

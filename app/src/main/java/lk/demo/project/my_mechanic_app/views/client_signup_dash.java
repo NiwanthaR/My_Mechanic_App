@@ -38,7 +38,7 @@ public class client_signup_dash extends AppCompatActivity {
     private CheckBox show_password_cb;
     private TextView worng_details;
 
-    private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword;
+    private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword,user_type="client";
 
     //firebase
     private FirebaseAuth firebaseAuth;
@@ -244,7 +244,7 @@ public class client_signup_dash extends AppCompatActivity {
     private void sendUserdata()
     {
         DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
-        client_profile clientprofile = new client_profile(fname,lname,nic,dob,gender,address,city,contact);
+        client_profile clientprofile = new client_profile(fname,lname,nic,dob,gender,address,city,contact,user_type);
         myref.setValue(clientprofile);
     }
 }
