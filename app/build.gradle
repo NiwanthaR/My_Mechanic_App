@@ -48,6 +48,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.3.1'
     implementation 'com.google.firebase:firebase-database:19.2.0'
 
+    //firebase Geofire
+    implementation 'com.firebase:geofire-java:3.0.0'
+
 }
 
 // Add to the bottom of the file
