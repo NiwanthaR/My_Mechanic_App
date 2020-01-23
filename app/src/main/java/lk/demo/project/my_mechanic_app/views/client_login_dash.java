@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
+import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,6 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class client_login_dash extends AppCompatActivity {
 
@@ -31,10 +37,13 @@ public class client_login_dash extends AppCompatActivity {
     private EditText user_email,user_password;
     private CheckBox password_show;
 
-    private String userEmail,userPassword;
+    private String userEmail,userPassword,user_type,login_type="client";
 
     //firebase Auth
     private FirebaseAuth firebaseAuth;
+
+    //firebase Database
+    private FirebaseDatabase firebaseDatabase;
 
     //progreedialog
     private ProgressDialog progressDialog;
@@ -52,8 +61,10 @@ public class client_login_dash extends AppCompatActivity {
         if (user!=null)
         {
             finish();
-            startActivity(new Intent(client_login_dash.this,client_dashboard.class));
+            startActivity(new Intent(client_login_dash.this,MainActivity.class));
         }
+
+        //readUsertype();
 
         //go to forget password dashboard
         goto_forget.setOnClickListener(new View.OnClickListener() {
@@ -113,8 +124,8 @@ public class client_login_dash extends AppCompatActivity {
                        if (task.isSuccessful())
                        {
                            progressDialog.dismiss();
-//                       Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
-//                       startActivity(new Intent(client_login_dash.this,MainActivity.class));
+//                         Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
+//                         startActivity(new Intent(client_login_dash.this,MainActivity.class));
                            checkEmailVerification();
                        }else{
                            progressDialog.dismiss();
@@ -143,6 +154,9 @@ public class client_login_dash extends AppCompatActivity {
         //firebase
         firebaseAuth=FirebaseAuth.getInstance();
 
+        //firebase Database
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
         //progress Dialog
         progressDialog= new ProgressDialog(this);
     }
@@ -155,11 +169,30 @@ public class client_login_dash extends AppCompatActivity {
         if(emailflag)
         {
             finish();
-            startActivity(new Intent(client_login_dash.this,client_dashboard.class));
+            startActivity(new Intent(client_login_dash.this,MainActivity.class));
         }else {
             //Toast.makeText(client_login_dash.this,"Verify Your Email First..!!",Toast.LENGTH_SHORT).show();
             wrong_details.setText("Verify Your Email First..!");
             firebaseAuth.signOut();
         }
+    }
+
+    private  void readUsertype()
+    {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                client_profile clientProfile = dataSnapshot.getValue(client_profile.class);
+                user_type = clientProfile.usertype;
+                System.out.println(user_type);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
