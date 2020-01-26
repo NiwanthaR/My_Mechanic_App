@@ -4,6 +4,9 @@ public class client_profile {
 
     public String fname,lname,nic,dob,gender,address,city,contact,usertype;
 
+    public client_profile() {
+    }
+
     public client_profile(String fname, String lname, String nic, String dob, String gender, String address, String city, String contact, String usertype) {
         this.fname = fname;
         this.lname = lname;

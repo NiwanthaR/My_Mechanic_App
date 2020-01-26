@@ -37,7 +37,7 @@ public class client_login_dash extends AppCompatActivity {
     private EditText user_email,user_password;
     private CheckBox password_show;
 
-    private String userEmail,userPassword,user_type,login_type="client";
+    private String userEmail,userPassword,user_type="client";
 
     //firebase Auth
     private FirebaseAuth firebaseAuth;
@@ -126,7 +126,9 @@ public class client_login_dash extends AppCompatActivity {
                            progressDialog.dismiss();
 //                         Toast.makeText(client_login_dash.this,"Login Sucessfully",Toast.LENGTH_SHORT).show();
 //                         startActivity(new Intent(client_login_dash.this,MainActivity.class));
-                           checkEmailVerification();
+
+                           checkUsertype();
+                           //checkEmailVerification();
                        }else{
                            progressDialog.dismiss();
                            wrong_details.setText("Login Failed Check your Details");
@@ -177,7 +179,9 @@ public class client_login_dash extends AppCompatActivity {
         }
     }
 
-    private  void readUsertype()
+    private boolean state = false;
+    //Read User Type
+    private  void checkUsertype()
     {
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
 
@@ -185,14 +189,28 @@ public class client_login_dash extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 client_profile clientProfile = dataSnapshot.getValue(client_profile.class);
-                user_type = clientProfile.usertype;
-                System.out.println(user_type);
+
+                if (user_type.equals(clientProfile.getUsertype().trim()))
+                {
+                    //state = true;
+                    checkEmailVerification();
+                }else {
+                    //state =false;
+                    closeActivity();
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(client_login_dash.this,"You Can't Login this Movement",Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void closeActivity()
+    {
+        firebaseAuth.signOut();
+        Toast.makeText(client_login_dash.this,"Chek Type",Toast.LENGTH_SHORT).show();
+    }
+
 }

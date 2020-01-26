@@ -32,10 +32,6 @@
             android:label="@string/title_activity_client_map"></activity>
 
         <activity
-            android:name=".views.client_dashboard"
-            android:label="@string/title_activity_client_dashboard"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".views.mechanic_signup_dash"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

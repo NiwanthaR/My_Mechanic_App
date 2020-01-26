@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
+import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,12 +18,18 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class mechanic_login_dash extends AppCompatActivity {
 
@@ -31,10 +38,13 @@ public class mechanic_login_dash extends AppCompatActivity {
     private TextView wrong_details;
     private CheckBox password_show;
 
-    private String mechanic_email,mechanic_password;
+    private String mechanic_email,mechanic_password,user_type="mechanic";
 
     //firebase auth
     private FirebaseAuth firebaseAuth;
+
+    //firebase Database
+    private FirebaseDatabase firebaseDatabase;
 
     //progessdialog box
     private ProgressDialog progressDialog;
@@ -61,7 +71,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         goto_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mechanic_login_dash.this, client_dashboard.class));
+                startActivity(new Intent(mechanic_login_dash.this, client_map.class));
             }
         });
 
@@ -111,6 +121,9 @@ public class mechanic_login_dash extends AppCompatActivity {
 
         //firbase assign
         firebaseAuth = FirebaseAuth.getInstance();
+
+        //firebase database
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         //progess dialog
         progressDialog = new ProgressDialog(this);
@@ -163,5 +176,30 @@ public class mechanic_login_dash extends AppCompatActivity {
             firebaseAuth.signOut();
         }
 
+    }
+
+    private void  checkUsertype()
+    {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Mechanic's Details").child("Mechanical profile").child(firebaseAuth.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mechanic_profile mechabicProfile = dataSnapshot.getValue(mechanic_profile.class);
+
+                if (user_type.equals(mechabicProfile.getUsertype().trim()))
+                {
+                    checkemail_verification();
+                }else {
+                    Toast.makeText(mechanic_login_dash.this,"Please Check Your Details",Toast.LENGTH_SHORT).show();
+                    firebaseAuth.signOut();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(mechanic_login_dash.this,"You Can't Login this Movement",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
