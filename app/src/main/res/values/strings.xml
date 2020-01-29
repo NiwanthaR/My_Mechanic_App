@@ -12,6 +12,7 @@
     <string name="forgetbtn">Forget Password ?</string>
     <string name="sendlink">Send Password Reset Email</string>
     <string name="loginbtn">Login</string>
+
     <string name="title_activity_client_dashboard">client_dashboard</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

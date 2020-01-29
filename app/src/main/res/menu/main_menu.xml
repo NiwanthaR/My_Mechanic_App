@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_myservice"
+            android:icon="@drawable/my_service_icon"
+            android:title="My Service"/>
+
+        <item
+            android:id="@+id/nav_myfeedback"
+            android:icon="@drawable/my_feedback"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/offers_icon"
+            android:title="New Offers"/>
+
+    </group>
+
+    <group>
+
+        <item
+            android:title="Profile">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_profilr"
+                    android:icon="@drawable/pofile_icon"
+                    android:title="My Profile"/>
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Logout"/>
+
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="Share">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/settings_icon"
+                    android:title="Rate Us"/>
+
+                <item
+                    android:id="@+id/nav_rateus"
+                    android:icon="@drawable/rate_icon"
+                    android:title="Rate Us"/>
+
+            </menu>
+        </item>
+    </group>
+
+</menu>
