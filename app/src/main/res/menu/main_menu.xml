@@ -16,7 +16,7 @@
         <item
             android:id="@+id/nav_myfeedback"
             android:icon="@drawable/my_feedback"
-            android:title="Home"/>
+            android:title="My Feedback"/>
 
         <item
             android:id="@+id/nav_offers"
@@ -32,39 +32,45 @@
 
             <menu>
 
+                <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_profilr"
+                    android:id="@+id/nav_profile"
                     android:icon="@drawable/pofile_icon"
                     android:title="My Profile"/>
-
-                <item
-                    android:id="@+id/nav_logout"
-                    android:icon="@drawable/logout_icon"
-                    android:title="Logout"/>
+                </group>
 
             </menu>
         </item>
     </group>
 
-    <group android:checkableBehavior="single">
+
 
         <item
             android:title="Share">
 
             <menu>
 
+                <group android:checkableBehavior="single">
+
                 <item
                     android:id="@+id/nav_settings"
                     android:icon="@drawable/settings_icon"
-                    android:title="Rate Us"/>
+                    android:title="Settings"/>
 
                 <item
                     android:id="@+id/nav_rateus"
                     android:icon="@drawable/rate_icon"
                     android:title="Rate Us"/>
 
+                    <item
+                        android:id="@+id/nav_logout"
+                        android:icon="@drawable/logout_icon"
+                        android:title="Logout"/>
+
+                </group>
+
             </menu>
         </item>
-    </group>
+
 
 </menu>

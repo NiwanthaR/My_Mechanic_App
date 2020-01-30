@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import lk.demo.project.my_mechanic_app.R;
 
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -51,7 +53,55 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     }
 
     @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+        {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
+
+        switch (menuItem.getItemId())
+        {
+            case R.id.nav_home:
+                break;
+
+            case R.id.nav_myservice:
+                Toast.makeText(client_dashboard.this,"Select My Service",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_myfeedback:
+                Toast.makeText(client_dashboard.this,"Select My Feedback",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_offers:
+                Toast.makeText(client_dashboard.this,"Select My Offers",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_profile:
+                Toast.makeText(client_dashboard.this,"Select My Profile",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_settings:
+                Toast.makeText(client_dashboard.this,"Select Settings",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_rateus:
+                Toast.makeText(client_dashboard.this,"Select Rate Us",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_logout:
+                Toast.makeText(client_dashboard.this,"Select Logout",Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
