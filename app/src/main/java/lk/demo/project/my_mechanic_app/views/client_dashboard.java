@@ -50,6 +50,9 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         navigationView.setCheckedItem(R.id.nav_home);
 
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.header_icon_et);
     }
 
     @Override
