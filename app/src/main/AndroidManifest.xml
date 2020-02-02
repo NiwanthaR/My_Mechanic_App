@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.client_dashboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/AppTheme_unique"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

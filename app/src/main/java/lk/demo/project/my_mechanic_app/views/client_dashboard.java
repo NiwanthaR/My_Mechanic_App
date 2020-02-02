@@ -31,12 +31,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_client_dashboard);
 
         /*---------------------Hooks------------------------*/
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        //textView = findViewById(R.id.textView);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("User Dashboard");
-
+        value_eqal();
 
         /*------------------------Tool Bar-------------------*/
         setSupportActionBar(toolbar);
@@ -49,7 +44,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
-
+        //navigation icon
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.header_icon_et);
@@ -100,11 +95,20 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 break;
 
             case R.id.nav_logout:
-                Toast.makeText(client_dashboard.this,"Select Logout",Toast.LENGTH_SHORT).show();
+                Toast.makeText(client_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
                 break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void value_eqal()
+    {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        //textView = findViewById(R.id.textView);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("User Dashboard");
     }
 }
