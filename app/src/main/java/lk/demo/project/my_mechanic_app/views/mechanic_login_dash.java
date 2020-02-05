@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
+import lk.demo.project.my_mechanic_app.model.client_profile;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.ProgressDialog;
@@ -145,7 +146,9 @@ public class mechanic_login_dash extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             progressDialog.dismiss();
-                            checkemail_verification();
+                            //checkemail_verification();
+                            checkUsertype();
+
                         }else {
                             progressDialog.dismiss();
                             wrong_details.setText("Login Failed Check your Details");
@@ -178,21 +181,22 @@ public class mechanic_login_dash extends AppCompatActivity {
 
     }
 
-    private void  checkUsertype()
+    private  void checkUsertype()
     {
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Mechanic's Details").child("Mechanical profile").child(firebaseAuth.getUid());
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mechanic_profile mechabicProfile = dataSnapshot.getValue(mechanic_profile.class);
+                mechanic_profile mechanicProfile = dataSnapshot.getValue(mechanic_profile.class);
 
-                if (user_type.equals(mechabicProfile.getUsertype().trim()))
+                if (user_type.equals(mechanicProfile.getUsertype().trim()))
                 {
+                    //state = true;
                     checkemail_verification();
                 }else {
-                    Toast.makeText(mechanic_login_dash.this,"Please Check Your Details",Toast.LENGTH_SHORT).show();
-                    firebaseAuth.signOut();
+                    //state =false;
+                    closeActivity();
                 }
             }
 
@@ -201,5 +205,11 @@ public class mechanic_login_dash extends AppCompatActivity {
                 Toast.makeText(mechanic_login_dash.this,"You Can't Login this Movement",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void closeActivity()
+    {
+        firebaseAuth.signOut();
+        Toast.makeText(mechanic_login_dash.this,"Chek Type",Toast.LENGTH_SHORT).show();
     }
 }

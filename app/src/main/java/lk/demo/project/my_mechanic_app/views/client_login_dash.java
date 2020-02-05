@@ -179,7 +179,6 @@ public class client_login_dash extends AppCompatActivity {
         }
     }
 
-    private boolean state = false;
     //Read User Type
     private  void checkUsertype()
     {

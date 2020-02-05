@@ -365,7 +365,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
     private void upload_mechanic_data()
     {
-        DatabaseReference myref = firebaseDatabase.getReference().child("Mechanic's Details").child("Mechanical profile").child(firebaseAuth.getUid());
+        DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
         mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact,user_type);
         myref.setValue(mechanicProfile);
     }
