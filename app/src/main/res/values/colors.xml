@@ -9,4 +9,6 @@
     <color name="black_text">#000000</color>
     <color name="button_colour">#FFBD0E</color>
     <color name="wrong_message">#F62609  </color>
+
+    <color name="fade_colour">#707B7C</color>
 </resources>
