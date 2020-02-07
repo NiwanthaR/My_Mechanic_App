@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.client_profile_edite"></activity>
+        <activity
+            android:name=".views.client_profile_edite"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".views.client_profile_dashboard"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

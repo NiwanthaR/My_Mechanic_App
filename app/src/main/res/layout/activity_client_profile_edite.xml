@@ -362,14 +362,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="840dp"
+                android:layout_marginTop="860dp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btn_goedite_client_profile"
-                    android:text="Edit Profile"
+                    android:text="Update Details"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="70dp"
