@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import lk.demo.project.my_mechanic_app.R;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -121,6 +122,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
             case R.id.nav_profile:
                 Toast.makeText(client_dashboard.this,"Select My Profile",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));
                 break;
 
             case R.id.nav_settings:
