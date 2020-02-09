@@ -140,6 +140,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
             case R.id.nav_settings:
                 Toast.makeText(client_dashboard.this,"Select Settings",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(client_dashboard.this,settings_panel.class));
                 break;
 
             case R.id.nav_rateus:
@@ -147,7 +148,9 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 break;
 
             case R.id.nav_logout:
+                firebaseAuth.signOut();
                 Toast.makeText(client_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(client_dashboard.this,client_login_dash.class));
                 break;
         }
 

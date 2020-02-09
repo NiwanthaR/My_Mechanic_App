@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class client_profile_edite extends AppCompatActivity {
 
     private TextView pe_email,pe_nic,pe_gender,pe_dob,pe_profilename;
     private EditText pe_fname,pe_sname,pe_contact,pe_address,pe_city;
+    private Button btn_submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class client_profile_edite extends AppCompatActivity {
         pe_contact=findViewById(R.id.client_pe_contact_no_edit);
         pe_address=findViewById(R.id.client_pe_addresss_edit);
         pe_city=findViewById(R.id.client_pe_cityname);
+
+        btn_submit=findViewById(R.id.btn_submitedite_client_profile);
     }
 
     private void Read_data()

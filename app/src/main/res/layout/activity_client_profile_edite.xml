@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="10dp"
-                    android:text="Sadun Chamara"
+                    android:text="User Name"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="@color/fade_colour"
-                        android:text="sadunchamara@gmail.com"/>
+                        android:text="User Email"/>
 
                 </LinearLayout>
 
@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
                         android:textColor="#1C2833"
-                        android:text="Sadun"/>
+                        android:text="First Name"/>
 
                 </LinearLayout>
 
@@ -213,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
                         android:textColor="#1C2833"
-                        android:text="Chamara"/>
+                        android:text="Last Name"/>
 
                 </LinearLayout>
 
@@ -237,7 +237,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="@color/fade_colour"
-                        android:text="960345654v"/>
+                        android:text="NIC"/>
 
                 </LinearLayout>
 
@@ -261,7 +261,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="@color/fade_colour"
-                        android:text="Male"/>
+                        android:text="Gender"/>
 
                 </LinearLayout>
 
@@ -285,7 +285,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="@color/fade_colour"
-                        android:text="1997/04/12"/>
+                        android:text="Birthday"/>
 
                 </LinearLayout>
 
@@ -308,7 +308,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
                         android:textColor="#1C2833"
-                        android:text="0779856515"/>
+                        android:text="Contact"/>
 
                 </LinearLayout>
 
@@ -333,7 +333,7 @@
                         android:paddingLeft="20dp"
                         android:textColor="#1C2833"
                         android:maxLines="5"
-                        android:text="No 67,Manel MW, Kuruppumulla, Panadura"/>
+                        android:text="Address"/>
 
                 </LinearLayout>
 
@@ -356,26 +356,29 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
                         android:textColor="#1C2833"
-                        android:text="Panadura"/>
+                        android:text="Home Town"/>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="860dp"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:text="If uou want to edit more details please contact developer team because its security reason."/>
 
                 <Button
-                    android:id="@+id/btn_goedite_client_profile"
-                    android:text="Update Details"
+                    android:id="@+id/btn_submitedite_client_profile"
+                    android:text="Edit Profile"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="70dp"
                     android:layout_marginLeft="70dp"
+                    android:layout_marginBottom="40dp"
                     android:background="@drawable/button_shape"/>
+
 
 
             </LinearLayout>
