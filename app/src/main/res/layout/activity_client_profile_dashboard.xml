@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="10dp"
-                    android:text="Sadun Chamara"
+                    android:text="User Name"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
 
             <LinearLayout
                 android:layout_width="350dp"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="290dp">
@@ -165,7 +165,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="sadunchamara@gmail.com"/>
+                        android:text="User Email"/>
 
                 </LinearLayout>
 
@@ -189,7 +189,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="960345654v"/>
+                        android:text="NIC"/>
 
                 </LinearLayout>
 
@@ -213,7 +213,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="Male"/>
+                        android:text="Gender"/>
 
                 </LinearLayout>
 
@@ -237,7 +237,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="1997/04/12"/>
+                        android:text="Birthday"/>
 
                 </LinearLayout>
 
@@ -261,7 +261,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="0779856515"/>
+                        android:text="Contact"/>
 
                 </LinearLayout>
 
@@ -285,7 +285,7 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="No 67,Manel MW, Kuruppumulla, Panadura"/>
+                        android:text="Address"/>
 
                 </LinearLayout>
 
@@ -309,27 +309,20 @@
                         android:paddingLeft="20dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
-                        android:text="Panadura"/>
+                        android:text="Home Town"/>
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="710dp"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btn_goedite_client_profile"
                     android:text="Edit Profile"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="70dp"
                     android:layout_marginLeft="70dp"
+                    android:layout_marginBottom="40dp"
                     android:background="@drawable/button_shape"/>
-
 
             </LinearLayout>
         </RelativeLayout>

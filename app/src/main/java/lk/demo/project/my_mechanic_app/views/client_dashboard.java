@@ -17,6 +17,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
@@ -52,6 +56,15 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     LocationRequest mLocationRequest;
     private SupportMapFragment mapFragment;
     final  int LOCATION_REQUEST_CODE = 1;
+
+
+    //Firebase
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+    private FirebaseDatabase firebaseDatabase;
+
+    //component
+    private TextView header_name, header_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,9 +159,16 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        //textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("User Dashboard");
+
+        header_name=findViewById(R.id.header_username);
+        header_email=findViewById(R.id.header_useremail);
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
 

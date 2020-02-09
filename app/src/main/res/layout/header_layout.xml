@@ -14,6 +14,7 @@
         android:src="@drawable/blank_user"/>
 
     <TextView
+        android:id="@+id/header_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
@@ -22,6 +23,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/header_useremail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18dp"
