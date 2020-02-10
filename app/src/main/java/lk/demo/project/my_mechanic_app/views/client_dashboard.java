@@ -172,6 +172,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
     }
 
 
