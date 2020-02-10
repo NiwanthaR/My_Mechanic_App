@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class settings_panel extends AppCompatActivity {
 
-    private Button change_password;
+    private Button change_password,change_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,18 @@ public class settings_panel extends AppCompatActivity {
                 startActivity(new Intent(settings_panel.this,user_change_password.class));
             }
         });
+
+        change_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(settings_panel.this,user_change_email.class));
+            }
+        });
     }
 
     private void Assign_varible()
     {
         change_password=findViewById(R.id.btn_st_change_password);
+        change_email=findViewById(R.id.btn_st_change_email);
     }
 }
