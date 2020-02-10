@@ -66,6 +66,7 @@ public class client_profile_edite extends AppCompatActivity {
                         databaseReference.setValue(clientProfile);
                         Toast.makeText(client_profile_edite.this,"Details Submitted",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(client_profile_edite.this,client_profile_dashboard.class));
+                        finish();
                     }else{
                         Toast.makeText(client_profile_edite.this,"Invalid Contact No",Toast.LENGTH_SHORT).show();
                     }
