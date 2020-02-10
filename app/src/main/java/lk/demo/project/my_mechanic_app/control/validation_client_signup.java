@@ -85,4 +85,12 @@ public class validation_client_signup {
         else
             return false;
     }
+
+    public static boolean is_fill_update(String fname,String lname,String address,String city,String contact)
+    {
+        if (fname.isEmpty() || lname.isEmpty() || address.isEmpty() || city.isEmpty() || contact.isEmpty())
+            return false;
+        else
+            return true;
+    }
 }

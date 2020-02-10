@@ -3,9 +3,12 @@ package lk.demo.project.my_mechanic_app.views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.model.client_profile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,6 +41,41 @@ public class client_profile_edite extends AppCompatActivity {
 
         Read_data();
 
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String Fname=pe_fname.getText().toString().trim();
+                final String Lname=pe_sname.getText().toString().trim();
+                final String Contact=pe_contact.getText().toString().trim();
+                final String Address=pe_address.getText().toString().trim();
+                final String City=pe_city.getText().toString().trim();
+                final String Useer="client";
+                final String Dob=pe_dob.getText().toString().trim();
+                final String Nic=pe_nic.getText().toString().trim();
+                final String Gender=pe_gender.getText().toString().trim();
+
+                client_profile clientProfile = new client_profile(Fname,Lname,Nic,Dob,Gender,Address,City,Contact,Useer);
+                DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+                if (validation_client_signup.is_fill_update(Fname,Lname,Address,City,Contact))
+                {
+                    if (validation_client_signup.is_contact(Contact))
+                    {
+                        databaseReference.setValue(clientProfile);
+                        Toast.makeText(client_profile_edite.this,"Details Submitted",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(client_profile_edite.this,client_profile_dashboard.class));
+                    }else{
+                        Toast.makeText(client_profile_edite.this,"Invalid Contact No",Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(client_profile_edite.this,"Please Fill All Details..!!",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
     }
 
     private void Assign_value()
@@ -60,7 +98,7 @@ public class client_profile_edite extends AppCompatActivity {
         btn_submit=findViewById(R.id.btn_submitedite_client_profile);
     }
 
-    private void Read_data()
+     void Read_data()
     {
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
 
