@@ -60,7 +60,7 @@ public class user_change_password extends AppCompatActivity {
                             pass_conferm.setVisibility(View.GONE);
                             pass_update.setVisibility(View.VISIBLE);
                         }else {
-                            Toast.makeText(user_change_password.this,"Invalide Password",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(user_change_password.this,"Invalid Password",Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -126,7 +126,6 @@ public class user_change_password extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void Assing_variable()

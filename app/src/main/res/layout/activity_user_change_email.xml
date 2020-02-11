@@ -127,7 +127,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_gravity="center_horizontal"
                     android:text="Update"
-                    android:id="@+id/button_update"
+                    android:id="@+id/btn_updateemail_ce"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/button_shape"/>
