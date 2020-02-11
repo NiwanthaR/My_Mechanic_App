@@ -120,13 +120,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/et_email_display_dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="Confirm Password"
-                    android:background="@drawable/text_view_design"
-                    android:inputType="textEmailAddress"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:singleLine="true"/>
 
                 <Button
