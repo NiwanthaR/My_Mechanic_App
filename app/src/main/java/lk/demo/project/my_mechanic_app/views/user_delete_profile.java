@@ -88,7 +88,7 @@ public class user_delete_profile extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         delete_user_data();
-                        
+
                         firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
