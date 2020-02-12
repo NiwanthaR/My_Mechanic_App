@@ -15,12 +15,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -33,6 +36,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -62,6 +67,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
+    private GeoFire geoFire;
 
     //component
     private TextView header_name, header_email;
@@ -210,6 +216,23 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
+        String userid = firebaseUser.getUid();
+        DatabaseReference ref = firebaseDatabase.getReference("Active Users");
+
+        GeoFire geoFire = new GeoFire(ref);
+//        geoFire.setLocation(userid, new GeoLocation(location.getLatitude(),location.getLongitude()));
+
+        geoFire.setLocation(userid, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
+            @Override
+            public void onComplete(String key, DatabaseError error) {
+                if (error!=null)
+                {
+                    Toast.makeText(client_dashboard.this,"Can't go Active",Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(client_dashboard.this,"You are Active",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -236,8 +259,14 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         mGoogleApiClient.connect();
     }
 
-    private void Request_permition()
-    {
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        String userid = firebaseUser.getUid();
+        DatabaseReference ref = firebaseDatabase.getReference("Active Users").child(userid);
+
+        ref.removeValue();
 
     }
 }
