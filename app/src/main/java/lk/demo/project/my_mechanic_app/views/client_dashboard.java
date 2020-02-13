@@ -234,7 +234,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 {
                     Toast.makeText(client_dashboard.this,"Can't go Active",Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(client_dashboard.this,"You are Active",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(client_dashboard.this,"You are Active",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -267,6 +267,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     @Override
     protected void onStop() {
         super.onStop();
+
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         String userid = firebaseUser.getUid();
         DatabaseReference ref = firebaseDatabase.getReference("Active Users").child(userid);

@@ -17,15 +17,16 @@
         android:id="@+id/header_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="23dp"
         android:text="User Name"
         android:paddingTop="5dp"
+        android:textColor="@color/black_text"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/header_useremail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
+        android:textSize="14dp"
         android:text="useremail@gmail.com" />
 </LinearLayout>
