@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +38,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
@@ -95,6 +99,9 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.header_icon_et);
+
+        //Navigation Drawer user name and email
+        user_data();
 
         //-----------------------Map Load-----------------------------------*/
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -171,13 +178,11 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("User Dashboard");
 
-        header_name=findViewById(R.id.header_username);
-        header_email=findViewById(R.id.header_useremail);
-
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
 
     }
 
@@ -267,6 +272,31 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         DatabaseReference ref = firebaseDatabase.getReference("Active Users").child(userid);
 
         ref.removeValue();
+
+    }
+
+    private void user_data()
+    {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                client_profile clientProfile = dataSnapshot.getValue(client_profile.class);
+
+                View header = navigationView.getHeaderView(0);
+                header_name = (TextView) header.findViewById(R.id.header_username);
+                header_name.setText(clientProfile.getFname()+" "+clientProfile.getLname());
+                header_email = (TextView) header.findViewById(R.id.header_useremail);
+                header_email.setText(firebaseUser.getEmail());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(client_dashboard.this,"Can't Load data",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
