@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
     private EditText owner_fname,owner_lname,owner_nic,owner_dob,owner_address,owner_city,owner_contact,owner_email,owner_password,owner_repassword;
     private EditText shop_name,shop_regno,shop_start_date,shop_address,shop_city,shop_post,shop_contact,shop_email,shop_web,shop_open,shop_close,special_holiday,special_service;
+    private ImageView shop_profile_pic;
 
     private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword,user_type="mechanic";
     private String sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service;
@@ -322,6 +324,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
         shop_close=(EditText)findViewById(R.id.et_closetime_provider_signup);
         special_holiday=(EditText)findViewById(R.id.et_shopsnote_provider_signup);
         special_service=(EditText)findViewById(R.id.et_service_info_provider_signup);
+
 
         go_back=(Button) findViewById(R.id.btn_alredysign_provider_signup);
         register_now =(Button)findViewById(R.id.btn_registernow_provider_signup);

@@ -43,6 +43,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
@@ -71,6 +73,10 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
+
+    //Geofire Map Location
     private GeoFire geoFire;
 
     //component
@@ -180,6 +186,8 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseStorage=FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
 
     }

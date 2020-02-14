@@ -1,5 +1,7 @@
 package lk.demo.project.my_mechanic_app.control;
 
+import android.net.Uri;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -92,5 +94,14 @@ public class validation_client_signup {
             return false;
         else
             return true;
+    }
+
+    public static boolean is_image_ok(Uri image_location)
+    {
+        if (image_location != null)
+        {
+            return true;
+        }
+        return false;
     }
 }

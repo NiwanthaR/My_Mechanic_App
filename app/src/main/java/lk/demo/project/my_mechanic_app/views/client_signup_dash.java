@@ -1,6 +1,7 @@
 package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
@@ -8,7 +9,10 @@ import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -16,19 +20,26 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 public class client_signup_dash extends AppCompatActivity {
@@ -37,12 +48,15 @@ public class client_signup_dash extends AppCompatActivity {
     private Button register_btn,goback_btn;
     private CheckBox show_password_cb;
     private TextView worng_details;
+    private ImageView user_profile_pic;
 
     private String fname,lname,nic,dob,gender,address,city,contact,email,password,repassword,user_type="client";
 
     //firebase
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     //datepicker
     Calendar calendar;
@@ -52,6 +66,9 @@ public class client_signup_dash extends AppCompatActivity {
     private RadioGroup gender_group;
     private RadioButton select_gender;
 
+    private static int PICK_IMG=123;
+    private Uri image_path;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +76,19 @@ public class client_signup_dash extends AppCompatActivity {
 
         //assign variable
         Assign_variable();
+
+
+
+        user_profile_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Profile Picture"),PICK_IMG);
+            }
+        });
+
 
         //press go back button code
         goback_btn.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +173,24 @@ public class client_signup_dash extends AppCompatActivity {
         });
     }
 
+    //load Image
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMG && resultCode == RESULT_OK && data.getData() != null)
+        {
+            image_path = data.getData();
+
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),image_path);
+                user_profile_pic.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     //read gender type
     private void read_gender()
     {
@@ -173,12 +221,18 @@ public class client_signup_dash extends AppCompatActivity {
         goback_btn=(Button)findViewById(R.id.btn_alredysign_client_signup);
         show_password_cb=(CheckBox)findViewById(R.id.cb_show_password_client_signup);
 
+        user_profile_pic=findViewById(R.id.img_profilepic_signup);
+
         worng_details=(TextView)findViewById(R.id.tv_wrong_client_signup);
 
         gender_group=(RadioGroup)findViewById(R.id.radio_gender_client_signup);
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+
+        firebaseStorage=FirebaseStorage.getInstance();
+        storageReference=firebaseStorage.getReference();
+
     }
 
     //validation user data
@@ -194,8 +248,14 @@ public class client_signup_dash extends AppCompatActivity {
                     {
                         if (validation_client_signup.is_ValidNic(nic))
                         {
-                            if (validation_client_signup.is_contact(contact)){
-                                return true;
+                            if (validation_client_signup.is_contact(contact))
+                            {
+                                if (validation_client_signup.is_image_ok(image_path))
+                                {
+                                    return true;
+                                }else {
+                                    worng_details.setText("Please Select Image");
+                                }
                             }else{
                                 worng_details.setText("Please Enter Valid Contact");
                             }
@@ -246,5 +306,20 @@ public class client_signup_dash extends AppCompatActivity {
         DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
         client_profile clientprofile = new client_profile(fname,lname,nic,dob,gender,address,city,contact,user_type);
         myref.setValue(clientprofile);
+
+        StorageReference myReference = storageReference.child("Profile Picture").child(firebaseAuth.getUid());
+        UploadTask uploadTask = myReference.putFile(image_path);
+
+         uploadTask.addOnFailureListener(new OnFailureListener() {
+             @Override
+             public void onFailure(@NonNull Exception e) {
+                 Toast.makeText(client_signup_dash.this,"Image Upload Failed",Toast.LENGTH_SHORT).show();
+             }
+         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+             @Override
+             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                 Toast.makeText(client_signup_dash.this,"Image Upload Successfully",Toast.LENGTH_SHORT).show();
+             }
+         });
     }
 }
