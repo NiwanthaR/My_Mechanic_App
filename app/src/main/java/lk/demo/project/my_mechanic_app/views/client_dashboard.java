@@ -15,12 +15,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +48,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
@@ -80,6 +84,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
     //component
     private TextView header_name, header_email;
+    private ImageView heder_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -300,6 +305,16 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(client_dashboard.this,"Can't Load data",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                View header = navigationView.getHeaderView(0);
+                heder_pic = header.findViewById(R.id.heder_pro_pic);
+                Picasso.get().load(uri).fit().centerCrop().into(heder_pic);
             }
         });
 
