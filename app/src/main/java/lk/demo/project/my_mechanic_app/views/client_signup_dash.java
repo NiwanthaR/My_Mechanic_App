@@ -8,6 +8,7 @@ import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -61,6 +62,9 @@ public class client_signup_dash extends AppCompatActivity {
     //datepicker
     Calendar calendar;
     DatePickerDialog datePickerDialog;
+
+    //progress dialog
+    private ProgressDialog progressDialog;
 
     //gender read
     private RadioGroup gender_group;
@@ -161,7 +165,9 @@ public class client_signup_dash extends AppCompatActivity {
 //                                Toast.makeText(client_signup_dash.this,"Registration Successfully",Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(client_signup_dash.this,client_login_dash.class));
                                   sendEmaiVerification();
+
                             }else{
+                                
                                 Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
                                 //worng_details.setText("Something Wrong");
                             }
