@@ -52,6 +52,9 @@ dependencies {
     //firebase Geofire
     implementation 'com.firebase:geofire-java:3.0.0'
 
+    //picasso Image downloader
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
 
 // Add to the bottom of the file

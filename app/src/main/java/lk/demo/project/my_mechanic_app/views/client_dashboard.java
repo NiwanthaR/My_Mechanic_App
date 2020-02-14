@@ -74,7 +74,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
 
     //Geofire Map Location
     private GeoFire geoFire;
@@ -187,7 +186,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseStorage=FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
 
 
     }
