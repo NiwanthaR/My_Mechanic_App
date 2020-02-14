@@ -7,13 +7,16 @@ import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 import lk.demo.project.my_mechanic_app.model.client_profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,16 +24,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class client_profile_edite extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseUser firebaseUser;
+    private FirebaseStorage firebaseStorage;
 
     private TextView pe_email,pe_nic,pe_gender,pe_dob,pe_profilename;
     private EditText pe_fname,pe_sname,pe_contact,pe_address,pe_city;
     private Button btn_submit;
+    private ImageView user_pro_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,17 @@ public class client_profile_edite extends AppCompatActivity {
 
         Read_data();
 
+        //-----------------------------------load user image----------------------------------------
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(user_pro_pic);
+            }
+        });
+
+        //-----------------------------------Details Edit Button Code-------------------------------
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +103,7 @@ public class client_profile_edite extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
 
         pe_profilename=findViewById(R.id.client_pe_profilename);
         pe_email=findViewById(R.id.client_pe_emailname);
@@ -95,6 +115,8 @@ public class client_profile_edite extends AppCompatActivity {
         pe_contact=findViewById(R.id.client_pe_contact_no_edit);
         pe_address=findViewById(R.id.client_pe_addresss_edit);
         pe_city=findViewById(R.id.client_pe_cityname);
+
+        user_pro_pic=findViewById(R.id.client_pe_profilepic);
 
         btn_submit=findViewById(R.id.btn_submitedite_client_profile);
     }
