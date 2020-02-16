@@ -7,9 +7,9 @@
     android:background="@drawable/app_header_back"
     android:padding="20dp">
 
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:id="@+id/heder_pro_pic"
         android:src="@drawable/blank_user"/>
 
