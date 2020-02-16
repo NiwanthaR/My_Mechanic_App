@@ -322,7 +322,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
     private void Logout()
     {
-
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         String userid = firebaseUser.getUid();
         DatabaseReference ref = firebaseDatabase.getReference("Active Users").child(userid);
@@ -331,5 +330,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseAuth.signOut();
         Toast.makeText(client_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(client_dashboard.this,client_login_dash.class));
+        finish();
     }
 }

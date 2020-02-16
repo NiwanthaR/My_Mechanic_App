@@ -55,6 +55,9 @@ dependencies {
     //picasso Image downloader
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //image circle
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
 
 // Add to the bottom of the file
