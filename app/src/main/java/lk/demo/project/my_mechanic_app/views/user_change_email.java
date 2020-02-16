@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -13,25 +14,32 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class user_change_email extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    private FirebaseStorage firebaseStorage;
 
     private LinearLayout password_layout,new_email_layout;
     private EditText password_check, newemail_submit;
     private Button password_submit,email_submit;
     private CheckBox show_password;
+    private ImageView user_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,14 @@ public class user_change_email extends AppCompatActivity {
 
         password_layout.setVisibility(View.VISIBLE);
         new_email_layout.setVisibility(View.GONE);
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(user_img);
+            }
+        });
 
         password_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +140,10 @@ public class user_change_email extends AppCompatActivity {
         email_submit=findViewById(R.id.btn_updateemail_ce);
 
         show_password=findViewById(R.id.cb_show_password_client_ce);
+        user_img=findViewById(R.id.change_email_img);
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseStorage=FirebaseStorage.getInstance();
     }
 }

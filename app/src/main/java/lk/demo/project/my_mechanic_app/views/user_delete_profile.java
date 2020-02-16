@@ -7,6 +7,7 @@ import lk.demo.project.my_mechanic_app.R;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -14,11 +15,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -26,12 +29,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class user_delete_profile extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
 
     private LinearLayout password_check,delete_profile;
 
@@ -39,6 +46,7 @@ public class user_delete_profile extends AppCompatActivity {
     private TextView display_email;
     private EditText auth_password;
     private CheckBox show_pass;
+    private ImageView user_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,15 @@ public class user_delete_profile extends AppCompatActivity {
 
         delete_profile.setVisibility(View.GONE);
         password_check.setVisibility(View.VISIBLE);
+
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(user_img);
+            }
+        });
 
         re_Authpass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +154,7 @@ public class user_delete_profile extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
         firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
 
         re_Authpass=findViewById(R.id.btn_reAuth_pass_dp);
         delete_account=findViewById(R.id.btn_delete_dp);
@@ -148,6 +166,8 @@ public class user_delete_profile extends AppCompatActivity {
 
         password_check=findViewById(R.id.layoutPassword_dp);
         delete_profile=findViewById(R.id.layoutDeleteProfile_dp);
+
+        user_img=findViewById(R.id.delete_account_img);
 
     }
 

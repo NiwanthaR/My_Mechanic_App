@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -13,25 +14,34 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class user_change_password extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    private FirebaseStorage firebaseStorage;
 
     private LinearLayout pass_conferm,pass_update;
     private Button re_Auth_pass,update_pass_submit;
     private EditText pass_re_Auth,pass_new_pass,pass_new_re_pass;
     private CheckBox auth_pass_show,new_pass_show;
+    private ImageView user_img;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +52,16 @@ public class user_change_password extends AppCompatActivity {
 
         pass_conferm.setVisibility(View.VISIBLE);
         pass_update.setVisibility(View.GONE);
+
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(user_img);
+            }
+        });
+
 
         re_Auth_pass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +162,8 @@ public class user_change_password extends AppCompatActivity {
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseStorage=FirebaseStorage.getInstance();
+        user_img=findViewById(R.id.change_pass_img);
 
         auth_pass_show=findViewById(R.id.cb_show_password_client_cp1);
         new_pass_show=findViewById(R.id.cb_show_password_client_cp2);

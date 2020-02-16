@@ -23,7 +23,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/image_view"
+                    android:id="@+id/change_email_img"
                     android:background="@drawable/blank_user"
                     android:layout_centerInParent="true"
                     android:layout_width="100dp"
@@ -36,7 +36,7 @@
                     android:textColor="@android:color/white"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/image_view"
+                    android:layout_below="@id/change_email_img"
                     android:enabled="true"
                     android:id="@+id/edit_text_name"
                     android:layout_width="wrap_content"

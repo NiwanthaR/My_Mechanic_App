@@ -167,7 +167,7 @@ public class client_signup_dash extends AppCompatActivity {
                                   sendEmaiVerification();
 
                             }else{
-                                
+
                                 Toast.makeText(client_signup_dash.this,"Something was Wrong",Toast.LENGTH_SHORT).show();
                                 //worng_details.setText("Something Wrong");
                             }
