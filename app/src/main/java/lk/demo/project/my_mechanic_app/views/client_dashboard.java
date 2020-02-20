@@ -230,6 +230,8 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
+        //------------------------------Location upload---------------------------------------------
+
         String userid = firebaseUser.getUid();
         DatabaseReference ref = firebaseDatabase.getReference("Active Users");
 

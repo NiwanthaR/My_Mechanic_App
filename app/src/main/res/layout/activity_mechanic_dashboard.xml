@@ -4,10 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/drawer_layout_mechanic"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     tools:context=".views.mechanic_dashboard">
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view_mechanic"
+        app:headerLayout="@layout/header_layout"
+        app:menu="@menu/mechanic_menu"
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="#2C3E50"
+        android:layout_gravity="start" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,6 +29,20 @@
         android:layout_height="match_parent"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_mechanic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#00008577"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
