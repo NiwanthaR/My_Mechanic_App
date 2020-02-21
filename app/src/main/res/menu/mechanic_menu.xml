@@ -4,22 +4,22 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_home_mechanic"
             android:icon="@drawable/home_icon"
             android:title="Home"/>
 
         <item
-            android:id="@+id/nav_myservice"
+            android:id="@+id/nav_myservice_mechanic"
             android:icon="@drawable/my_service_icon"
             android:title="Service Details"/>
 
         <item
-            android:id="@+id/nav_myfeedback"
+            android:id="@+id/nav_myfeedback_mechanic"
             android:icon="@drawable/my_feedback"
             android:title="Client Feedback"/>
 
         <item
-            android:id="@+id/nav_offers"
+            android:id="@+id/nav_my_wall_mechanic"
             android:icon="@drawable/ic_shop_wall"
             android:title="My Wall"/>
 
@@ -32,12 +32,12 @@
             <menu>
                 <group android:checkableBehavior="single">
                     <item
-                        android:id="@+id/nav_my_profile"
+                        android:id="@+id/nav_my_profil_mechanice"
                         android:icon="@drawable/profile1_icon"
                         android:title="My Profile"/>
 
                     <item
-                        android:id="@+id/nav_shop_profile"
+                        android:id="@+id/nav_shop_profile_mechanic"
                         android:icon="@drawable/ic_shop_profile"
                         android:title="My Profile"/>
                 </group>
@@ -56,17 +56,17 @@
             <group android:checkableBehavior="single">
 
                 <item
-                    android:id="@+id/nav_settings"
+                    android:id="@+id/nav_settings_mechanic"
                     android:icon="@drawable/settings_icon"
                     android:title="Settings"/>
 
                 <item
-                    android:id="@+id/nav_rateus"
+                    android:id="@+id/nav_rateus_mechanic"
                     android:icon="@drawable/rate_icon"
                     android:title="Rate Us"/>
 
                 <item
-                    android:id="@+id/nav_logout"
+                    android:id="@+id/nav_logout_mechanic"
                     android:icon="@drawable/logout_icon"
                     android:title="Logout"/>
 

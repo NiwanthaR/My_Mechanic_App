@@ -65,7 +65,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         if(user != null)
         {
             finish();
-            startActivity(new Intent(mechanic_login_dash.this,MainActivity.class));
+            startActivity(new Intent(mechanic_login_dash.this,mechanic_dashboard.class));
         }
 
         //goto forget password
@@ -173,7 +173,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         if (emailflage)
         {
             finish();
-            startActivity(new Intent(mechanic_login_dash.this, MainActivity.class));
+            startActivity(new Intent(mechanic_login_dash.this, mechanic_dashboard.class));
         }else{
             wrong_details.setText("Verify Your Email First..!");
             firebaseAuth.signOut();

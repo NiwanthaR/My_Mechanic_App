@@ -2,15 +2,28 @@ package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.model.client_profile;
+import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApi;
@@ -22,8 +35,18 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 
 public class mechanic_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -31,6 +54,14 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         com.google.android.gms.location.LocationListener {
+
+    //Variables for Navigation drover
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    Menu menu;
+    TextView textView;
+
 
     //Variables for Map
     private GoogleMap mMap;
@@ -40,11 +71,45 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
     private SupportMapFragment mapFragment;
     final  int LOCATION_REQUEST_CODE = 1;
 
+    //component
+    private TextView header_name, header_email;
+    private ImageView heder_pic;
+
+    //Firebase
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic_dashboard);
+
+
+        /*---------------------Hooks------------------------*/
+        value_equal();
+
+        /*------------------------Tool Bar-------------------*/
+        setSupportActionBar(toolbar);
+
+        /*------------------------Navigation Drawer Menu-------------------*/
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+
+        //navigation icon
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.header_icon_et);
+
+        //Navigation Drawer user name and email
+        user_data();
+
 
 
         //-----------------------Map Load-----------------------------------*/
@@ -115,13 +180,109 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
     }
 
     @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+        {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
+        switch (menuItem.getItemId())
+        {
+            case R.id.nav_home_mechanic:
+                break;
+
+            case R.id.nav_myservice_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Service Details",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_myfeedback_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Client Feedback",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_my_wall_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"My Wall",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_my_profil_mechanice:
+                Toast.makeText(mechanic_dashboard.this,"My Profile",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));
+                break;
+
+            case R.id.nav_shop_profile_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Shop Profile",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));
+                break;
+
+            case R.id.nav_settings_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Select Settings",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(client_dashboard.this,settings_panel.class));
+                break;
+
+            case R.id.nav_rateus_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Select Rate Us",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_logout:
+                Logout();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 
     private void value_equal()
     {
+        drawerLayout = findViewById(R.id.drawer_layout_mechanic);
+        navigationView = findViewById(R.id.nav_view_mechanic);
+        toolbar = findViewById(R.id.toolbar_mechanic);
+        toolbar.setTitle("Mechanic Dashboard");
 
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseStorage=FirebaseStorage.getInstance();
     }
+
+    private void Logout()
+    {
+        firebaseAuth.signOut();
+        Toast.makeText(mechanic_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(mechanic_dashboard.this,client_login_dash.class));
+        finish();
+    }
+
+    private void user_data()
+    {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mechanic_profile mechanicProfile = dataSnapshot.getValue(mechanic_profile.class);
+
+                View header = navigationView.getHeaderView(0);
+                header_name = (TextView) header.findViewById(R.id.header_username);
+                header_name.setText(mechanicProfile.getOwner_fname()+" "+mechanicProfile.getOwner_sname());
+                header_email = (TextView) header.findViewById(R.id.header_useremail);
+                header_email.setText(firebaseUser.getEmail());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(mechanic_dashboard.this,"Can't Load data",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }
