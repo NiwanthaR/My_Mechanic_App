@@ -2,14 +2,12 @@ package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import lk.demo.project.my_mechanic_app.MainActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,65 +18,58 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class mechanic_shop_profile_dashboard extends AppCompatActivity {
+public class mechanic_shop_profile_edit extends AppCompatActivity {
 
     //Variable
-    private TextView shop_name,shop_name2,shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
-    private TextView shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo,shop_begin,shop_regno;
+    private TextView shop_name,shop_name2;
+    private TextView shop_begin,shop_regno;
     private Button go_edit;
+    private EditText shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
+    private EditText shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo;
 
     //Firebase
-    private  FirebaseAuth firebaseAuth;
-    private  FirebaseDatabase firebaseDatabase;
-
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mechanic_shop_dashboard);
+        setContentView(R.layout.activity_mechanic_shop_profile_edit);
 
-        //Assign Variable
+        //Equal Variable
         Assign_value();
 
-        //Read variable value
-        Read_value();
-
-
-        go_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mechanic_shop_profile_dashboard.this, mechanic_shop_profile_edit.class));
-            }
-        });
+        //Read Value
+        Read_data();
     }
 
     private void Assign_value()
     {
-        go_edit=findViewById(R.id.btn_goedite_mechanic_shop_profile);
+        go_edit=findViewById(R.id.btn_submit_se_shop_edite);
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
 
-        shop_name = findViewById(R.id.tv_mechanic_s_shop_name);
-        shop_name2 = findViewById(R.id.tv_mechanic_s_shop_name2);
-        shop_contact = findViewById(R.id.tv_mechanic_s_shop_contact);
-        shop_address = findViewById(R.id.tv_mechanic_s_shop_address);
-        shop_city = findViewById(R.id.tv_mechanic_s_shop_city);
-        shop_postcode = findViewById(R.id.tv_mechanic_s_shop_postalcode);
-        shop_email = findViewById(R.id.tv_mechanic_s_shop_email);
-        shop_wesite = findViewById(R.id.tv_mechanic_s_shop_website);
+        shop_name = findViewById(R.id.tv_mechanic_se_shop_name);
+        shop_name2 = findViewById(R.id.tv_mechanic_se_shop_name2);
+        shop_contact = findViewById(R.id.et_mechanic_se_shop_contact);
+        shop_address = findViewById(R.id.et_mechanic_se_shop_address);
+        shop_city = findViewById(R.id.et_mechanic_se_shop_city);
+        shop_postcode = findViewById(R.id.et_mechanic_se_shop_postcode);
+        shop_email = findViewById(R.id.et_mechanic_se_shop_email);
+        shop_wesite = findViewById(R.id.et_mechanic_se_shop_web);
 
-        shop_open = findViewById(R.id.tv_mechanic_s_shop_open);
-        shop_close = findViewById(R.id.tv_mechanic_s_shop_close);
-        shop_poya = findViewById(R.id.tv_mechanic_s_shop_state_poya);
-        shop_holiday = findViewById(R.id.tv_mechanic_s_shop_holidays);
-        shop_breakdown = findViewById(R.id.tv_mechanic_s_shop_visit_service);
-        shop_serviceinfo = findViewById(R.id.tv_mechanic_s_shop_service_package);
-        shop_begin = findViewById(R.id.tv_mechanic_s_shop_start_day);
-        shop_regno = findViewById(R.id.tv_mechanic_s_shop_regno);
+        shop_open = findViewById(R.id.et_mechanic_se_shop_open);
+        shop_close = findViewById(R.id.et_mechanic_se_shop_close);
+        shop_poya = findViewById(R.id.et_mechanic_se_shop_poya);
+        shop_holiday = findViewById(R.id.et_mechanic_se_shop_holiday);
+        shop_breakdown = findViewById(R.id.et_mechanic_se_shop_visit);
+        shop_serviceinfo = findViewById(R.id.et_mechanic_se_shop_service);
+        shop_begin = findViewById(R.id.tv_mechanic_se_shop_start);
+        shop_regno = findViewById(R.id.tv_mechanic_se_shop_regno);
     }
 
-    private void Read_value()
+    private void Read_data()
     {
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
 
@@ -109,7 +100,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(mechanic_shop_profile_dashboard.this,"Can't Connect Database now..!!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mechanic_shop_profile_edit.this,"Can't Connect Database now..!!",Toast.LENGTH_SHORT).show();
             }
         });
     }
