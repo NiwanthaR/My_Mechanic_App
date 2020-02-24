@@ -212,12 +212,12 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_my_profil_mechanice:
                 Toast.makeText(mechanic_dashboard.this,"My Profile",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));
+                startActivity(new Intent(mechanic_dashboard.this,mechanic_profile_dashboard.class));
                 break;
 
             case R.id.nav_shop_profile_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Shop Profile",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));
+                startActivity(new Intent(mechanic_dashboard.this,mechanic_shop_profile_dashboard.class));
                 break;
 
             case R.id.nav_settings_mechanic:
