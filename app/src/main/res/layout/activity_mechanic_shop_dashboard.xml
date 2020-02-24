@@ -31,7 +31,7 @@
                     android:src="@drawable/blank_user" />
 
                 <TextView
-                    android:id="@+id/mechanic_S_shop_name"
+                    android:id="@+id/tv_mechanic_s_shop_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -187,7 +187,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_name"
+                            android:id="@+id/tv_mechanic_s_shop_name2"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/contact_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -226,7 +226,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_contact"
+                            android:id="@+id/tv_mechanic_s_shop_contact"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/addres_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -264,7 +264,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_address"
+                            android:id="@+id/tv_mechanic_s_shop_address"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -287,7 +287,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/city_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -313,7 +313,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_city"
+                                    android:id="@+id/tv_mechanic_s_shop_city"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -337,7 +337,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_postalcode"
+                                    android:id="@+id/tv_mechanic_s_shop_postalcode"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -377,7 +377,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_email"
+                            android:id="@+id/tv_mechanic_s_shop_email"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -400,7 +400,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/website_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -415,7 +415,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_website"
+                            android:id="@+id/tv_mechanic_s_shop_website"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -453,7 +453,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/time_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -479,7 +479,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_open"
+                                    android:id="@+id/tv_mechanic_s_shop_open"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -503,7 +503,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_close"
+                                    android:id="@+id/tv_mechanic_s_shop_close"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -528,7 +528,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/poya_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -543,7 +543,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_state_poya"
+                            android:id="@+id/tv_mechanic_s_shop_state_poya"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -565,7 +565,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/holiday_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -580,7 +580,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_holidays"
+                            android:id="@+id/tv_mechanic_s_shop_holidays"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -602,7 +602,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/visit_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -617,7 +617,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_visit_service"
+                            android:id="@+id/tv_mechanic_s_shop_visit_service"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -639,7 +639,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/service_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -654,7 +654,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/shop_p_service_package"
+                            android:id="@+id/tv_mechanic_s_shop_service_package"
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -691,7 +691,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/nic_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -717,7 +717,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_start_day"
+                                    android:id="@+id/tv_mechanic_s_shop_start_day"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -741,7 +741,7 @@
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
-                                    android:id="@+id/shop_p_regno"
+                                    android:id="@+id/tv_mechanic_s_shop_regno"
                                     android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
