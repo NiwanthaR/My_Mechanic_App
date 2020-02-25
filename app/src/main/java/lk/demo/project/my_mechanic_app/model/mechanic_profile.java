@@ -7,6 +7,21 @@ public class mechanic_profile {
     public mechanic_profile() {
     }
 
+    public mechanic_profile(String shop_address, String shop_city, String shop_postal_code, String shop_contact, String shop_email, String shop_web, String shop_open, String shop_close, String shop_poya_state, String shop_special_holiday, String shop_visite_service, String shop_sevice) {
+        this.shop_address = shop_address;
+        this.shop_city = shop_city;
+        this.shop_postal_code = shop_postal_code;
+        this.shop_contact = shop_contact;
+        this.shop_email = shop_email;
+        this.shop_web = shop_web;
+        this.shop_open = shop_open;
+        this.shop_close = shop_close;
+        this.shop_poya_state = shop_poya_state;
+        this.shop_special_holiday = shop_special_holiday;
+        this.shop_visite_service = shop_visite_service;
+        this.shop_sevice = shop_sevice;
+    }
+
     public mechanic_profile(String shop_name, String shop_regno, String shop_start_date, String shop_address, String shop_city, String shop_postal_code, String shop_contact, String shop_email, String shop_web, String shop_open, String shop_close, String shop_poya_state, String shop_special_holiday, String shop_visite_service, String shop_sevice, String owner_fname, String owner_sname, String owner_nic, String owner_dob, String owner_gender, String owner_address, String owner_city, String owner_contact, String usertype) {
         this.shop_name = shop_name;
         this.shop_regno = shop_regno;

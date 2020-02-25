@@ -24,6 +24,20 @@ public class validation_provider_signup {
        }
    }
 
+    public static boolean is_Validmail(final String email)
+    {
+        String StringTosearch = email;
+
+        Pattern p = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+        Matcher m = p.matcher(StringTosearch);
+
+
+        if (m.find())
+            return true;
+        else
+            return false;
+    }
+
     public static boolean is_Validpostcode(String postcode) {
 
         String stringToSearch = postcode;
@@ -36,5 +50,14 @@ public class validation_provider_signup {
             return true;
         else
             return false;
+    }
+
+    public static boolean mechanic_shop_update(String contact,String address,String city,String post_code,String email,String open,String close,String breakdown)
+    {
+        if (contact.isEmpty() || address.isEmpty() || city.isEmpty() || post_code.isEmpty() || email.isEmpty() || open.isEmpty() ||close.isEmpty() || breakdown.isEmpty())
+        {
+            return false;
+        }
+        return true;
     }
 }

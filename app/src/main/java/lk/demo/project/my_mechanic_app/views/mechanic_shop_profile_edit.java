@@ -3,14 +3,21 @@ package lk.demo.project.my_mechanic_app.views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,14 +29,17 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
 
     //Variable
     private TextView shop_name,shop_name2;
-    private TextView shop_begin,shop_regno;
-    private Button go_edit;
+    private TextView shop_begin,shop_regno,display_wrong;
+    private Button btn_submit;
     private EditText shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
     private EditText shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo;
 
     //Firebase
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+
+    //variable
+    private String contact,address,city,post_code,email,website,open,close,poya,holiday,breakdown,serviceinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +51,48 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
 
         //Read Value
         Read_data();
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                contact=shop_contact.getText().toString().trim();
+                address=shop_address.getText().toString().trim();
+                city=shop_city.getText().toString().trim();
+                post_code=shop_postcode.getText().toString().trim();
+                email=shop_email.getText().toString().trim();
+                website=shop_wesite.getText().toString().trim();
+
+                open=shop_open.getText().toString().trim();
+                close=shop_close.getText().toString().trim();
+                poya=shop_poya.getText().toString().trim();
+                holiday=shop_holiday.getText().toString().trim();
+                breakdown=shop_breakdown.getText().toString().trim();
+                serviceinfo=shop_serviceinfo.getText().toString().trim();
+
+                if(validation_provider_signup.mechanic_shop_update(contact,address,city,post_code,email,open,close,breakdown))
+                {
+                    if (validation_provider_signup.is_Validmail(email))
+                    {
+                        if (validation_provider_signup.is_valide_contact(contact))
+                        {
+                                Toast.makeText(mechanic_shop_profile_edit.this,"Allright",Toast.LENGTH_SHORT).show();
+                        }else {
+                            display_wrong.setText("Please enter valid contact");
+                        }
+                    }else {
+                        display_wrong.setText("Your email is Wrong");
+                    }
+                }else {
+                    display_wrong.setText("Please Fill All Details");
+                }
+            }
+        });
     }
 
     private void Assign_value()
     {
-        go_edit=findViewById(R.id.btn_submit_se_shop_edite);
+        btn_submit=findViewById(R.id.btn_submit_se_shop_edite);
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
@@ -67,6 +114,7 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
         shop_serviceinfo = findViewById(R.id.et_mechanic_se_shop_service);
         shop_begin = findViewById(R.id.tv_mechanic_se_shop_start);
         shop_regno = findViewById(R.id.tv_mechanic_se_shop_regno);
+        display_wrong = findViewById(R.id.tv_mechanic_se_wrong);
     }
 
     private void Read_data()
@@ -101,6 +149,24 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(mechanic_shop_profile_edit.this,"Can't Connect Database now..!!",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void update_data()
+    {
+        mechanic_profile mechanicProfile = new mechanic_profile(address,city,post_code,contact,email,website,open,close,poya,holiday,breakdown,serviceinfo);
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+        databaseReference.setValue(mechanicProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(mechanic_shop_profile_edit.this,"Details Update",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(mechanic_shop_profile_edit.this,mechanic_shop_profile_dashboard.class));
+                    finish();
+                }
             }
         });
     }
