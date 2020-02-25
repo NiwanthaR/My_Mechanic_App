@@ -39,7 +39,7 @@
                     <item
                         android:id="@+id/nav_shop_profile_mechanic"
                         android:icon="@drawable/ic_shop_profile"
-                        android:title="My Profile"/>
+                        android:title="My Shop Profile"/>
                 </group>
 
             </menu>

@@ -6,6 +6,7 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,9 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
 
     //variable
     private String contact,address,city,post_code,email,website,open,close,poya,holiday,breakdown,serviceinfo;
+
+    //progreedialog
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,8 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
                     {
                         if (validation_provider_signup.is_valide_contact(contact))
                         {
-                                Toast.makeText(mechanic_shop_profile_edit.this,"Allright",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(mechanic_shop_profile_edit.this,"Allright",Toast.LENGTH_SHORT).show();
+                            update_data();
                         }else {
                             display_wrong.setText("Please enter valid contact");
                         }
@@ -94,6 +99,10 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
     {
         btn_submit=findViewById(R.id.btn_submit_se_shop_edite);
 
+        //progress Dialog
+        progressDialog= new ProgressDialog(this);
+
+        //firebase
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
 
@@ -155,17 +164,25 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
 
     private void update_data()
     {
+
         mechanic_profile mechanicProfile = new mechanic_profile(address,city,post_code,contact,email,website,open,close,poya,holiday,breakdown,serviceinfo);
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+
+        progressDialog.setMessage("Your Details in Processing Please waite..!");
+        progressDialog.show();
 
         databaseReference.setValue(mechanicProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful())
                 {
+                    progressDialog.dismiss();
                     Toast.makeText(mechanic_shop_profile_edit.this,"Details Update",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(mechanic_shop_profile_edit.this,mechanic_shop_profile_dashboard.class));
                     finish();
+                }else {
+                    progressDialog.dismiss();
+                    Toast.makeText(mechanic_shop_profile_edit.this,"Can't Update this movement",Toast.LENGTH_SHORT).show();
                 }
             }
         });
