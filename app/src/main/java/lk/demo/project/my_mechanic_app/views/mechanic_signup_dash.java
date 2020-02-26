@@ -8,6 +8,7 @@ import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -65,6 +66,9 @@ public class mechanic_signup_dash extends AppCompatActivity {
     //firebase
     private FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
+
+    //progreedialog
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -338,6 +342,9 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+
+        //progress Dialog
+        progressDialog= new ProgressDialog(this);
     }
 
     private  void sendWmail_verification()
@@ -370,6 +377,20 @@ public class mechanic_signup_dash extends AppCompatActivity {
     {
         DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
         mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact,user_type);
-        myref.setValue(mechanicProfile);
+
+        progressDialog.setMessage("Your Details in Processing Please waite..!");
+        progressDialog.show();
+
+        myref.setValue(mechanicProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(mechanic_signup_dash.this,"Data Uploaded..!",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(mechanic_signup_dash.this,"Data Upload Failed..!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
