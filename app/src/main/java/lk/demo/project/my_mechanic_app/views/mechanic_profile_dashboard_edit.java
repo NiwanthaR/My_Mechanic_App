@@ -7,6 +7,7 @@ import lk.demo.project.my_mechanic_app.control.validation_provider_signup;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -175,6 +176,8 @@ public class mechanic_profile_dashboard_edit extends AppCompatActivity {
                 {
                     progressDialog.dismiss();
                     Toast.makeText(mechanic_profile_dashboard_edit.this,"Details Updated....!!",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(mechanic_profile_dashboard_edit.this,mechanic_profile_dashboard.class));
+                    finish();
                 }else {
                      Toast.makeText(mechanic_profile_dashboard_edit.this,"Details Updated....!!",Toast.LENGTH_SHORT).show();
                  }
