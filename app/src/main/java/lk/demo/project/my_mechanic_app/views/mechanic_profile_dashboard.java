@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +44,13 @@ public class mechanic_profile_dashboard extends AppCompatActivity {
 
         //Load Value
         Load_value();
+
+        go_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mechanic_profile_dashboard.this,mechanic_profile_dashboard_edit.class));
+            }
+        });
     }
     private void Value_assign()
     {

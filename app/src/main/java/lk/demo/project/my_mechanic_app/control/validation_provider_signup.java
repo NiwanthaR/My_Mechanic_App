@@ -60,4 +60,13 @@ public class validation_provider_signup {
         }
         return true;
     }
+
+    public static boolean mechanic_profile_update(String owner_fname,String owner_sname,String owner_contact,String owner_address,String owner_city)
+    {
+        if (owner_fname.isEmpty() || owner_sname.isEmpty() || owner_contact.isEmpty() || owner_address.isEmpty() || owner_city.isEmpty())
+        {
+            return false;
+        }
+        return true;
+    }
 }
