@@ -40,7 +40,8 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
 
     //variable
-    private String contact,address,city,post_code,email,website,open,close,poya,holiday,breakdown,serviceinfo;
+    private String name,regno,start_date,contact,address,city,post_code,email,website,open,close,poya,holiday,breakdown,serviceinfo;
+    private String owner_fname,owner_sname,owner_nic,owner_dob,owner_gender,owner_address,owner_city,owner_contact,usertype;
 
     //progreedialog
     private ProgressDialog progressDialog;
@@ -60,6 +61,7 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                name=shop_name.getText().toString().trim();
                 contact=shop_contact.getText().toString().trim();
                 address=shop_address.getText().toString().trim();
                 city=shop_city.getText().toString().trim();
@@ -73,6 +75,9 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
                 holiday=shop_holiday.getText().toString().trim();
                 breakdown=shop_breakdown.getText().toString().trim();
                 serviceinfo=shop_serviceinfo.getText().toString().trim();
+
+                regno=shop_regno.getText().toString().trim();
+                start_date=shop_begin.getText().toString().trim();
 
                 if(validation_provider_signup.mechanic_shop_update(contact,address,city,post_code,email,open,close,breakdown))
                 {
@@ -153,6 +158,16 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
                 shop_begin.setText(mechanicProfile.getShop_start_date());
                 shop_regno.setText(mechanicProfile.getShop_regno());
 
+                owner_fname=mechanicProfile.getOwner_fname();
+                owner_sname=mechanicProfile.getOwner_sname();
+                owner_nic=mechanicProfile.getOwner_nic();
+                owner_dob=mechanicProfile.getOwner_dob();
+                owner_gender=mechanicProfile.getOwner_gender();
+                owner_address=mechanicProfile.getOwner_address();
+                owner_city=mechanicProfile.getOwner_city();
+                owner_contact=mechanicProfile.getOwner_contact();
+                usertype=mechanicProfile.getUsertype();
+
             }
 
             @Override
@@ -165,7 +180,7 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
     private void update_data()
     {
 
-        mechanic_profile mechanicProfile = new mechanic_profile(address,city,post_code,contact,email,website,open,close,poya,holiday,breakdown,serviceinfo);
+        mechanic_profile mechanicProfile = new mechanic_profile(name,regno,start_date,address,city,post_code,contact,email,website,open,close,poya,holiday,breakdown,serviceinfo,owner_fname,owner_sname,owner_nic,owner_dob,owner_gender,owner_address,owner_city,owner_contact,usertype);
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
 
         progressDialog.setMessage("Your Details in Processing Please waite..!");
