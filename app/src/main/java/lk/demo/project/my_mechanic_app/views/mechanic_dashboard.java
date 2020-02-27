@@ -222,7 +222,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_settings_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Select Settings",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(client_dashboard.this,settings_panel.class));
+                startActivity(new Intent(mechanic_dashboard.this,mechanic_settings_panel.class));
                 break;
 
             case R.id.nav_rateus_mechanic:
