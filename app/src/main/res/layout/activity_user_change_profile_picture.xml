@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_user_change_image"
                 android:background="@drawable/blank_user"
                 android:layout_centerHorizontal="true"
