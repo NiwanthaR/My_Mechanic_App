@@ -102,7 +102,7 @@ public class user_change_email extends AppCompatActivity {
                                 if (task.isSuccessful())
                                 {
                                     Toast.makeText(user_change_email.this,"Email Update Successfully",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(user_change_email.this,settings_panel.class));
+                                    //startActivity(new Intent(user_change_email.this,settings_panel.class));
                                     finish();
                                 }
                             }

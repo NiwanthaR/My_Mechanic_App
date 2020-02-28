@@ -105,7 +105,7 @@ public class user_change_password extends AppCompatActivity {
                                 if (task.isSuccessful())
                                 {
                                     Toast.makeText(user_change_password.this,"Password Update..!!",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(user_change_password.this,settings_panel.class));
+                                    //startActivity(new Intent(user_change_password.this,settings_panel.class));
                                     finish();
                                 }else {
                                     Toast.makeText(user_change_password.this,"Password update Failed..!!",Toast.LENGTH_SHORT).show();

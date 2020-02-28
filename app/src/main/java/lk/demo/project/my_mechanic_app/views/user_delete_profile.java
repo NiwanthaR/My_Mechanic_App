@@ -112,7 +112,7 @@ public class user_delete_profile extends AppCompatActivity {
                                 if (task.isSuccessful())
                                 {
                                     Toast.makeText(user_delete_profile.this,"Profile Delete Successful..!!",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(user_delete_profile.this,client_login_dash.class));
+                                    startActivity(new Intent(user_delete_profile.this,select_login_type_dash.class));
                                     finish();
                                 }else {
                                     Toast.makeText(user_delete_profile.this,"Profile Delete Failed..!!",Toast.LENGTH_SHORT).show();
