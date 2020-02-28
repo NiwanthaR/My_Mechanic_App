@@ -72,7 +72,7 @@ public class mechanic_login_dash extends AppCompatActivity {
         goto_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mechanic_login_dash.this, mechanic_dashboard.class));
+                startActivity(new Intent(mechanic_login_dash.this, forget_password_provider_dash.class));
             }
         });
 

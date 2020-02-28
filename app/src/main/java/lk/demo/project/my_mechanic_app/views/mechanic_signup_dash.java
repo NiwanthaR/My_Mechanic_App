@@ -1,6 +1,7 @@
 package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
@@ -10,7 +11,10 @@ import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +29,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 public class mechanic_signup_dash extends AppCompatActivity {
@@ -65,10 +75,16 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
     //firebase
     private FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     //progreedialog
     private ProgressDialog progressDialog;
+
+    //Image upload component
+    private static int PICK_IMG=123;
+    private Uri image_path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +99,17 @@ public class mechanic_signup_dash extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mechanic_signup_dash.this,mechanic_login_dash.class));
+            }
+        });
+
+        //choose shop profile image
+        shop_profile_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Profile Picture"),PICK_IMG);
             }
         });
 
@@ -177,6 +204,9 @@ public class mechanic_signup_dash extends AppCompatActivity {
                 //read visit site and service vehicle is possible
                 read_visite_service();
 
+                progressDialog.setMessage("Your Details in Processing Please waite..!");
+                progressDialog.show();
+
                 if (all_right_owner() && all_right_shop())
                 {
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -189,6 +219,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
                                         {
                                             sendWmail_verification();
                                         }else{
+                                            progressDialog.dismiss();
                                             worng_details.setText("Something Wrong");
                                         }
                             }else {
@@ -201,6 +232,24 @@ public class mechanic_signup_dash extends AppCompatActivity {
             }
         });
 
+    }
+
+    //image upload component
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMG && resultCode == RESULT_OK && data.getData() != null)
+        {
+            image_path = data.getData();
+
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),image_path);
+                shop_profile_pic.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     //read gender type
@@ -286,7 +335,13 @@ public class mechanic_signup_dash extends AppCompatActivity {
             {
                 if (validation_provider_signup.is_Validpostcode(spost))
                 {
-                    return true;
+                    if (validation_client_signup.is_image_ok(image_path))
+                    {
+                        return true;
+                    }else{
+                        worng_details.setText("Please Select Shop Logo..!!");
+                        return false;
+                    }
                 }else {
                     worng_details.setText("Your postal code is wrong..!!");
                     return false;
@@ -340,8 +395,14 @@ public class mechanic_signup_dash extends AppCompatActivity {
         poya_group=(RadioGroup)findViewById(R.id.radio_poya_provider_signup);
         visite_service_group=(RadioGroup)findViewById(R.id.radio_breakdown_provider_signup);
 
+        //image view
+        shop_profile_pic=findViewById(R.id.img_profilepic_provider_signup);
+
+        //firebase part
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
+        storageReference=firebaseStorage.getReference();
 
         //progress Dialog
         progressDialog= new ProgressDialog(this);
@@ -359,7 +420,14 @@ public class mechanic_signup_dash extends AppCompatActivity {
                     if (task.isSuccessful())
                     {
                         Toast.makeText(mechanic_signup_dash.this,"Verification Email Sended",Toast.LENGTH_SHORT).show();
+
+                        //upload mechanic data
                         upload_mechanic_data();
+
+                        //upload mechanic profile image
+                        image_upload();
+
+                        progressDialog.dismiss();
                         firebaseAuth.signOut();
                         finish();
                         startActivity(new Intent(mechanic_signup_dash.this,mechanic_login_dash.class));
@@ -378,8 +446,6 @@ public class mechanic_signup_dash extends AppCompatActivity {
         DatabaseReference myref = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
         mechanic_profile mechanicProfile = new mechanic_profile(sname,sregno,sstartday,saddress,scity,spost,scontact,semail,sweb,sopen,sclose,poya_day,sspecial_holiday,visite_service,sspecial_service,fname,lname,nic,dob,gender,address,city,contact,user_type);
 
-        progressDialog.setMessage("Your Details in Processing Please waite..!");
-        progressDialog.show();
 
         myref.setValue(mechanicProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -390,6 +456,24 @@ public class mechanic_signup_dash extends AppCompatActivity {
                 }else {
                     Toast.makeText(mechanic_signup_dash.this,"Data Upload Failed..!!",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void image_upload()
+    {
+        StorageReference myReference = storageReference.child("Workshop_Logo").child(firebaseAuth.getUid());
+        UploadTask uploadTask = myReference.putFile(image_path);
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(mechanic_signup_dash.this,"Image Upload Failed",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(mechanic_signup_dash.this,"Image Upload Successfully",Toast.LENGTH_SHORT).show();
             }
         });
     }
