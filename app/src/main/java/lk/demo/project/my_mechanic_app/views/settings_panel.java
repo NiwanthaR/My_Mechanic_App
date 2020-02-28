@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class settings_panel extends AppCompatActivity {
 
-    private Button change_password,change_email,delete_account;
+    private Button change_password,change_email,delete_account,change_pro_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,13 @@ public class settings_panel extends AppCompatActivity {
                 startActivity(new Intent(settings_panel.this,user_delete_profile.class));
             }
         });
+
+        change_pro_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(settings_panel.this,user_change_profile_picture.class));
+            }
+        });
     }
 
     private void Assign_varible()
@@ -46,5 +53,6 @@ public class settings_panel extends AppCompatActivity {
         change_password=findViewById(R.id.btn_st_change_password);
         change_email=findViewById(R.id.btn_st_change_email);
         delete_account=findViewById(R.id.btn_st_delete_account);
+        change_pro_pic=findViewById(R.id.btn_st_change_profilepic);
     }
 }

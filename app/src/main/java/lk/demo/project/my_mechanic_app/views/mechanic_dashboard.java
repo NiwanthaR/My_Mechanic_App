@@ -229,7 +229,8 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
                 Toast.makeText(mechanic_dashboard.this,"Select Rate Us",Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.nav_logout:
+            case R.id.nav_logout_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
                 Logout();
                 break;
         }
@@ -256,8 +257,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
     private void Logout()
     {
         firebaseAuth.signOut();
-        Toast.makeText(mechanic_dashboard.this,"Logout Successfully",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(mechanic_dashboard.this,client_login_dash.class));
+        startActivity(new Intent(mechanic_dashboard.this,mechanic_login_dash.class));
         finish();
     }
 
