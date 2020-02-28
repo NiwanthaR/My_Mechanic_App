@@ -167,7 +167,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 break;
 
             case R.id.nav_rateus:
-                Toast.makeText(client_dashboard.this,"Select Rate Us",Toast.LENGTH_SHORT).show();
+                Toast.makeText(client_dashboard.this,"First Please Upload Play Store",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.nav_logout:

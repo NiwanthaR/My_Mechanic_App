@@ -82,6 +82,9 @@ public class user_change_profile_picture extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                progressDialog.setMessage("Your Image in Processing Please waite..!");
+                progressDialog.show();
+
                 if (validation_client_signup.is_image_ok(image_path))
                 {
                     upload_image_new();
@@ -107,6 +110,9 @@ public class user_change_profile_picture extends AppCompatActivity {
         //image profile
         profile_image = findViewById(R.id.img_user_change_image);
         new_profile_image = findViewById(R.id.img_user_upload_new_image);
+
+        //progress Dialog
+        progressDialog= new ProgressDialog(this);
     }
 
     //get new profile picture
@@ -135,11 +141,13 @@ public class user_change_profile_picture extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
                 Toast.makeText(user_change_profile_picture.this,"Image Upload Failed",Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                progressDialog.dismiss();
                 Toast.makeText(user_change_profile_picture.this,"Image Upload Successfully",Toast.LENGTH_SHORT).show();
                 finish();
             }
