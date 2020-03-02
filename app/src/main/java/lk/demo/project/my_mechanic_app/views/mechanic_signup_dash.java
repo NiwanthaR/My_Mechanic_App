@@ -462,7 +462,7 @@ public class mechanic_signup_dash extends AppCompatActivity {
 
     private void image_upload()
     {
-        StorageReference myReference = storageReference.child("Workshop_Logo").child(firebaseAuth.getUid());
+        StorageReference myReference = storageReference.child("Profile Picture").child(firebaseAuth.getUid());
         UploadTask uploadTask = myReference.putFile(image_path);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
