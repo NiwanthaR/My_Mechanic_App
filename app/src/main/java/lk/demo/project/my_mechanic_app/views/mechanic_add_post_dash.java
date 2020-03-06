@@ -147,13 +147,13 @@ public class mechanic_add_post_dash extends AppCompatActivity {
                         hashMap.put("Owner_UID",firebaseAuth.getUid());
                         hashMap.put("Post_Title",title_post);
                         hashMap.put("Post_Description",description);
-                        hashMap.put("ImageUri",imageuri.toString());
+                        hashMap.put("ImageUri",uri.toString());
 
                         databaseReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),mechanic_dashboard.class));
+                                startActivity(new Intent(getApplicationContext(),mechanic_add_wall.class));
                                 finish();
 
                             }

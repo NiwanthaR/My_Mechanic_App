@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/loarding"
-                android:padding="5dp"/>
+                android:paddingLeft="10dp"/>
 
         </LinearLayout>
 
@@ -32,11 +32,12 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_single_addui"
+                android:id="@+id/tv_single_addui_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="Add Title Here.....!!"
-                android:paddingLeft="20dp"
+                android:paddingLeft="5dp"
                 android:layout_marginTop="12dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
@@ -47,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/email_icon"
-                android:paddingLeft="20dp"
+                android:paddingLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:drawablePadding="10dp"
                 android:text="Owner Email"/>
@@ -57,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="3dp"
                 android:text="Click More....!!"
-                android:paddingLeft="20dp"
+                android:paddingLeft="5dp"
                 android:textStyle="bold"
                 android:drawableRight="@drawable/service_icon"
                 android:paddingRight="25dp"
