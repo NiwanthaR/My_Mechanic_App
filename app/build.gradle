@@ -58,6 +58,10 @@ dependencies {
     //image circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Firebase ui
+    implementation 'com.firebaseui:firebase-ui-database:6.2.0'
+    implementation 'com.firebaseui:firebase-ui-storage:6.2.0'
+
 }
 
 // Add to the bottom of the file
