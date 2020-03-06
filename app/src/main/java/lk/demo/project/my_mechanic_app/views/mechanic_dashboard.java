@@ -208,7 +208,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_my_wall_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"My Wall",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(mechanic_dashboard.this,mechanic_add_post_dash.class));
+                startActivity(new Intent(mechanic_dashboard.this,mechanic_add_wall.class));
                 break;
 
             case R.id.nav_my_profil_mechanice:

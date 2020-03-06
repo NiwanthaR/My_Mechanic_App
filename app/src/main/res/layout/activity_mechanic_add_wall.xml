@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.mechanic_add_wall">
+
+    <TextView
+        android:id="@+id/txt_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Blog Wall"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:paddingTop="15dp"
+        android:paddingBottom="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:layout_below="@id/txt_tv_title"
+        android:id="@+id/tv_mechanic_add_wall_etsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search Here....!!"
+        android:background="@drawable/search_edit_text_design"
+        android:textSize="20dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:drawableRight="@drawable/ic_search"
+        android:paddingRight="20dp"
+        android:layout_marginRight="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mwchanic_wall_post_recycler"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_mechanic_add_wall_etsearch"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/flt_btn_mechanic_add_wall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/colorPrimary"/>
+
+</RelativeLayout>
