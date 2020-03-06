@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.mechanic_add_post_dash">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload New Post"
+                android:textAlignment="center"
+                android:paddingTop="20dp"
+                android:textSize="24dp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/mechanic_upload_image_post"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/text_heading"
+                android:src="@drawable/blank_user_new"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post Title"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/mechanic_post_upload_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Your Title"
+                android:layout_below="@id/txt_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/text_view_design"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/txt_dis"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Your Description"
+                android:layout_below="@id/mechanic_post_upload_title"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/mechanic_post_upload_discription"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/txt_dis"
+                android:maxLines="20"
+                android:singleLine="false"
+                android:gravity="top"
+                android:background="@drawable/text_view_design"
+                android:hint="Enter Your Description Here"/>
+
+            <ProgressBar
+                android:id="@+id/mechanic_upload_progess"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_below="@id/mechanic_post_upload_discription"/>
+
+            <TextView
+                android:id="@+id/mechanic_upload_post_progessdisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mechanic_upload_progess"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btn_upload_post_mechanic"
+                android:layout_below="@id/mechanic_upload_post_progessdisplay"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button_shape"
+                android:text="Submit"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
