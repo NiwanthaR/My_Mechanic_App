@@ -133,7 +133,7 @@ public class mechanic_add_post_dash extends AppCompatActivity {
         upload_state.setVisibility(View.VISIBLE);
         upload_bar.setVisibility(View.VISIBLE);
 
-        final String key=firebaseUser.getUid();
+        final String key=databaseReference.push().getKey();
         storageReference.child(key+"jpg").putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -143,6 +143,8 @@ public class mechanic_add_post_dash extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
 
                         HashMap hashMap = new HashMap();
+                        hashMap.put("Owner_ID",firebaseUser.getEmail());
+                        hashMap.put("Owner_UID",firebaseAuth.getUid());
                         hashMap.put("Post_Title",title_post);
                         hashMap.put("Post_Description",description);
                         hashMap.put("ImageUri",imageuri.toString());

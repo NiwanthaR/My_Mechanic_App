@@ -102,12 +102,15 @@
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_below="@id/mechanic_post_upload_discription"/>
 
             <TextView
                 android:id="@+id/mechanic_upload_post_progessdisplay"
                 android:layout_width="match_parent"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mechanic_upload_progess"
                 android:gravity="center" />
