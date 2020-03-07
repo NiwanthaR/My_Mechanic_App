@@ -6,12 +6,15 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class mechanic_profile_dashboard extends AppCompatActivity {
 
@@ -27,7 +32,11 @@ public class mechanic_profile_dashboard extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
     private FirebaseUser firebaseUser;
+
+    //Image view
+    private ImageView owner_image;
 
     //textview
     private TextView owner_name,owner_email,owner_nic,owner_gender,owner_dob,owner_contact,owner_address,owner_city;
@@ -45,10 +54,21 @@ public class mechanic_profile_dashboard extends AppCompatActivity {
         //Load Value
         Load_value();
 
+
         go_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mechanic_profile_dashboard.this,mechanic_profile_dashboard_edit.class));
+            }
+        });
+
+
+        //load current profile image
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Mechanicians Profile Image").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(owner_image);
             }
         });
     }
@@ -59,6 +79,7 @@ public class mechanic_profile_dashboard extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
+        storageReference=firebaseStorage.getReference();
 
 
         //textview value
@@ -73,6 +94,9 @@ public class mechanic_profile_dashboard extends AppCompatActivity {
 
         //button value
         go_edit=findViewById(R.id.btn_goedite_mechanic_owner_profile);
+
+        //Image view
+        owner_image = findViewById(R.id.mechanic_u_profile_img);
     }
 
     private void Load_value()

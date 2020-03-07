@@ -8,14 +8,17 @@ import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +27,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class mechanic_profile_dashboard_edit extends AppCompatActivity {
 
@@ -34,6 +40,9 @@ public class mechanic_profile_dashboard_edit extends AppCompatActivity {
     //Button
     private Button submit_data;
 
+    //Image view
+    private ImageView owner_image;
+
     //Equal Variable
     private String email,fname,sname,nic,gender,dob,contact,address,city;
     private String shop_name,shop_regno,shop_startdate,shop_address,shop_city,shop_postcode,shop_contact,shop_email,shop_web,shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_service,usertype;
@@ -42,6 +51,8 @@ public class mechanic_profile_dashboard_edit extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseUser firebaseUser;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     //progreedialog
     private ProgressDialog progressDialog;
@@ -56,6 +67,15 @@ public class mechanic_profile_dashboard_edit extends AppCompatActivity {
 
         //Read Data
         Load_value();
+
+        //load current profile image
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Mechanicians Profile Image").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(owner_image);
+            }
+        });
 
         submit_data.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,8 +118,11 @@ public class mechanic_profile_dashboard_edit extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
         submit_data = findViewById(R.id.btn_mechanic_pe_profile_submit);
+        owner_image = findViewById(R.id.img_mechanic_pe_profile_pic);
 
 
         owner_name_up = findViewById(R.id.tv_mechanic_pe_profile_name);
