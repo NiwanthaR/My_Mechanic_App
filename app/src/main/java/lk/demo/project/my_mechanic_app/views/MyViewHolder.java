@@ -11,13 +11,15 @@ import lk.demo.project.my_mechanic_app.R;
 class MyViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView_in_posts;
-    TextView textView_in_posts_title,textView_in_posts_ownere;
+    TextView textView_in_posts_title,textView_in_posts_storename,textView_in_posts_price,textView_in_posts_condition;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        imageView_in_posts=itemView.findViewById(R.id.img_single_addui);
-        textView_in_posts_title=itemView.findViewById(R.id.tv_single_addui_title);
-        textView_in_posts_ownere=itemView.findViewById(R.id.tv_email_addui);
+        imageView_in_posts=itemView.findViewById(R.id.single_ui_image);
+        textView_in_posts_title=itemView.findViewById(R.id.single_ui_title);
+        textView_in_posts_storename=itemView.findViewById(R.id.single_ui_storename);
+        textView_in_posts_price=itemView.findViewById(R.id.single_ui_price);
+        textView_in_posts_condition=itemView.findViewById(R.id.single_ui_condition);
     }
 }

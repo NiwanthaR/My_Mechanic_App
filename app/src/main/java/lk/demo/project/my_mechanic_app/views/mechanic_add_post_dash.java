@@ -166,7 +166,7 @@ public class mechanic_add_post_dash extends AppCompatActivity {
 
         upload_state.setVisibility(View.VISIBLE);
         upload_bar.setVisibility(View.VISIBLE);
-        submit_data.setVisibility(View.GONE);
+        //submit_data.setVisibility(View.GONE);
 
         final String key=databaseReference.push().getKey();
         storageReference.child(key+"jpg").putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

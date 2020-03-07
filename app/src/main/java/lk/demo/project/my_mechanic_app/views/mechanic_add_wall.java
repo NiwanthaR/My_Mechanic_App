@@ -60,7 +60,9 @@ public class mechanic_add_wall extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull wall_post model) {
 
                 holder.textView_in_posts_title.setText(model.getPost_Title());
-                holder.textView_in_posts_ownere.setText(model.getOwner_ID());
+                holder.textView_in_posts_storename.setText(model.getStore_Name());
+                holder.textView_in_posts_price.setText("Rs "+model.getPost_Cost());
+                holder.textView_in_posts_condition.setText(model.getPost_Type());
                 Picasso.get().load(model.getImageUri()).into(holder.imageView_in_posts);
             }
 
