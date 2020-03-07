@@ -7,18 +7,24 @@ import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class mechanic_shop_profile_dashboard extends AppCompatActivity {
 
@@ -26,10 +32,12 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
     private TextView shop_name,shop_name2,shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
     private TextView shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo,shop_begin,shop_regno;
     private Button go_edit;
+    private ImageView mechanic_logo;
 
     //Firebase
     private  FirebaseAuth firebaseAuth;
     private  FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
 
 
     @Override
@@ -50,6 +58,14 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
                 startActivity(new Intent(mechanic_shop_profile_dashboard.this, mechanic_shop_profile_edit.class));
             }
         });
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().centerCrop().into(mechanic_logo);
+            }
+        });
     }
 
     private void Assign_value()
@@ -58,6 +74,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
 
         shop_name = findViewById(R.id.tv_mechanic_s_shop_name);
         shop_name2 = findViewById(R.id.tv_mechanic_s_shop_name2);
@@ -67,6 +84,8 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         shop_postcode = findViewById(R.id.tv_mechanic_s_shop_postalcode);
         shop_email = findViewById(R.id.tv_mechanic_s_shop_email);
         shop_wesite = findViewById(R.id.tv_mechanic_s_shop_website);
+
+        mechanic_logo=findViewById(R.id.mechanic_s_shop_logo);
 
         shop_open = findViewById(R.id.tv_mechanic_s_shop_open);
         shop_close = findViewById(R.id.tv_mechanic_s_shop_close);

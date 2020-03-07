@@ -284,6 +284,16 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
                 Toast.makeText(mechanic_dashboard.this,"Can't Load data",Toast.LENGTH_SHORT).show();
             }
         });
+
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                View header = navigationView.getHeaderView(0);
+                heder_pic = header.findViewById(R.id.heder_pro_pic);
+                Picasso.get().load(uri).fit().centerCrop().into(heder_pic);
+            }
+        });
     }
 
 }

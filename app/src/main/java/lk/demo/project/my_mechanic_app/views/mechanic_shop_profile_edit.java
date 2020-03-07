@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
     private Button btn_submit;
     private EditText shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
     private EditText shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo;
+    private ImageView shop_logo;
 
     //Firebase
     private FirebaseAuth firebaseAuth;
@@ -68,6 +70,8 @@ public class mechanic_shop_profile_edit extends AppCompatActivity {
                 post_code=shop_postcode.getText().toString().trim();
                 email=shop_email.getText().toString().trim();
                 website=shop_wesite.getText().toString().trim();
+
+                shop_logo=findViewById(R.id.img_mechanic_se_shop_logo);
 
                 open=shop_open.getText().toString().trim();
                 close=shop_close.getText().toString().trim();
