@@ -37,7 +37,7 @@ public class mechanic_settings_panel extends AppCompatActivity {
         change_profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mechanic_settings_panel.this,mechanic_change_profile_image.class));
             }
         });
 
