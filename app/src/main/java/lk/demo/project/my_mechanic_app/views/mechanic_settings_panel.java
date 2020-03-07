@@ -23,14 +23,14 @@ public class mechanic_settings_panel extends AppCompatActivity {
         change_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(mechanic_settings_panel.this,user_change_email.class));
+                startActivity(new Intent(mechanic_settings_panel.this,user_change_email.class));
             }
         });
 
         change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mechanic_settings_panel.this,user_change_password.class));
             }
         });
 
@@ -44,7 +44,7 @@ public class mechanic_settings_panel extends AppCompatActivity {
         change_shop_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mechanic_settings_panel.this,user_change_profile_picture.class));
             }
         });
 
