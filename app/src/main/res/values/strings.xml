@@ -29,4 +29,9 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_client_map">Map</string>
 
+    <string-array name="Post_type">
+        <item>Brand New</item>
+        <item>Re-Condition</item>
+    </string-array>
+
 </resources>
