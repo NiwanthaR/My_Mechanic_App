@@ -12,6 +12,7 @@ class MyViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView_in_posts;
     TextView textView_in_posts_title,textView_in_posts_storename,textView_in_posts_price,textView_in_posts_condition;
+    View v;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -21,5 +22,7 @@ class MyViewHolder extends RecyclerView.ViewHolder {
         textView_in_posts_storename=itemView.findViewById(R.id.single_ui_storename);
         textView_in_posts_price=itemView.findViewById(R.id.single_ui_price);
         textView_in_posts_condition=itemView.findViewById(R.id.single_ui_condition);
+
+        v=itemView;
     }
 }
