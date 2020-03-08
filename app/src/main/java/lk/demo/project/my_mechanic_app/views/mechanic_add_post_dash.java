@@ -56,7 +56,7 @@ public class mechanic_add_post_dash extends AppCompatActivity {
     private boolean Isimage_Added = false;
 
     //variable
-    private  String store_name,store_contact;
+    private  String store_name,store_contact,store_owner_fname,store_owner_sname,store_location,owner_name;
 
     //Firebase Part
     private StorageReference storageReference;
@@ -185,7 +185,9 @@ public class mechanic_add_post_dash extends AppCompatActivity {
                         hashMap.put("Post_Type",post_type);
                         hashMap.put("Store_Name",store_name);
                         hashMap.put("Store_Contact",store_contact);
+                        hashMap.put("Post_Store_Owner_Name",owner_name);
                         hashMap.put("ImageUri",uri.toString());
+                        hashMap.put("Post_Store_Location",store_location);
 
                         databaseReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -226,6 +228,11 @@ public class mechanic_add_post_dash extends AppCompatActivity {
 
                 store_name=mechanicProfile.getShop_name();
                 store_contact=mechanicProfile.getShop_contact();
+                store_owner_fname=mechanicProfile.getOwner_fname();
+                store_owner_sname=mechanicProfile.getOwner_sname();
+                store_location=mechanicProfile.getOwner_city();
+
+                owner_name=(store_owner_fname+" "+store_owner_sname);
             }
 
             @Override

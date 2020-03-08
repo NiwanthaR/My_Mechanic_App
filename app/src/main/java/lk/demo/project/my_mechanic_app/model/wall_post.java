@@ -10,11 +10,13 @@ public class wall_post {
     private String Post_Type;
     private String Store_Name;
     private String Store_Contact;
+    private String Post_Store_Owner_Name;
+    private String Post_Store_Location;
 
     public wall_post() {
     }
 
-    public wall_post(String owner_UID, String post_Title, String post_Description, String post_Cost, String imageUri, String post_Type, String store_Name, String store_Contact) {
+    public wall_post(String owner_UID, String post_Title, String post_Description, String post_Cost, String imageUri, String post_Type, String store_Name, String store_Contact, String post_Store_Owner_Name, String post_Store_Location) {
         Owner_UID = owner_UID;
         Post_Title = post_Title;
         Post_Description = post_Description;
@@ -23,6 +25,8 @@ public class wall_post {
         Post_Type = post_Type;
         Store_Name = store_Name;
         Store_Contact = store_Contact;
+        Post_Store_Owner_Name = post_Store_Owner_Name;
+        Post_Store_Location = post_Store_Location;
     }
 
     public String getOwner_UID() {
@@ -87,5 +91,21 @@ public class wall_post {
 
     public void setStore_Contact(String store_Contact) {
         Store_Contact = store_Contact;
+    }
+
+    public String getPost_Store_Owner_Name() {
+        return Post_Store_Owner_Name;
+    }
+
+    public void setPost_Store_Owner_Name(String post_Store_Owner_Name) {
+        Post_Store_Owner_Name = post_Store_Owner_Name;
+    }
+
+    public String getPost_Store_Location() {
+        return Post_Store_Location;
+    }
+
+    public void setPost_Store_Location(String post_Store_Location) {
+        Post_Store_Location = post_Store_Location;
     }
 }

@@ -48,6 +48,8 @@ public class mechanic_post_view_dash extends AppCompatActivity {
                     String post_store_name = dataSnapshot.child("Store_Name").getValue().toString();
                     String post_imageUri = dataSnapshot.child("ImageUri").getValue().toString();
                     String post_contact = dataSnapshot.child("Store_Contact").getValue().toString();
+                    String post_owner_name = dataSnapshot.child("Post_Store_Owner_Name").getValue().toString();
+                    String post_store_location = dataSnapshot.child("Post_Store_Location").getValue().toString();
 
 
                     add_title.setText(post_title);
@@ -56,6 +58,8 @@ public class mechanic_post_view_dash extends AppCompatActivity {
                     add_condition.setText(post_condition);
                     add_store.setText(post_store_name);
                     add_store_owner_contact.setText(post_contact);
+                    add_store_location.setText(post_store_location);
+                    add_store_owner_name.setText(post_owner_name);
 
                     Picasso.get().load(post_imageUri).into(advertise_image);
                 }
