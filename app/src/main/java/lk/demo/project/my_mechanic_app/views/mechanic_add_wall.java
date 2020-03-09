@@ -9,6 +9,8 @@ import lk.demo.project.my_mechanic_app.model.wall_post;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +19,10 @@ import android.widget.EditText;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 public class mechanic_add_wall extends AppCompatActivity {
@@ -32,6 +36,10 @@ public class mechanic_add_wall extends AppCompatActivity {
 
     private DatabaseReference DataRef;
 
+    //firbase auth
+    private FirebaseAuth firebaseAuth;
+    private String user_key;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +48,33 @@ public class mechanic_add_wall extends AppCompatActivity {
         //Assign UI
         Assign_UI();
 
-        Load_Data();
+        //load user
+         user_key = firebaseAuth.getUid();
+
+        Load_Data("");
+
+        //searchbar
+        search_box.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString() != null)
+                {
+                    Load_Data(s.toString());
+                }else {
+                    Load_Data("");
+                }
+            }
+        });
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -51,29 +85,34 @@ public class mechanic_add_wall extends AppCompatActivity {
         });
     }
 
-    private void Load_Data() {
+    private void Load_Data(String data) {
 
-        options=new FirebaseRecyclerOptions.Builder<wall_post>().setQuery(DataRef,wall_post.class).build();
+        Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
+
+        options=new FirebaseRecyclerOptions.Builder<wall_post>().setQuery(query,wall_post.class).build();
 
         adapter=new FirebaseRecyclerAdapter<wall_post, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull wall_post model) {
 
-                holder.textView_in_posts_title.setText(model.getPost_Title());
-                holder.textView_in_posts_storename.setText(model.getStore_Name());
-                holder.textView_in_posts_price.setText("Rs "+model.getPost_Cost());
-                holder.textView_in_posts_condition.setText(model.getPost_Type());
-                Picasso.get().load(model.getImageUri()).into(holder.imageView_in_posts);
+                if(model.getOwner_UID().equals(user_key))
+                {
+                    holder.textView_in_posts_title.setText(model.getPost_Title());
+                    holder.textView_in_posts_storename.setText(model.getStore_Name());
+                    holder.textView_in_posts_price.setText("Rs "+model.getPost_Cost());
+                    holder.textView_in_posts_condition.setText(model.getPost_Type());
+                    Picasso.get().load(model.getImageUri()).into(holder.imageView_in_posts);
 
-                //click event
-                holder.v.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(mechanic_add_wall.this,mechanic_post_view_dash.class);
-                        intent.putExtra("Item_Key",getRef(position).getKey());
-                        startActivity(intent);
-                    }
-                });
+                    //click event
+                    holder.v.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(mechanic_add_wall.this,mechanic_post_view_dash.class);
+                            intent.putExtra("Item_Key",getRef(position).getKey());
+                            startActivity(intent);
+                        }
+                    });
+                }
             }
 
             @NonNull
@@ -96,6 +135,8 @@ public class mechanic_add_wall extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         floatingActionButton=findViewById(R.id.flt_btn_mechanic_add_wall);
+
+        firebaseAuth=FirebaseAuth.getInstance();
 
         DataRef=FirebaseDatabase.getInstance().getReference().child("Mechanicians wall posts");
     }

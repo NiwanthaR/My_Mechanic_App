@@ -10,7 +10,7 @@
         android:id="@+id/txt_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Blog Wall"
+        android:text="My Add Wall"
         android:textSize="25dp"
         android:textStyle="bold"
         android:paddingTop="15dp"

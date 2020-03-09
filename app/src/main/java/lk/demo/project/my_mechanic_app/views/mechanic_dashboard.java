@@ -212,6 +212,11 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
                 startActivity(new Intent(mechanic_dashboard.this,mechanic_add_wall.class));
                 break;
 
+            case R.id.nav_all_add_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"All Add Wall",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(mechanic_dashboard.this,mechanic_add_wall.class));
+                break;
+
             case R.id.nav_my_profil_mechanice:
                 Toast.makeText(mechanic_dashboard.this,"My Profile",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(mechanic_dashboard.this,mechanic_profile_dashboard.class));

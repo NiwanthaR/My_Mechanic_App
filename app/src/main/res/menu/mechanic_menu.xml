@@ -23,6 +23,11 @@
             android:icon="@drawable/ic_shop_wall"
             android:title="My Wall"/>
 
+        <item
+            android:id="@+id/nav_all_add_mechanic"
+            android:icon="@drawable/offers_icon"
+            android:title="My Wall"/>
+
     </group>
 
     <group>
