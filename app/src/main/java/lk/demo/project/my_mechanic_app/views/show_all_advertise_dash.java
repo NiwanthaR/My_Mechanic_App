@@ -9,6 +9,8 @@ import lk.demo.project.my_mechanic_app.model.wall_post;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,17 +28,21 @@ import com.squareup.picasso.Picasso;
 
 public class show_all_advertise_dash extends AppCompatActivity {
 
+    //Ui component
     private EditText search_bar,price_max,price_min;
     private Button btn_search;
     private TextView txt_advanced,txt_show_less,txt_pricetag;
 
+    //Layouts
     private LinearLayout price_range_layout,search_type_layout;
     private RecyclerView recyclerView;
 
+    //Firebase
     private FirebaseRecyclerOptions<wall_post> options;
     private FirebaseRecyclerAdapter<wall_post,MyViewHolder> adapter;
 
     private DatabaseReference DataRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,7 @@ public class show_all_advertise_dash extends AppCompatActivity {
         //Assign UI values
         Assign_Values();
 
+        //show advanced search
         txt_advanced.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +66,7 @@ public class show_all_advertise_dash extends AppCompatActivity {
             }
         });
 
+        //hide advanced search
         txt_show_less.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,10 +80,36 @@ public class show_all_advertise_dash extends AppCompatActivity {
             }
         });
 
+        //Search All Ads
         Load_Data("");
+
+
+        //search by name
+        search_bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString()!=null)
+                {
+                    Load_Data(s.toString());
+                }else {
+                    Load_Data("");
+                }
+            }
+        });
 
     }
 
+    //data lording function
     private void Load_Data(String data) {
 
         Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
@@ -116,7 +150,7 @@ public class show_all_advertise_dash extends AppCompatActivity {
 
     }
 
-
+    //Assign variable
     private void Assign_Values()
     {
         //Edit text
