@@ -1,21 +1,42 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.model.wall_post;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
 public class show_all_advertise_dash extends AppCompatActivity {
 
     private EditText search_bar,price_max,price_min;
     private Button btn_search;
     private TextView txt_advanced,txt_show_less,txt_pricetag;
+
     private LinearLayout price_range_layout,search_type_layout;
+    private RecyclerView recyclerView;
+
+    private FirebaseRecyclerOptions<wall_post> options;
+    private FirebaseRecyclerAdapter<wall_post,MyViewHolder> adapter;
+
+    private DatabaseReference DataRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +72,50 @@ public class show_all_advertise_dash extends AppCompatActivity {
             }
         });
 
+        Load_Data("");
+
     }
+
+    private void Load_Data(String data) {
+
+        Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
+
+        options=new FirebaseRecyclerOptions.Builder<wall_post>().setQuery(query,wall_post.class).build();
+
+        adapter=new FirebaseRecyclerAdapter<wall_post, MyViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull wall_post model) {
+
+                holder.textView_in_posts_title.setText(model.getPost_Title());
+                holder.textView_in_posts_storename.setText(model.getStore_Name());
+                holder.textView_in_posts_price.setText("Rs "+model.getPost_Cost());
+                holder.textView_in_posts_condition.setText(model.getPost_Type());
+                Picasso.get().load(model.getImageUri()).into(holder.imageView_in_posts);
+
+                //click event
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(show_all_advertise_dash.this,mechanic_post_view_dash.class);
+                        intent.putExtra("Item_Key",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_add_ui,parent,false);
+                return new MyViewHolder(v);
+            }
+        };
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+
+    }
+
 
     private void Assign_Values()
     {
@@ -72,6 +136,15 @@ public class show_all_advertise_dash extends AppCompatActivity {
         price_range_layout=findViewById(R.id.ll_all_post_price_range);
         search_type_layout=findViewById(R.id.ll_all_post_search_type);
 
+        //Recycler view
+        recyclerView=findViewById(R.id.recycler_view_all_post);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+
+        //database refarance
+        DataRef=FirebaseDatabase.getInstance().getReference().child("Mechanicians wall posts");
+
+        //Open UI
         price_range_layout.setVisibility(View.GONE);
         search_type_layout.setVisibility(View.GONE);
         txt_pricetag.setVisibility(View.GONE);

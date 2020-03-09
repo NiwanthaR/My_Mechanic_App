@@ -87,7 +87,7 @@ public class mechanic_add_wall extends AppCompatActivity {
 
     private void Load_Data(String data) {
 
-        Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
+        Query query = DataRef.orderByChild("Owner_UID").startAt(user_key).endAt(user_key+"\uf8ff");
 
         options=new FirebaseRecyclerOptions.Builder<wall_post>().setQuery(query,wall_post.class).build();
 
@@ -95,8 +95,6 @@ public class mechanic_add_wall extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull wall_post model) {
 
-                if(model.getOwner_UID().equals(user_key))
-                {
                     holder.textView_in_posts_title.setText(model.getPost_Title());
                     holder.textView_in_posts_storename.setText(model.getStore_Name());
                     holder.textView_in_posts_price.setText("Rs "+model.getPost_Cost());
@@ -112,7 +110,6 @@ public class mechanic_add_wall extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                }
             }
 
             @NonNull
