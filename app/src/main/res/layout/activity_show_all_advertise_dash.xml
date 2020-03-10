@@ -98,7 +98,7 @@
             android:paddingRight="20dp"/>
 
         <RadioGroup
-            android:id="@+id/radio_breakdown_provider_signup"
+            android:id="@+id/radio_search_type_show_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

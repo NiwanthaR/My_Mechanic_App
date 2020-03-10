@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -37,12 +39,19 @@ public class show_all_advertise_dash extends AppCompatActivity {
     private LinearLayout price_range_layout,search_type_layout;
     private RecyclerView recyclerView;
 
+    //private radiogroup
+    private RadioGroup select_type;
+    private RadioButton select_method;
+    private String search;
+
     //Firebase
     private FirebaseRecyclerOptions<wall_post> options;
     private FirebaseRecyclerAdapter<wall_post,MyViewHolder> adapter;
 
     private DatabaseReference DataRef;
 
+    private Query title_name;
+    private Query store_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +89,9 @@ public class show_all_advertise_dash extends AppCompatActivity {
             }
         });
 
+        title_name = DataRef.orderByChild("Post_Title").startAt("").endAt(""+"\uf8ff");
         //Search All Ads
-        Load_Data("");
+        Load_Data(title_name);
 
 
         //search by name
@@ -98,22 +108,45 @@ public class show_all_advertise_dash extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString()!=null)
+
+                read_search_type();
+
+                if (search.equals("Title"))
                 {
-                    Load_Data(s.toString());
+                    if (s.toString()!=null)
+                    {
+                        title_name = DataRef.orderByChild("Post_Title").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+                        Load_Data(title_name);
+                    }else {
+                        title_name = DataRef.orderByChild("Post_Title").startAt("").endAt(""+"\uf8ff");
+                        Load_Data(title_name);
+                    }
                 }else {
-                    Load_Data("");
+                    if (s.toString()!=null)
+                    {
+                        store_name = DataRef.orderByChild("Store_Name").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+                        Load_Data(store_name);
+                    }else {
+                        store_name = DataRef.orderByChild("Store_Name").startAt("").endAt(""+"\uf8ff");
+                        Load_Data(store_name);
+                    }
                 }
+
+//                if (s.toString()!=null)
+//                {
+//                    Load_Data(s.toString());
+//                }else {
+//                    Load_Data("");
+//                }
             }
         });
 
     }
 
     //data lording function
-    private void Load_Data(String data) {
+    private void Load_Data(Query query) {
 
-        Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
-
+        //Query query = DataRef.orderByChild("Post_Title").startAt(data).endAt(data+"\uf8ff");
         options=new FirebaseRecyclerOptions.Builder<wall_post>().setQuery(query,wall_post.class).build();
 
         adapter=new FirebaseRecyclerAdapter<wall_post, MyViewHolder>(options) {
@@ -183,5 +216,21 @@ public class show_all_advertise_dash extends AppCompatActivity {
         search_type_layout.setVisibility(View.GONE);
         txt_pricetag.setVisibility(View.GONE);
         txt_show_less.setVisibility(View.GONE);
+
+
+        //Radio_group
+        select_type=findViewById(R.id.radio_search_type_show_all);
+    }
+
+    private void read_search_type()
+    {
+        // get selected radio button from radioGroup
+        int selectedId = select_type.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        select_method = (RadioButton) findViewById(selectedId);
+
+        search= String.valueOf(select_method.getText());
+        //Toast.makeText(Post_Add_Home_Dash.this,h_kitchen,Toast.LENGTH_SHORT).show();
     }
 }
