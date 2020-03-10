@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.show_all_mechanician_dash">
+
+
+    <TextView
+        android:id="@+id/tv_all_seller_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Ads Here"
+        android:textAlignment="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:background="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:id="@+id/ll_all_seller_search_search"
+        android:layout_below="@id/tv_all_seller_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+
+            android:id="@+id/et_all_seller_search_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_view_design"
+            android:hint="Search Here"
+            android:drawableRight="@drawable/ic_search"
+            android:paddingRight="20dp"
+            android:paddingTop="8dp"
+            android:textSize="21dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_all_seller_advance_search"
+        android:layout_below="@id/ll_all_seller_search_search"
+        android:paddingTop="8dp"
+        android:textSize="16dp"
+        android:text="Advance Search"
+        android:textAlignment="center"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/ll_all_seller_search_type"
+        android:layout_below="@id/tv_all_seller_advance_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search By"
+            android:textStyle="bold"
+            android:paddingRight="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_select_all_seller_search_typr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_store_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Store Name"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radio_city_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Location (City)"/>
+
+            <RadioButton
+                android:id="@+id/radio_owner_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Owner Name"/>
+
+            <RadioButton
+                android:id="@+id/radio_visit_service_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Visit Servicers"/>
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_below="@id/ll_all_seller_search_type"
+        android:id="@+id/tv_all_seller_advance_search_hide"
+        android:paddingTop="8dp"
+        android:text="Show Less"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_all_post"
+        android:layout_below="@id/tv_all_seller_advance_search_hide"
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

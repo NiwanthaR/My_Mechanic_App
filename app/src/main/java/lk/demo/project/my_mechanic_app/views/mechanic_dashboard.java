@@ -200,6 +200,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_myservice_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Service Details",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(mechanic_dashboard.this,show_all_mechanician_dash.class));
                 break;
 
             case R.id.nav_myfeedback_mechanic:
