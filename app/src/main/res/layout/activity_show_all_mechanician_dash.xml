@@ -132,7 +132,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_all_post"
+        android:id="@+id/recycler_view_all_mechanic"
         android:layout_below="@id/tv_all_seller_advance_search_hide"
         android:layout_width="match_parent"
         android:paddingTop="10dp"

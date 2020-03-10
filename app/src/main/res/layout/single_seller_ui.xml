@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/seller_ui_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/loarding"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/seller_ui_stor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="Store Name"
+                android:paddingLeft="4dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:paddingTop="4dp"
+                android:drawableLeft="@drawable/ic_shop_wall"
+                android:drawablePadding="10dp"
+                android:paddingRight="10dp"/>
+
+            <TextView
+                android:id="@+id/seller_ui_city_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/addres_icon"
+                android:paddingLeft="4dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="10dp"
+                android:text="Location"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <TextView
+                        android:id="@+id/seller_ui_owner_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="Qwener Name"
+                        android:paddingLeft="5dp"
+                        android:drawableLeft="@drawable/profile1_icon"
+                        android:drawablePadding="5dp"
+                        android:paddingRight="5dp"
+                        android:textSize="15dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <TextView
+                        android:id="@+id/seller_ui_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="0779650000"
+                        android:paddingLeft="2dp"
+                        android:drawableLeft="@drawable/contact_icon"
+                        android:drawablePadding="5dp"
+                        android:paddingRight="15dp"
+                        android:textSize="15dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click Here to More..."
+                android:paddingLeft="10dp"
+                android:paddingTop="4dp"
+                android:textStyle="bold"
+                android:textSize="14dp"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
