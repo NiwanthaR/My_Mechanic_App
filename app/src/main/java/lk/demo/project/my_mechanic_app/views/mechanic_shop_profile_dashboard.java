@@ -70,9 +70,16 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         //Read variable value
         Read_value();
 
+        //go to give feedback page
+        go_feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mechanic_shop_profile_dashboard.this,show_all_type_of_feedback.class));
+            }
+        });
 
 
-
+        //go to shop details edit panel
         go_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +87,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
             }
         });
 
+        //load shop logo
         StorageReference storageReference = firebaseStorage.getReference();
         storageReference.child("Profile Picture").child(Seller_Key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
