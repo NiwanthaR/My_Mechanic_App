@@ -21,7 +21,7 @@
                 android:id="@+id/seller_ui_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/loarding"
+                android:src="@drawable/loarding001"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"/>

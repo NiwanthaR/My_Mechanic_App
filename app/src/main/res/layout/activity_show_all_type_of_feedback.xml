@@ -98,6 +98,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_add"
         android:layout_margin="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
