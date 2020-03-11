@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="#E5E7E9"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_single_user_feedback_s1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/tv_feedback_ui_img"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/loarding"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/profile1_icon"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1C2833"
+                        android:text="Customer Name"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_feedback_ui_customer_name"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:paddingLeft="2dp"
+                        android:textSize="18dp"
+                        android:textColor="#1C2833"
+                        android:text="Customer Name"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/rate_icon"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1C2833"
+                        android:text="Customer Satisfaction"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_feedback_ui_satisfaction"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:paddingLeft="2dp"
+                        android:textSize="18dp"
+                        android:textColor="#1C2833"
+                        android:text="Positive"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_single_user_feedback_s2"
+        android:layout_below="@id/ll_single_user_feedback_s1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="25dp">
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/my_feedback"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1C2833"
+                android:text="Description"
+                android:layout_marginLeft="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_feedback_ui_description"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="4"
+                android:gravity="left"
+                android:layout_marginRight="25dp"
+                android:paddingLeft="6dp"
+                android:textSize="15dp"
+                android:textColor="#1C2833"
+                android:hint="Your Comment"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
