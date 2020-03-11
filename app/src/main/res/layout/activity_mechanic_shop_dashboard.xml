@@ -759,6 +759,17 @@
 
 
                 <Button
+                    android:id="@+id/btn_feeback_mechanic_shop_profile"
+                    android:text="Give Feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/button_shape"
+                    />
+
+                <Button
                     android:id="@+id/btn_goedite_mechanic_shop_profile"
                     android:text="Edit Profile"
                     android:layout_width="match_parent"

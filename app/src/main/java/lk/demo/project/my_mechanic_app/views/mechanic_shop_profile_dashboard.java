@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +32,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
     //Variable
     private TextView shop_name,shop_name2,shop_contact,shop_address,shop_city,shop_postcode,shop_email,shop_wesite;
     private TextView shop_open,shop_close,shop_poya,shop_holiday,shop_breakdown,shop_serviceinfo,shop_begin,shop_regno;
-    private Button go_edit;
+    private Button go_edit,go_feedback;
     private ImageView mechanic_logo;
 
     //String
@@ -39,6 +40,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
 
     //Firebase
     private  FirebaseAuth firebaseAuth;
+    private  FirebaseUser firebaseUser;
     private  FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
 
@@ -53,17 +55,22 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
 
         Seller_Key =getIntent().getStringExtra("Seller_Key");
 
-        //Read variable value
-        Read_value();
+        //Get Login User ID
+        User_Key = firebaseUser.getUid();
 
-        User_Key = firebaseAuth.getUid().trim();
-
-        if (Seller_Key.equals(User_Key))
+        //check user id eqal or not to login id
+        if (User_Key.equals(Seller_Key))
         {
             go_edit.setVisibility(View.VISIBLE);
         }else{
             go_edit.setVisibility(View.GONE);
+            go_feedback.setVisibility(View.VISIBLE);
         }
+
+        //Read variable value
+        Read_value();
+
+
 
 
         go_edit.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +92,10 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
     private void Assign_value()
     {
         go_edit=findViewById(R.id.btn_goedite_mechanic_shop_profile);
+        go_feedback=findViewById(R.id.btn_feeback_mechanic_shop_profile);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
         firebaseDatabase=FirebaseDatabase.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 
@@ -111,6 +120,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         shop_regno = findViewById(R.id.tv_mechanic_s_shop_regno);
 
         go_edit.setVisibility(View.GONE);
+        go_feedback.setVisibility(View.GONE);
     }
 
     private void Read_value()
