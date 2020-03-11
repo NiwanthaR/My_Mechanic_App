@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -101,7 +102,7 @@ public class show_all_mechanician_dash extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<mechanic_profile, MyallMechanicHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final MyallMechanicHolder holder, int position, @NonNull mechanic_profile model) {
+            protected void onBindViewHolder(@NonNull final MyallMechanicHolder holder, final int position, @NonNull mechanic_profile model) {
 
                 holder.mechanic_store_name.setText(model.getShop_name());
                 holder.mechanic_store_location.setText(model.getShop_city());
@@ -117,6 +118,17 @@ public class show_all_mechanician_dash extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().into(holder.mechanic_logo);
+                    }
+                });
+
+
+                holder.mechanic_v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(show_all_mechanician_dash.this,mechanic_shop_profile_dashboard.class);
+                        intent.putExtra("Seller_Key",getRef(position).getKey());
+                        startActivity(intent);
                     }
                 });
 

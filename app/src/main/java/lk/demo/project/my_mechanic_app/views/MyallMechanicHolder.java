@@ -12,6 +12,7 @@ class MyallMechanicHolder extends RecyclerView.ViewHolder {
 
     ImageView mechanic_logo;
     TextView mechanic_store_name,mechanic_store_owner_name,mechanic_store_location,mechanic_store_contact;
+    View mechanic_v;
 
     public MyallMechanicHolder(@NonNull View itemView) {
         super(itemView);
@@ -21,6 +22,7 @@ class MyallMechanicHolder extends RecyclerView.ViewHolder {
         mechanic_store_owner_name = itemView.findViewById(R.id.seller_ui_owner_name);
         mechanic_store_location = itemView.findViewById(R.id.seller_ui_city_location);
         mechanic_store_contact = itemView.findViewById(R.id.seller_ui_contact);
+        mechanic_v = itemView;
 
     }
 }

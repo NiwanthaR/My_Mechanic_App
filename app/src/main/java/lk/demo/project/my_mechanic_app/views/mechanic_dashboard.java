@@ -225,7 +225,10 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_shop_profile_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Shop Profile",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(mechanic_dashboard.this,mechanic_shop_profile_dashboard.class));
+                Intent intent = new Intent(mechanic_dashboard.this,mechanic_shop_profile_dashboard.class);
+                intent.putExtra("Seller_Key",firebaseUser.getUid());
+                startActivity(intent);
+                //startActivity(new Intent(mechanic_dashboard.this,mechanic_shop_profile_dashboard.class));
                 break;
 
             case R.id.nav_settings_mechanic:

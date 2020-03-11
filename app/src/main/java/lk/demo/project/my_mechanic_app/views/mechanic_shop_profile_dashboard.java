@@ -34,6 +34,9 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
     private Button go_edit;
     private ImageView mechanic_logo;
 
+    //String
+    String Seller_Key,User_Key;
+
     //Firebase
     private  FirebaseAuth firebaseAuth;
     private  FirebaseDatabase firebaseDatabase;
@@ -48,8 +51,19 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         //Assign Variable
         Assign_value();
 
+        Seller_Key =getIntent().getStringExtra("Seller_Key");
+
         //Read variable value
         Read_value();
+
+        User_Key = firebaseAuth.getUid().trim();
+
+        if (Seller_Key.equals(User_Key))
+        {
+            go_edit.setVisibility(View.VISIBLE);
+        }else{
+            go_edit.setVisibility(View.GONE);
+        }
 
 
         go_edit.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +74,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         });
 
         StorageReference storageReference = firebaseStorage.getReference();
-        storageReference.child("Profile Picture").child(firebaseAuth.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child("Profile Picture").child(Seller_Key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).fit().centerCrop().into(mechanic_logo);
@@ -95,11 +109,13 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         shop_serviceinfo = findViewById(R.id.tv_mechanic_s_shop_service_package);
         shop_begin = findViewById(R.id.tv_mechanic_s_shop_start_day);
         shop_regno = findViewById(R.id.tv_mechanic_s_shop_regno);
+
+        go_edit.setVisibility(View.GONE);
     }
 
     private void Read_value()
     {
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(firebaseAuth.getUid());
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(Seller_Key);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,6 +139,8 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
                 shop_serviceinfo.setText(mechanicProfile.getShop_sevice());
                 shop_begin.setText(mechanicProfile.getShop_start_date());
                 shop_regno.setText(mechanicProfile.getShop_regno());
+
+
 
             }
 

@@ -24,11 +24,11 @@
 
                 <ImageView
                     android:id="@+id/mechanic_s_shop_logo"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitXY"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/blank_user" />
 
                 <TextView
@@ -685,6 +685,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginBottom="40dp"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="50dp">
 
@@ -760,7 +761,6 @@
                 <Button
                     android:id="@+id/btn_goedite_mechanic_shop_profile"
                     android:text="Edit Profile"
-                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="70dp"
