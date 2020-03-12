@@ -100,7 +100,8 @@ public class show_all_type_of_feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                positive_feed.setBackgroundColor(Color.parseColor("#95EAFF"));
+                positive_feed.setBackgroundColor(Color.parseColor("#21FF67"));
+                //positive_feed.setTextColor(Color.parseColor(""));
                 neutrel_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 negative_fee.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 all_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
@@ -119,7 +120,7 @@ public class show_all_type_of_feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                neutrel_feed.setBackgroundColor(Color.parseColor("#95EAFF"));
+                neutrel_feed.setBackgroundColor(Color.parseColor("#FFF115"));
                 positive_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 negative_fee.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 all_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
@@ -138,7 +139,7 @@ public class show_all_type_of_feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                negative_fee.setBackgroundColor(Color.parseColor("#95EAFF"));
+                negative_fee.setBackgroundColor(Color.parseColor("#FF1515"));
                 neutrel_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 positive_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
                 all_feed.setBackgroundColor(Color.parseColor("#FBFCFC"));
