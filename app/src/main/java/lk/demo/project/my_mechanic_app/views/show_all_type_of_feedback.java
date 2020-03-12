@@ -18,10 +18,18 @@ public class show_all_type_of_feedback extends AppCompatActivity {
     private FloatingActionButton go_add_feedback;
 
 
+    //Seller ID
+    private String Seller_Key,Seller_Store,User_Name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_type_of_feedback);
+
+        //Seller_id
+        Seller_Key = getIntent().getStringExtra("Seller_Key");
+        Seller_Store = getIntent().getStringExtra("Seller_Store");
+        User_Name = getIntent().getStringExtra("User_Name");
 
         //Assign UI Values
         Assign_Value();
@@ -34,7 +42,12 @@ public class show_all_type_of_feedback extends AppCompatActivity {
         go_add_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(show_all_type_of_feedback.this,user_add_feed_back_dash.class));
+                Intent intent = new Intent(show_all_type_of_feedback.this,user_add_feed_back_dash.class);
+                intent.putExtra("Seller_Key",Seller_Key);
+                intent.putExtra("Seller_Store",Seller_Store);
+                intent.putExtra("User_Name",User_Name);
+                startActivity(intent);
+                //startActivity(new Intent(show_all_type_of_feedback.this,user_add_feed_back_dash.class));
             }
         });
 

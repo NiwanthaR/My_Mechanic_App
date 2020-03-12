@@ -36,7 +36,7 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
     private ImageView mechanic_logo;
 
     //String
-    String Seller_Key,User_Key;
+    String Seller_Key,User_Key,Seller_Store,User_Name;
 
     //Firebase
     private  FirebaseAuth firebaseAuth;
@@ -53,7 +53,10 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         //Assign Variable
         Assign_value();
 
+        //Seller Details
         Seller_Key =getIntent().getStringExtra("Seller_Key");
+        Seller_Store = getIntent().getStringExtra("Seller_Store");
+        User_Name = getIntent().getStringExtra("User_Name");
 
         //Get Login User ID
         User_Key = firebaseUser.getUid();
@@ -74,7 +77,11 @@ public class mechanic_shop_profile_dashboard extends AppCompatActivity {
         go_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mechanic_shop_profile_dashboard.this,show_all_type_of_feedback.class));
+                Intent intent = new Intent(mechanic_shop_profile_dashboard.this,show_all_type_of_feedback.class);
+                intent.putExtra("Seller_Key",Seller_Key);
+                intent.putExtra("Seller_Store",Seller_Store);
+                intent.putExtra("User_Name",User_Name);
+                startActivity(intent);
             }
         });
 

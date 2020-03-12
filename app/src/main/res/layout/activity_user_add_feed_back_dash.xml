@@ -69,7 +69,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
-                            android:textSize="15dp"
+                            android:textSize="18dp"
                             android:textColor="#1C2833"
                             android:text="Store Name"/>
                     </LinearLayout>
@@ -119,7 +119,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
-                            android:textSize="15dp"
+                            android:textSize="18dp"
                             android:textColor="#1C2833"
                             android:text="User Name"/>
                     </LinearLayout>
@@ -143,6 +143,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/img_feedback_upload_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_collections_img"

@@ -18,6 +18,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -200,7 +201,9 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_myservice_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Service Details",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(mechanic_dashboard.this,show_all_mechanician_dash.class));
+                Intent name_intent = new Intent(mechanic_dashboard.this,show_all_mechanician_dash.class);
+                name_intent.putExtra("User_Name", header_name.getText().toString());
+                startActivity(name_intent);
                 break;
 
             case R.id.nav_myfeedback_mechanic:

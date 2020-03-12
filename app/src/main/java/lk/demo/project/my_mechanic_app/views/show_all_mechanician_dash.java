@@ -55,11 +55,16 @@ public class show_all_mechanician_dash extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
 
+    //String
+    private String User_Name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_mechanician_dash);
+
+        User_Name = getIntent().getStringExtra("User_Name");
 
         //Assign Variable
         Assign_variable();
@@ -102,7 +107,7 @@ public class show_all_mechanician_dash extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<mechanic_profile, MyallMechanicHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final MyallMechanicHolder holder, final int position, @NonNull mechanic_profile model) {
+            protected void onBindViewHolder(@NonNull final MyallMechanicHolder holder, final int position, @NonNull final mechanic_profile model) {
 
                 holder.mechanic_store_name.setText(model.getShop_name());
                 holder.mechanic_store_location.setText(model.getShop_city());
@@ -128,6 +133,9 @@ public class show_all_mechanician_dash extends AppCompatActivity {
 
                         Intent intent = new Intent(show_all_mechanician_dash.this,mechanic_shop_profile_dashboard.class);
                         intent.putExtra("Seller_Key",getRef(position).getKey());
+                        intent.putExtra("Seller_Store",model.getShop_name());
+                        intent.putExtra("User_Name",User_Name);
+
                         startActivity(intent);
                     }
                 });

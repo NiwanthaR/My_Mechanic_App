@@ -34,4 +34,11 @@
         <item>Re-Condition</item>
     </string-array>
 
+    <string-array name="satify_typr">
+        <item>-Select Answer-</item>
+        <item>Positive</item>
+        <item>Neutral</item>
+        <item>Negative</item>
+    </string-array>
+
 </resources>
