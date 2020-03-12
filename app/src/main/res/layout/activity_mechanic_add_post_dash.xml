@@ -21,11 +21,12 @@
                 android:id="@+id/text_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Upload New Post"
+                android:text="Upload Post"
                 android:textAlignment="center"
-                android:paddingTop="20dp"
-                android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:background="@color/colorPrimary"/>
 
             <ImageView
                 android:id="@+id/mechanic_upload_image_post"
