@@ -1,21 +1,39 @@
 package lk.demo.project.my_mechanic_app.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.model.user_feedback;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class show_all_type_of_feedback extends AppCompatActivity {
 
+    //uiComponent
     private TextView positive_feed,neutrel_feed,negative_fee,all_feed;
     private FloatingActionButton go_add_feedback;
+    private RecyclerView recyclerView;
+
+    //Firebase
+    private FirebaseRecyclerOptions<user_feedback> options;
+    private FirebaseRecyclerAdapter<user_feedback,MyFeedbackHolder> adapter;
+    private DatabaseReference DataRef;
 
 
     //Seller ID
@@ -36,6 +54,9 @@ public class show_all_type_of_feedback extends AppCompatActivity {
 
         //start view
         all_feed.setBackgroundColor(Color.parseColor("#95EAFF"));
+
+        //Load Recycler Data
+        Load_Data();
 
 
         //click all go add feedback
@@ -109,8 +130,46 @@ public class show_all_type_of_feedback extends AppCompatActivity {
         negative_fee = findViewById(R.id.tv_all_user_feedback_negative);
         all_feed = findViewById(R.id.tv_all_user_feedback_all);
 
+        //Recycler
+        recyclerView = findViewById(R.id.recycler_view_all_user_feedback);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+
         //loatingaction button
         go_add_feedback = findViewById(R.id.float_btn_go_add_feedback);
 
+        //Firebase
+        DataRef = FirebaseDatabase.getInstance().getReference().child("User Feedback");
+
     }
+
+    private void Load_Data()
+    {
+        options = new FirebaseRecyclerOptions.Builder<user_feedback>().setQuery(DataRef.child(Seller_Key),user_feedback.class).build();
+
+        adapter = new FirebaseRecyclerAdapter<user_feedback, MyFeedbackHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull MyFeedbackHolder holder, int position, @NonNull user_feedback model) {
+
+                holder.txt_feedback_username.setText(model.getUser_Name());
+                holder.txt_feedback_satify_type.setText(model.getUser_Satisfaction());
+                holder.txt_feedback_description.setText(model.getUser_Description());
+
+                Picasso.get().load(model.getImage_Uri()).fit().into(holder.img_feedback_image);
+            }
+
+            @NonNull
+            @Override
+            public MyFeedbackHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_feedback_ui,parent,false);
+                return new MyFeedbackHolder(v);
+            }
+        };
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+
+
+    }
+
 }

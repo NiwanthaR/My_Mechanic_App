@@ -142,8 +142,8 @@ public class user_add_feed_back_dash extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
 
                         HashMap hashMap = new HashMap();
-                        hashMap.put("Seller_ID",seller);
-                        hashMap.put("User_ID",user);
+                        hashMap.put("Seller_ID",Seller_Key);
+                        hashMap.put("User_Name",user);
                         hashMap.put("User_Description",description);
                         hashMap.put("User_Satisfaction",user_satify);
                         hashMap.put("Image_Uri",uri.toString());
@@ -154,7 +154,11 @@ public class user_add_feed_back_dash extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
 
                                 Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(user_add_feed_back_dash.this,show_all_type_of_feedback.class));
+                                Intent intent = new Intent(user_add_feed_back_dash.this,show_all_type_of_feedback.class);
+                                intent.putExtra("Seller_Key",Seller_Key);
+                                startActivity(intent);
+
+                                //startActivity(new Intent(user_add_feed_back_dash.this,show_all_type_of_feedback.class));
                                 finish();
 
                             }
