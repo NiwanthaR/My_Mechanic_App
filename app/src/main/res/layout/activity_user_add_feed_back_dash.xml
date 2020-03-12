@@ -175,7 +175,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="25dp">
@@ -188,7 +188,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="20dp">
 
@@ -204,8 +204,7 @@
                         android:id="@+id/et_feedback_details"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:lines="4"
+                        android:layout_height="match_parent"
                         android:gravity="left"
                         android:layout_marginRight="25dp"
                         android:paddingLeft="6dp"
@@ -232,6 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="25dp"
+                android:layout_gravity="top"
                 android:layout_marginTop="8dp"
                 android:autofillHints="Set Your Satisfaction"
                 android:layout_marginBottom="8dp"
@@ -242,6 +242,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_feedback_upload_state"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -298,6 +299,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="40dp"

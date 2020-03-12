@@ -3,14 +3,20 @@ package lk.demo.project.my_mechanic_app.views;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class show_all_type_of_feedback extends AppCompatActivity {
 
     private TextView positive_feed,neutrel_feed,negative_fee,all_feed;
+    private FloatingActionButton go_add_feedback;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,15 @@ public class show_all_type_of_feedback extends AppCompatActivity {
 
         //start view
         all_feed.setBackgroundColor(Color.parseColor("#95EAFF"));
+
+
+        //click all go add feedback
+        go_add_feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(show_all_type_of_feedback.this,user_add_feed_back_dash.class));
+            }
+        });
 
 
         //click all feed
@@ -80,5 +95,9 @@ public class show_all_type_of_feedback extends AppCompatActivity {
         neutrel_feed = findViewById(R.id.tv_all_user_feedback_neutral);
         negative_fee = findViewById(R.id.tv_all_user_feedback_negative);
         all_feed = findViewById(R.id.tv_all_user_feedback_all);
+
+        //loatingaction button
+        go_add_feedback = findViewById(R.id.float_btn_go_add_feedback);
+
     }
 }
