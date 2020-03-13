@@ -10,8 +10,8 @@
 
         <item
             android:id="@+id/nav_myservice_mechanic"
-            android:icon="@drawable/my_service_icon"
-            android:title="Service Details"/>
+            android:icon="@drawable/gender_icon"
+            android:title="All Sellers and Feedback"/>
 
         <item
             android:id="@+id/nav_myfeedback_mechanic"
