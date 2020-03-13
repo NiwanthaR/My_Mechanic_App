@@ -142,18 +142,24 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         switch (menuItem.getItemId())
         {
             case R.id.nav_home:
+                Toast.makeText(client_dashboard.this,"My Home",Toast.LENGTH_SHORT).show();
+                onBackPressed();
                 break;
 
             case R.id.nav_myservice:
                 Toast.makeText(client_dashboard.this,"Select My Service",Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.nav_myfeedback:
-                Toast.makeText(client_dashboard.this,"Select My Feedback",Toast.LENGTH_SHORT).show();
+            case R.id.nav_give_feedback:
+                Toast.makeText(client_dashboard.this,"Give Feedback",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(client_dashboard.this,show_all_mechanician_dash.class);
+                intent.putExtra("User_Name",header_name.getText().toString());
+                startActivity(intent);
                 break;
 
-            case R.id.nav_offers:
-                Toast.makeText(client_dashboard.this,"Select My Offers",Toast.LENGTH_SHORT).show();
+            case R.id.nav_mechanic_shop:
+                Toast.makeText(client_dashboard.this,"Mechanic Shop Wall",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(client_dashboard.this,show_all_advertise_dash.class));
                 break;
 
             case R.id.nav_profile:

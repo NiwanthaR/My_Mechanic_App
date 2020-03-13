@@ -2,6 +2,7 @@ package lk.demo.project.my_mechanic_app.views;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ class MyFeedbackHolder extends RecyclerView.ViewHolder {
 
     TextView txt_feedback_username,txt_feedback_satify_type,txt_feedback_description;
     ImageView img_feedback_image;
+    LinearLayout ll_user_satify;
 
     public MyFeedbackHolder(@NonNull View itemView) {
         super(itemView);
@@ -21,5 +23,6 @@ class MyFeedbackHolder extends RecyclerView.ViewHolder {
         txt_feedback_description = itemView.findViewById(R.id.tv_feedback_single_ui_description);
 
         img_feedback_image = itemView.findViewById(R.id.img_feedback_single_ui_img);
+        ll_user_satify = itemView.findViewById(R.id.ll_all_user_feedback_satisfaction);
     }
 }

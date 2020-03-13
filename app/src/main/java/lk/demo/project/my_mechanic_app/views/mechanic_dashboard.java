@@ -197,6 +197,8 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
         switch (menuItem.getItemId())
         {
             case R.id.nav_home_mechanic:
+                Toast.makeText(mechanic_dashboard.this,"My Home",Toast.LENGTH_SHORT).show();
+                onBackPressed();
                 break;
 
             case R.id.nav_myservice_mechanic:

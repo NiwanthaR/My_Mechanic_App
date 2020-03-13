@@ -11,4 +11,9 @@
     <color name="wrong_message">#F62609  </color>
 
     <color name="fade_colour">#707B7C</color>
+
+    <color name="Positive_feed_color">#A7FFBC</color>
+    <color name="Neutral_feed_color">#FFE881</color>
+    <color name="Negative_feed_color">#FF9393</color>
+
 </resources>

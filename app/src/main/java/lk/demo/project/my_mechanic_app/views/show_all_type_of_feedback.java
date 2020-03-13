@@ -187,6 +187,17 @@ public class show_all_type_of_feedback extends AppCompatActivity {
                 holder.txt_feedback_satify_type.setText(model.getUser_Satisfaction());
                 holder.txt_feedback_description.setText(model.getUser_Description());
 
+                if (model.getUser_Satisfaction().equals("Positive"))
+                {
+                    holder.ll_user_satify.setBackgroundColor(Color.parseColor("#A7FFBC"));
+                }
+                else if (model.getUser_Satisfaction().equals("Neutral"))
+                {
+                    holder.ll_user_satify.setBackgroundColor(Color.parseColor("#FFE881"));
+                }else {
+                    holder.ll_user_satify.setBackgroundColor(Color.parseColor("#FF9393"));
+                }
+
                 Picasso.get().load(model.getImage_Uri()).fit().into(holder.img_feedback_image);
             }
 
