@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.user_feedback;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -36,6 +39,8 @@ public class show_all_type_of_feedback extends AppCompatActivity {
     private FirebaseRecyclerAdapter<user_feedback,MyFeedbackHolder> adapter;
     private DatabaseReference DataRef;
 
+    //firebase
+    private FirebaseAuth firebaseAuth;
 
     //Seller ID
     private String Seller_Key,Seller_Store,User_Name;
@@ -43,6 +48,7 @@ public class show_all_type_of_feedback extends AppCompatActivity {
     //Quary
     private Query all_feedback,positive_feedback,negative_feedback,neutral_feedback;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +61,13 @@ public class show_all_type_of_feedback extends AppCompatActivity {
 
         //Assign UI Values
         Assign_Value();
+
+        //check if seller log
+        String uid = firebaseAuth.getUid();
+        if (Seller_Key.equals(uid))
+        {
+            go_add_feedback.setVisibility(View.GONE);
+        }
 
         //start view
         all_feed.setBackgroundColor(Color.parseColor("#95EAFF"));
@@ -172,6 +185,7 @@ public class show_all_type_of_feedback extends AppCompatActivity {
 
         //Firebase
         DataRef = FirebaseDatabase.getInstance().getReference().child("User Feedback");
+        firebaseAuth = FirebaseAuth.getInstance();
 
     }
 

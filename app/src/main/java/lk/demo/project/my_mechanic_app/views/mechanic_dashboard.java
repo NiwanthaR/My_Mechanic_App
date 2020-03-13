@@ -210,7 +210,9 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_myfeedback_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Client Feedback",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(mechanic_dashboard.this,settings_panel.class));
+                Intent intent_01 = new Intent(mechanic_dashboard.this,show_all_type_of_feedback.class);
+                intent_01.putExtra("Seller_Key",firebaseUser.getUid());
+                startActivity(intent_01);
                 break;
 
             case R.id.nav_my_wall_mechanic:
