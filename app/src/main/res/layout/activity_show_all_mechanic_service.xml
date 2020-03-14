@@ -34,9 +34,89 @@
         android:drawableRight="@drawable/ic_search"
         android:background="@drawable/text_view_design"/>
 
+    <TextView
+        android:id="@+id/tv_all_service_advance_search"
+        android:layout_below="@id/et_all_service_post_wall_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:text="Show Advance Search"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_all_service_search_type"
+        android:layout_below="@id/tv_all_service_advance_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search By"
+            android:textStyle="bold"
+            android:paddingRight="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_service_search_typr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_store_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Search by Title"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radio_city_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Search by Store Name "/>
+
+            <RadioButton
+                android:id="@+id/radio_owner_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Search By City"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_all_service_advance_hide"
+        android:layout_below="@id/ll_all_service_search_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:text="Hide Advance Search"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_all_service_post"
-        android:layout_below="@id/et_all_service_post_wall_search"
+        android:layout_below="@id/tv_all_service_advance_hide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
