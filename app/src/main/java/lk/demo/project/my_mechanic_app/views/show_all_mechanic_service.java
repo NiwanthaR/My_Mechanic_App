@@ -9,6 +9,8 @@ import lk.demo.project.my_mechanic_app.model.mechanic_service;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -54,6 +57,14 @@ public class show_all_mechanic_service extends AppCompatActivity {
     private FirebaseRecyclerOptions<mechanic_service> options;
     private FirebaseRecyclerAdapter<mechanic_service,MyServiceHolder> adapter;
 
+    //String
+    private String Result;
+
+    //Firebase Quary
+    private Query title;
+    private Query store_name;
+    private Query location;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +74,10 @@ public class show_all_mechanic_service extends AppCompatActivity {
         //Assign variable
         Assign_variable();
 
+        //Begin Quary
+        Query begin = databaseReference.orderByChild("Service_Title").startAt("").endAt(""+"\uf8ff");
         //Load recycler data
-        Load_Data();
+        Load_Data(begin);
 
 
         //advance show click
@@ -88,11 +101,45 @@ public class show_all_mechanic_service extends AppCompatActivity {
         });
 
 
+        search_details.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                //Read Type
+                read_search_type();
+
+                if (Result.equals("Search by Title"))
+                {
+                    title = databaseReference.orderByChild("Service_Title").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+                    Load_Data(title);
+
+                }else if (Result.equals("Search by Store Name"))
+                {
+                    store_name = databaseReference.orderByChild("Seller_Store_Name").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+                    Load_Data(store_name);
+                }else {
+                    location = databaseReference.orderByChild("Seller_Store_Location").startAt(s.toString()).endAt(s.toString()+"\uf8ff");
+                    Load_Data(location);
+                }
+            }
+        });
+
+
     }
 
-    private void Load_Data() {
+    private void Load_Data(Query query) {
 
-        options = new FirebaseRecyclerOptions.Builder<mechanic_service>().setQuery(databaseReference,mechanic_service.class).build();
+        options = new FirebaseRecyclerOptions.Builder<mechanic_service>().setQuery(query,mechanic_service.class).build();
 
         adapter = new FirebaseRecyclerAdapter<mechanic_service, MyServiceHolder>(options) {
             @Override
@@ -156,5 +203,17 @@ public class show_all_mechanic_service extends AppCompatActivity {
         //start ui
         search_linearLayout.setVisibility(View.GONE);
         tv_advance_search_hide.setVisibility(View.GONE);
+    }
+
+    private void read_search_type()
+    {
+        // get selected radio button from radioGroup
+        int selectedId = search_type.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        select_search_type = (RadioButton) findViewById(selectedId);
+
+        Result= String.valueOf(select_search_type.getText());
+        //Toast.makeText(Post_Add_Home_Dash.this,h_kitchen,Toast.LENGTH_SHORT).show();
     }
 }

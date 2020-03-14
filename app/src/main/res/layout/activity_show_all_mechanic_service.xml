@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:buttonTint="@color/colorPrimary"
-                android:text="Search by Store Name "/>
+                android:text="Search by Store Name"/>
 
             <RadioButton
                 android:id="@+id/radio_owner_name_type"
