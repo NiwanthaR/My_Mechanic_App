@@ -12,6 +12,7 @@ class MyServiceHolder extends RecyclerView.ViewHolder {
 
     ImageView single_service_img;
     TextView single_service_title,single_service_store_name,single_service_price,single_service_location;
+    View service_v;
 
     public MyServiceHolder(@NonNull View itemView) {
         super(itemView);
@@ -22,5 +23,7 @@ class MyServiceHolder extends RecyclerView.ViewHolder {
         single_service_store_name = itemView.findViewById(R.id.single_service_ui_store_name);
         single_service_price = itemView.findViewById(R.id.single_service_ui_price);
         single_service_location = itemView.findViewById(R.id.single_service_ui_location);
+
+        service_v = itemView;
     }
 }

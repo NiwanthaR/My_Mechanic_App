@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.mechanic_service;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,7 +96,7 @@ public class show_all_mechanic_service extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<mechanic_service, MyServiceHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyServiceHolder holder, int position, @NonNull mechanic_service model) {
+            protected void onBindViewHolder(@NonNull MyServiceHolder holder, final int position, @NonNull mechanic_service model) {
 
                 holder.single_service_title.setText(model.getService_Title());
                 holder.single_service_store_name.setText(model.getSeller_Store_Name());
@@ -103,6 +104,15 @@ public class show_all_mechanic_service extends AppCompatActivity {
                 holder.single_service_location.setText(model.getSeller_Store_Location());
 
                 Picasso.get().load(model.getImage_Uri()).fit().into(holder.single_service_img);
+
+                holder.service_v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(show_all_mechanic_service.this,mechanic_view_service_details.class);
+                        intent.putExtra("Service_Key",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
 
             }
 
