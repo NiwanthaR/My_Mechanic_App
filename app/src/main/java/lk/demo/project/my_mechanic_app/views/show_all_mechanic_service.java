@@ -1,0 +1,15 @@
+package lk.demo.project.my_mechanic_app.views;
+
+import androidx.appcompat.app.AppCompatActivity;
+import lk.demo.project.my_mechanic_app.R;
+
+import android.os.Bundle;
+
+public class show_all_mechanic_service extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_all_mechanic_service);
+    }
+}
