@@ -260,6 +260,7 @@
                         android:paddingLeft="10dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
+                        android:inputType="number"
                         android:hint="Your Price"
                         android:background="@drawable/text_view_design"/>
                 </LinearLayout>

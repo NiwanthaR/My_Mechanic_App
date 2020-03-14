@@ -67,7 +67,7 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
     private boolean Isimage_Added = false;
 
     //private variable
-    private String seller_id,seller_store_name,seller_store_location,seller_contact;
+    private String seller_id,seller_store_location,seller_contact;
     private String service_name,service_cost,service_info;
 
     @Override
@@ -142,7 +142,7 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
                         hashMap.put("Service_Title",service_TITLE);
                         hashMap.put("Service_Description",servic_INFO);
                         hashMap.put("Service_Cost",service_COST);
-                        hashMap.put("Seller_Store_Name",seller_store_name);
+                        hashMap.put("Seller_Store_Name",tv_store_name.getText().toString());
                         hashMap.put("Seller_Store_Location",seller_store_location);
                         hashMap.put("Seller_Contact",seller_contact);
 
