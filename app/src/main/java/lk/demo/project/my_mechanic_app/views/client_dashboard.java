@@ -162,6 +162,11 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 startActivity(new Intent(client_dashboard.this,show_all_advertise_dash.class));
                 break;
 
+            case R.id.nav_service_promotion:
+                Toast.makeText(client_dashboard.this,"Mechanic Service Promotion",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(client_dashboard.this,show_all_mechanic_service.class));
+                break;
+
             case R.id.nav_profile:
                 Toast.makeText(client_dashboard.this,"Select My Profile",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(client_dashboard.this,client_profile_dashboard.class));

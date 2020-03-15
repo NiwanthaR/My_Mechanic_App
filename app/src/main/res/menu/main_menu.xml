@@ -16,12 +16,17 @@
         <item
             android:id="@+id/nav_give_feedback"
             android:icon="@drawable/my_feedback"
-            android:title="Give Feedback"/>
+            android:title="All Mechanician and Feedback"/>
 
         <item
             android:id="@+id/nav_mechanic_shop"
             android:icon="@drawable/offers_icon"
             android:title="Mechanic Seller Hub"/>
+
+        <item
+            android:id="@+id/nav_service_promotion"
+            android:icon="@drawable/ic_all_seller_promotion"
+            android:title="Mechanic Service Promotion"/>
 
     </group>
 
