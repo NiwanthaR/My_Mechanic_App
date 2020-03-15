@@ -21,6 +21,7 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,9 +84,13 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     //Geofire Map Location
     private GeoFire geoFire;
 
+    //Request location
+    private  LatLng request_location;
+
     //component
     private TextView header_name, header_email;
     private ImageView heder_pic;
+    private Button make_request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +128,34 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         }else {
             mapFragment.getMapAsync(this);
         }
+
+        //Place Request location to database
+        make_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String user_id = firebaseAuth.getCurrentUser().getUid();
+
+                DatabaseReference DataRef = firebaseDatabase.getReference("Live Details").child("Service Request");
+                GeoFire geoFire1 = new GeoFire(DataRef);
+                //geoFire1.setLocation(user_id,new GeoLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
+
+                geoFire1.setLocation(user_id, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()), new GeoFire.CompletionListener() {
+                    @Override
+                    public void onComplete(String key, DatabaseError error) {
+                        if (error!=null)
+                        {
+                            Toast.makeText(client_dashboard.this,"Can't go Active",Toast.LENGTH_SHORT).show();
+                        }
+                        request_location = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+                        mMap.addMarker(new MarkerOptions().position(request_location).title("I am Here..!"));
+
+                        make_request.setText("Searching Service Station");
+                    }
+                });
+
+            }
+        });
     }
 
     @Override
@@ -203,7 +237,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseStorage=FirebaseStorage.getInstance();
 
-
+        make_request = findViewById(R.id.btn_client_request_service);
     }
 
 
