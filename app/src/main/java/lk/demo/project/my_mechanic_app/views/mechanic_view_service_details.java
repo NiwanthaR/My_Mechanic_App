@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,7 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
     //Firebase
     private DatabaseReference DataRef;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,11 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
         //Assign variable
         Assign_Variable();
+
+
+        //owner key
+        final String Owner_Key = firebaseAuth.getUid();
+
 
         DataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,6 +69,12 @@ public class mechanic_view_service_details extends AppCompatActivity {
                     String store = dataSnapshot.child("Seller_Store_Name").getValue().toString();
                     String store_location = dataSnapshot.child("Seller_Store_Location").getValue().toString();
                     String imageuri = dataSnapshot.child("Image_Uri").getValue().toString();
+
+                    if ((dataSnapshot.child("Seller_Uid").getValue().toString()).equals(Owner_Key))
+                    {
+                        delete_panel.setVisibility(View.VISIBLE);
+                        call_panel.setVisibility(View.GONE);
+                    }
 
                     Picasso.get().load(imageuri).into(imageView);
                     tv_title.setText(title);
@@ -100,11 +113,13 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
         //database
         DataRef = FirebaseDatabase.getInstance().getReference().child("Mechanic Upload Service Package").child(Service_Key);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //layout
         delete_panel = findViewById(R.id.ll_service_details_delete_panel);
         call_panel = findViewById(R.id.ll_servie_details_call_panel);
 
+        //layout hide
         delete_panel.setVisibility(View.GONE);
     }
 }

@@ -245,7 +245,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
             case R.id.nav_rateus_mechanic:
                 Toast.makeText(mechanic_dashboard.this,"Select Rate Us",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(mechanic_dashboard.this,show_all_mechanic_service.class));
+                startActivity(new Intent(mechanic_dashboard.this,mechanic_edit_service_details.class));
                 break;
 
             case R.id.nav_logout_mechanic:
