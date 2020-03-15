@@ -18,16 +18,40 @@
             android:icon="@drawable/my_feedback"
             android:title="Client Feedback"/>
 
-        <item
-            android:id="@+id/nav_my_wall_mechanic"
-            android:icon="@drawable/ic_shop_wall"
-            android:title="My Wall"/>
+
+
+    </group>
+
+    <group>
 
         <item
-            android:id="@+id/nav_all_add_mechanic"
-            android:icon="@drawable/offers_icon"
-            android:title="All Advertise Blog"/>
+            android:title="Seller Promotions">
+            <menu>
+                <group android:checkableBehavior="single">
 
+                    <item
+                        android:id="@+id/nav_my_wall_mechanic"
+                        android:icon="@drawable/ic_shop_wall"
+                        android:title="My Wall"/>
+
+                    <item
+                        android:id="@+id/nav_all_add_mechanic"
+                        android:icon="@drawable/offers_icon"
+                        android:title="All Advertise Blog"/>
+
+                    <item
+                        android:id="@+id/nav_my_promotion_mechanic"
+                        android:icon="@drawable/ic_my_promotion"
+                        android:title="My Promotions"/>
+
+                    <item
+                        android:id="@+id/nav_all_Promotions_mechanic"
+                        android:icon="@drawable/ic_all_seller_promotion"
+                        android:title="All Seller Promotion"/>
+
+                </group>
+            </menu>
+        </item>
     </group>
 
     <group>
