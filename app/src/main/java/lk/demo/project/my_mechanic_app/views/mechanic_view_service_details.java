@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,9 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
     //Service key
     private String Service_Key;
+
+    //Linear_layout
+    private LinearLayout delete_panel,call_panel;
 
     //Firebase
     private DatabaseReference DataRef;
@@ -92,9 +96,15 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
         //delete_btn
         delete_button = findViewById(R.id.btn_service_details_delete);
-        delete_button.setVisibility(View.GONE);
+        //delete_button.setVisibility(View.GONE);
 
         //database
         DataRef = FirebaseDatabase.getInstance().getReference().child("Mechanic Upload Service Package").child(Service_Key);
+
+        //layout
+        delete_panel = findViewById(R.id.ll_service_details_delete_panel);
+        call_panel = findViewById(R.id.ll_servie_details_call_panel);
+
+        delete_panel.setVisibility(View.GONE);
     }
 }
