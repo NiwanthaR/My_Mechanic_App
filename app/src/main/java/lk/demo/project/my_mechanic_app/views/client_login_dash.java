@@ -78,7 +78,7 @@ public class client_login_dash extends AppCompatActivity {
         goto_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(client_login_dash.this,client_signup_dash.class));
+                startActivity(new Intent(client_login_dash.this,client_map.class));
             }
         });
 

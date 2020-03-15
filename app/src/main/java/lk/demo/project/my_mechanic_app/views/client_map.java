@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import lk.demo.project.my_mechanic_app.R;
 
@@ -15,91 +16,148 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class client_map extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+public class client_map extends FragmentActivity implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener,
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.OnMarkerDragListener{
 
     private GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
-    LocationRequest mLocationRequest;
+    private GoogleApiClient client;
+    private LocationRequest locationRequest;
+    private Location lastlocation;
 
-    private SupportMapFragment mapFragment;
+    public double end_latitude,end_longitude;
+
+    public static final int REQUEST_REQUEST_CODE = 99;
+
+    //private SupportMapFragment mapFragment;
+
+    private Marker currentLocationMarker;
+
+    private Button set_location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_map);
 
+        set_location = findViewById(R.id.btn_submit_mechanic_shop_location);
 
-        mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(client_map.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
-        }else {
-            mapFragment.getMapAsync(this);
+        set_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(client_map.this,"Details Lat "+end_latitude+"Lan "+end_longitude+" ",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+//        mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+//
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+//            ActivityCompat.requestPermissions(client_map.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+//        }else {
+//            mapFragment.getMapAsync(this);
+//        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            checkLocationPermission();
         }
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
-            return;
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            buildGoogleApiClient();
+            mMap.setMyLocationEnabled(true);
         }
-        buildGooleApiClient();
 
-       mMap.setMyLocationEnabled(true);
+        mMap.setOnMarkerClickListener(this);
+        mMap.setOnMarkerDragListener(this);
     }
 
-    protected synchronized void buildGooleApiClient()
+    protected synchronized void buildGoogleApiClient()
     {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        client = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-        mGoogleApiClient.connect();
+
+        client.connect();
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        mLastLocation = location;
+        lastlocation = location;
 
-        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+        if (currentLocationMarker != null) {
+            currentLocationMarker.remove();
+        }
+
+        LatLng latLng =new LatLng(location.getLatitude(),location.getLongitude());
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title("My Shop Here..!");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+        currentLocationMarker=mMap.addMarker(markerOptions);
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(4));
+
+        if (client != null){
+            LocationServices.FusedLocationApi.removeLocationUpdates(client,this);
+        }
     }
 
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest = new LocationRequest();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(client_map.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+        locationRequest.setInterval(1000);
+        locationRequest.setFastestInterval(1000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+
+            LocationServices.FusedLocationApi.requestLocationUpdates(client,locationRequest,this);
         }
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,mLocationRequest,this);
     }
 
     @Override
@@ -115,18 +173,75 @@ public class client_map extends FragmentActivity implements OnMapReadyCallback, 
     final  int LOCATION_REQUEST_CODE = 1;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode)
         {
-            case LOCATION_REQUEST_CODE:{
-                if (grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            case REQUEST_REQUEST_CODE:
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
-                    mapFragment.getMapAsync(this);
-                }else {
-                    Toast.makeText(getApplicationContext(),"Please Provide the Permission",Toast.LENGTH_LONG).show();
+                    if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                    {
+                        if (client == null)
+                        {
+                            buildGoogleApiClient();
+                        }
+                        mMap.setMyLocationEnabled(true);
+                    }
                 }
+                else
+                {
+                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+                }
+                //return;
                 break;
-            }
+
+//            case R.id.btn_submit_mechanic_shop_location:
+//                mMap.clear();
+//                MarkerOptions markerOptions = new MarkerOptions();
+//                markerOptions.position(new LatLng(end_latitude,end_longitude));
+//                markerOptions.title("Here..!!");
+//
+//
+//                break;
         }
+    }
+
+    public boolean checkLocationPermission()
+    {
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))
+            {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_REQUEST_CODE);
+            }
+            else
+            {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_REQUEST_CODE);
+            }
+            return false;
+        }
+        else
+            return true;
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        marker.setDraggable(true);
+        return false;
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        end_latitude=marker.getPosition().latitude;
+        end_longitude=marker.getPosition().longitude;
     }
 }
