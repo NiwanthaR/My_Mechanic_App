@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -24,6 +25,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -37,6 +40,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class client_map extends FragmentActivity implements OnMapReadyCallback,
@@ -46,19 +53,33 @@ public class client_map extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMarkerDragListener{
 
+
+    //map component
     private GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
     private Location lastlocation;
 
-    public double end_latitude,end_longitude;
+    //private variable
+    private double end_latitude,end_longitude;
 
     public static final int REQUEST_REQUEST_CODE = 99;
 
     //private SupportMapFragment mapFragment;
 
+    //location
+    private LatLng shop_location;
+
+    //Firebase
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference DataRef;
+
+
+    //put marker on map
     private Marker currentLocationMarker;
 
+
+    //set  location button
     private Button set_location;
 
     @Override
@@ -66,13 +87,39 @@ public class client_map extends FragmentActivity implements OnMapReadyCallback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_map);
 
-        set_location = findViewById(R.id.btn_submit_mechanic_shop_location);
+        //Read Ui Declare
+        Assign_value();
 
-
+        //upload Location
         set_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(client_map.this,"Details Lat "+end_latitude+"Lan "+end_longitude+" ",Toast.LENGTH_LONG).show();
+
+                String user_id = firebaseAuth.getCurrentUser().getUid();
+                DataRef = FirebaseDatabase.getInstance().getReference("Live Details").child("Mechanic Location");
+                GeoFire geoFire = new GeoFire(DataRef);
+
+                try {
+                    geoFire.setLocation(user_id, new GeoLocation(end_latitude,end_longitude), new GeoFire.CompletionListener() {
+                        @Override
+                        public void onComplete(String key, DatabaseError error) {
+                            if (error!=null)
+                            {
+                                Toast.makeText(client_map.this,"Can't Set Location",Toast.LENGTH_SHORT).show();
+                            }
+                            shop_location = new LatLng(end_latitude,end_longitude);
+                            mMap.addMarker(new MarkerOptions().position(shop_location).title("Shope Here"));
+
+                           set_location.setText("Location Submitted");
+                           Toast.makeText(client_map.this,"Your Location Submitted",Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(client_map.this,mechanic_settings_panel.class));
+                           finish();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -94,6 +141,14 @@ public class client_map extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    private void Assign_value()
+    {
+        //Button Declare
+        set_location = findViewById(R.id.btn_submit_mechanic_shop_location);
+        //Firbase
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Override

@@ -51,7 +51,7 @@ public class mechanic_settings_panel extends AppCompatActivity {
         change_shop_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplicationContext(),client_map.class));
             }
         });
 
