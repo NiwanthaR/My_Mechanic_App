@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.GeoQuery;
+import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -92,6 +94,15 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     private ImageView heder_pic;
     private Button make_request;
 
+    // service station searching area
+    private int radius = 1;
+
+    // service station state
+    private Boolean service_found = false;
+
+    //service station key
+    private String service_station_ID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,13 +161,66 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                         request_location = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
                         mMap.addMarker(new MarkerOptions().position(request_location).title("I am Here..!"));
 
+                        //Find Nearest Service Station
+                        Find_Near_Service();
+
                         make_request.setText("Searching Service Station");
+
+
                     }
                 });
 
             }
         });
     }
+
+    private void Find_Near_Service() {
+
+        DatabaseReference service_location = FirebaseDatabase.getInstance().getReference("Live Details").child("Mechanic Location");
+        GeoFire geoFire01 = new GeoFire(service_location);
+
+        GeoQuery geoQuery = geoFire01.queryAtLocation(new GeoLocation(request_location.latitude,request_location.longitude),radius);
+        geoQuery.removeAllListeners();
+
+        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+            @Override
+            public void onKeyEntered(String key, GeoLocation location) {
+                if (!service_found)
+                {
+                    service_found = true;
+                    service_station_ID = key;
+                    Toast.makeText(client_dashboard.this,"Found",Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onKeyExited(String key) {
+
+            }
+
+            @Override
+            public void onKeyMoved(String key, GeoLocation location) {
+
+            }
+
+            @Override
+            public void onGeoQueryReady() {
+                if (!service_found)
+                {
+                    radius++;
+                    Find_Near_Service();
+                    Toast.makeText(client_dashboard.this,"++",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onGeoQueryError(DatabaseError error) {
+
+            }
+        });
+    }
+
 
     @Override
     public void onBackPressed() {
