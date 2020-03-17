@@ -40,6 +40,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -53,6 +54,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class client_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
@@ -102,6 +106,9 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
     //service station key
     private String service_station_ID;
+
+    //Marker
+    private Marker service_marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,6 +198,18 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                     service_station_ID = key;
                     Toast.makeText(client_dashboard.this,"Found",Toast.LENGTH_LONG).show();
 
+                    //Get submit data
+                    DatabaseReference Service_Ref = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Reserved_Mechanic").child(service_station_ID);
+                    String customer_id = firebaseAuth.getCurrentUser().getUid();
+                    HashMap map = new HashMap();
+                    map.put("Customer_ID",customer_id);
+                    map.put("Customer_Name",header_name.getText().toString());
+                    Service_Ref.updateChildren(map);
+
+                    //Get service station Location
+                    Get_service_station_location();
+                    make_request.setText("Getting Location");
+
                 }
             }
 
@@ -216,6 +235,45 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
 
             @Override
             public void onGeoQueryError(DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void Get_service_station_location()
+    {
+        //Get Location
+        DatabaseReference Service_location = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Mechanic Location").child(service_station_ID).child("l");
+
+        Service_location.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists())
+                {
+                    List<Object> map = (List<Object>) dataSnapshot.getValue();
+                    double locationlat = 0;
+                    double locationlan = 0;
+
+                    if (map.get(0) != null){
+                        locationlat = Double.parseDouble(map.get(0).toString());
+                    }
+                    if (map.get(1) != null){
+                        locationlan = Double.parseDouble(map.get(1).toString());
+                    }
+
+                    LatLng serviceLatLan = new LatLng(locationlat,locationlan);
+                    if (service_marker != null)
+                    {
+                        service_marker.remove();
+                    }
+                    service_marker = mMap.addMarker(new MarkerOptions().position(serviceLatLan).title("Hear Your Mechanic..!!"));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
