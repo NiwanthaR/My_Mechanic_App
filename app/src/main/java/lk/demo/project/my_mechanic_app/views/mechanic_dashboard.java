@@ -36,6 +36,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +49,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class mechanic_dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -75,6 +79,9 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
     //component
     private TextView header_name, header_email;
     private ImageView heder_pic;
+
+    //client id
+    private String client_id;
 
     //Firebase
     private FirebaseAuth firebaseAuth;
@@ -122,6 +129,74 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
         }else {
             mapFragment.getMapAsync(this);
         }
+
+
+        //check ant client request your service
+        Get_Assign_Client();
+    }
+
+    //check is client available
+    private void Get_Assign_Client() {
+
+        String mechanic_id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference assign_client = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Reserved_Mechanic").child(mechanic_id);
+
+        assign_client.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    Map<String,Object> map = (Map<String, Object>) dataSnapshot.getValue();
+
+                    if (map.get("Customer_ID") != null)
+                    {
+                        client_id = map.get("Customer_ID").toString();
+
+                        //get client location
+                        getRequest_client_location();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void getRequest_client_location(){
+
+        DatabaseReference request_client_location = FirebaseDatabase.getInstance().getReference().child("Customer_ID").child("Service Request").child(client_id).child("l");
+
+        //event listnear
+        request_client_location.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    List<Object> map = (List<Object>) dataSnapshot.getValue();
+                    double locationlat = 0;
+                    double locationlan = 0;
+
+                    if (map.get(0) != null){
+                        locationlat = Double.parseDouble(map.get(0).toString());
+                    }
+                    if (map.get(1) != null){
+                        locationlan = Double.parseDouble(map.get(1).toString());
+                    }
+                    LatLng serviceLatLan = new LatLng(locationlat,locationlan);
+                    mMap.addMarker(new MarkerOptions().position(serviceLatLan).title("Hear Your Client..!!"));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
