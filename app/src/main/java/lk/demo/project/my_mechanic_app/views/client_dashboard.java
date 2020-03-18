@@ -98,14 +98,7 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     private ImageView heder_pic;
     private Button make_request;
 
-    // service station searching area
-    private int radius = 1;
 
-    // service station state
-    private Boolean service_found = false;
-
-    //service station key
-    private String service_station_ID;
 
     //Marker
     private Marker service_marker;
@@ -180,6 +173,14 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
             }
         });
     }
+    // service station searching area
+    private int radius = 1;
+
+    // service station state
+    private Boolean service_found = false;
+
+    //service station key
+    private String service_station_ID;
 
     private void Find_Near_Service() {
 
@@ -196,7 +197,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 {
                     service_found = true;
                     service_station_ID = key;
-                    Toast.makeText(client_dashboard.this,"Found",Toast.LENGTH_LONG).show();
 
                     //Get submit data
                     DatabaseReference Service_Ref = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Reserved_Mechanic").child(service_station_ID);
@@ -229,7 +229,6 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                 {
                     radius++;
                     Find_Near_Service();
-                    Toast.makeText(client_dashboard.this,"++",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -267,6 +266,18 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                     {
                         service_marker.remove();
                     }
+
+                    Location loc1 = new Location("");
+                    loc1.setLatitude(request_location.latitude);
+                    loc1.setLongitude(request_location.longitude);
+
+                    Location loc2 = new Location("");
+                    loc2.setLatitude(serviceLatLan.latitude);
+                    loc2.setLongitude(serviceLatLan.longitude);
+
+                    float distance = loc1.distanceTo(loc2);
+                    make_request.setText("Distance "+String.valueOf(distance));
+
                     service_marker = mMap.addMarker(new MarkerOptions().position(serviceLatLan).title("Hear Your Mechanic..!!"));
                 }
 

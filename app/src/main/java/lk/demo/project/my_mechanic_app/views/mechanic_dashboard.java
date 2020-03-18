@@ -139,22 +139,15 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
     private void Get_Assign_Client() {
 
         String mechanic_id = firebaseAuth.getCurrentUser().getUid();
-        DatabaseReference assign_client = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Reserved_Mechanic").child(mechanic_id);
+        DatabaseReference assign_client = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Reserved_Mechanic").child(mechanic_id).child("Customer_ID");
 
         assign_client.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-                    Map<String,Object> map = (Map<String, Object>) dataSnapshot.getValue();
-
-                    if (map.get("Customer_ID") != null)
-                    {
-                        client_id = map.get("Customer_ID").toString();
-
-                        //get client location
-                        getRequest_client_location();
-                    }
+                if (dataSnapshot.exists()) {
+                    client_id = dataSnapshot.getValue().toString();
+                    //get client location
+                    getRequest_client_location();
 
                 }
             }
@@ -170,7 +163,7 @@ public class mechanic_dashboard extends AppCompatActivity implements NavigationV
 
     private void getRequest_client_location(){
 
-        DatabaseReference request_client_location = FirebaseDatabase.getInstance().getReference().child("Customer_ID").child("Service Request").child(client_id).child("l");
+        DatabaseReference request_client_location = FirebaseDatabase.getInstance().getReference().child("Live Details").child("Service Request").child(client_id).child("l");
 
         //event listnear
         request_client_location.addValueEventListener(new ValueEventListener() {
