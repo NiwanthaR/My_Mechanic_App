@@ -1,148 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.user_delete_profile">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layoutHead"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="3">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/BlurImageView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_height="match_parent"
+            android:src="@drawable/bg1"
+            android:scaleType="centerCrop"/>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <RelativeLayout
-                android:id="@+id/layoutHead"
-                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/delete_account_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/blank_user" />
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/blank_user"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"/>
 
                 <TextView
-                    android:text="Delete Account"
+                    android:text="Delete My Account"
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
-                    android:textColor="@android:color/black"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/delete_account_img"
                     android:enabled="true"
+                    android:id="@+id/header_title_cp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             </RelativeLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_below="@id/layoutHead"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            android:id="@+id/layoutPassword_dp"
+            android:padding="16dp"
+            android:visibility="visible"
             android:orientation="vertical"
-            android:layout_weight="4">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:animateLayoutChanges="true"
-                android:id="@+id/layoutPassword_dp"
-                android:padding="16dp"
-                android:visibility="visible"
-                android:layout_below="@id/layoutHead"
-                android:orientation="vertical"
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginBottom="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Delete My Account"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginBottom="15dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:text="To Delete your Account you need to enter your password again"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-
-                <EditText
-                    android:id="@+id/et_reAuth_pass_dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Your Password"
-                    android:background="@drawable/text_view_design"
-                    android:inputType="textPassword"
-                    android:singleLine="true"/>
-
-                <CheckBox
-                    android:id="@+id/cb_show_password_client_dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show my password..!!"
-                    android:buttonTint="@color/button_colour"/>
-
-                <Button
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Authenticate"
-                    android:id="@+id/btn_reAuth_pass_dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/button_shape"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:animateLayoutChanges="true"
-                android:orientation="vertical"
-                android:visibility="invisible"
-                android:id="@+id/layoutDeleteProfile_dp"
-                android:padding="16dp"
-                android:layout_below="@id/layoutHead"
+            <TextView
+                android:textAlignment="gravity"
+                android:layout_marginBottom="15dp"
+                android:textSize="14dp"
+                android:text="If you want to change password you need to enter your current password again"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/et_reAuth_pass_dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Your Password"
+                android:background="@drawable/text_view_design"
+                android:inputType="textPassword"
+                android:singleLine="true"/>
+
+            <CheckBox
+                android:id="@+id/cb_show_password_client_dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:text="Show my password..!!"
+                android:buttonTint="@color/button_colour"/>
 
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginBottom="15dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:text="If you want to Delete your Account conform here..!!"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+            <Button
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Authenticate"
+                android:id="@+id/btn_reAuth_pass_dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_shape"/>
 
-                <TextView
-                    android:id="@+id/et_email_display_dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Confirm Password"
-                    android:gravity="center_horizontal"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:singleLine="true"/>
-
-                <Button
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Delete Now"
-                    android:id="@+id/btn_delete_dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/button_shape"/>
-
-            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</FrameLayout>
+
+        <LinearLayout
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:id="@+id/layoutDeleteProfile_dp"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginBottom="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Delete Account here..!!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textAlignment="gravity"
+                android:layout_marginBottom="15dp"
+                android:textSize="16dp"
+                android:text="If you want to Delete this account you need to enter confirm it here..!!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/et_email_display_dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Confirm Password"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:singleLine="true"/>
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Delete Now"
+                android:id="@+id/btn_delete_dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_shape"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
 

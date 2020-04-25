@@ -7,87 +7,139 @@
     android:layout_height="match_parent"
     tools:context=".views.mechanic_change_profile_image">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layoutHead"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="3">
+
+        <ImageView
+            android:id="@+id/BlurImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg1"
+            android:scaleType="centerCrop"/>
 
         <RelativeLayout
-            android:background="@color/colorPrimary"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_mechanic_change_image"
-                android:background="@drawable/blank_user"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_width="110dp"
-                android:layout_height="110dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Change Profile Picture"
-                android:textAlignment="center"
-                android:layout_marginTop="15dp"
-                android:textColor="@android:color/black"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/img_mechanic_change_image"
-                android:enabled="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_mechanic_change_image"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/blank_user"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"/>
 
+                <TextView
+                    android:text="Update Your Profile Picture"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/img_mechanic_change_image"
+                    android:enabled="true"
+                    android:id="@+id/header_title_cp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
-        android:animateLayoutChanges="true"
-        android:padding="16dp"
-        android:visibility="visible"
-        android:orientation="vertical"
+
+    <RelativeLayout
+        android:layout_below="@id/layoutHead"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#F0F3F4"
-        android:layout_weight="4">
-
-        <TextView
-            android:textAlignment="center"
-            android:layout_marginBottom="15dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="To change Profile Picture you need to select New Image"
-            android:textColor="@android:color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="vertical">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_mechanic_upload_new_image"
-            android:layout_width="210dp"
-            android:layout_height="210dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/blank_user_new"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:textColor="@android:color/black"
-            android:text="Please click image to chooses your image....!"/>
+            android:orientation="vertical">
 
-        <Button
-            android:layout_marginTop="15dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Upload New Image"
-            android:id="@+id/btn_mechanic_change_image"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button_shape"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-    </LinearLayout>
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_marginBottom="15dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text="To change Profile Picture you need to select New Image"
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_mechanic_upload_new_image"
+                    android:layout_width="210dp"
+                    android:layout_height="210dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/blank_user_new"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:text="Please click image to chooses your image....!"/>
+
+                <Button
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Upload New Image"
+                    android:id="@+id/btn_mechanic_change_image"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button_shape"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
