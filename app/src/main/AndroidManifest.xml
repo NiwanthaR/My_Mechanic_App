@@ -89,10 +89,11 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".views.client_profile_edite"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".views.client_profile_dashboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique"/>
         <activity
             android:name=".views.client_dashboard"
             android:theme="@style/AppTheme_unique" />
