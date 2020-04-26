@@ -3,27 +3,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:background="#E5E7E9">
+    android:layout_marginTop="5dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/single_ui_shape">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:paddingRight="10dp"
+        android:paddingRight="5dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_weight="2">
 
             <ImageView
                 android:id="@+id/single_service_ui_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/loarding"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"/>
+                android:layout_marginLeft="8dp"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"/>
 
 
         </LinearLayout>
@@ -32,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="4">
+            android:layout_weight="3">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,10 +48,11 @@
                     android:layout_height="match_parent"
                     android:text="Title Here"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:singleLine="true"
+                    android:paddingTop="10dp"
                     android:drawableLeft="@drawable/ic_service_package"
                     android:drawablePadding="4dp"
                     android:paddingRight="5dp"/>
@@ -66,7 +70,7 @@
                     android:layout_height="match_parent"
                     android:text="Store Name"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:drawableLeft="@drawable/ic_shop_wall"
                     android:drawablePadding="5dp"/>
 
@@ -80,7 +84,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <TextView
@@ -89,7 +93,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="Price"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:drawableLeft="@drawable/ic_doller"
                         android:drawablePadding="5dp"
                         android:textStyle="bold"/>
@@ -99,7 +103,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <TextView
@@ -124,11 +128,11 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="Click to more..."
                     android:textStyle="bold"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:drawableLeft="@drawable/ic_go"
                     android:drawablePadding="5dp"/>
 

@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_marginTop="5dp"
-    android:background="#E5E7E9"
+    android:background="@drawable/single_ui_shape"
+    android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -15,22 +16,23 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_weight="3">
 
             <ImageView
                 android:id="@+id/seller_ui_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/loarding001"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:orientation="vertical"
             android:layout_height="match_parent">
 
@@ -41,7 +43,7 @@
                 android:singleLine="true"
                 android:text="Store Name"
                 android:paddingLeft="4dp"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold"
                 android:paddingTop="4dp"
                 android:drawableLeft="@drawable/ic_shop_wall"
@@ -54,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/addres_icon"
                 android:paddingLeft="4dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:drawablePadding="10dp"
                 android:text="Location"/>
 
@@ -75,9 +77,10 @@
                         android:paddingTop="3dp"
                         android:text="Qwener Name"
                         android:paddingLeft="5dp"
+                        android:maxLines="2"
                         android:drawableLeft="@drawable/profile1_icon"
                         android:drawablePadding="5dp"
-                        android:paddingRight="5dp"
+                        android:paddingRight="2dp"
                         android:textSize="15dp"/>
 
                 </LinearLayout>
@@ -85,7 +88,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4">
+                    android:layout_weight="5">
 
                     <TextView
                         android:id="@+id/seller_ui_contact"
@@ -93,20 +96,22 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="3dp"
                         android:text="0779650000"
-                        android:paddingLeft="2dp"
+                        android:paddingLeft="8dp"
                         android:drawableLeft="@drawable/contact_icon"
                         android:drawablePadding="5dp"
-                        android:paddingRight="15dp"
+                        android:paddingRight="2dp"
                         android:textSize="15dp"/>
 
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
+                android:drawableLeft="@drawable/ic_go"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Click Here to More..."
-                android:paddingLeft="10dp"
+                android:paddingLeft="5dp"
                 android:paddingTop="4dp"
                 android:textStyle="bold"
                 android:textSize="14dp"/>
