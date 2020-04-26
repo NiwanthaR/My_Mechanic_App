@@ -11,85 +11,85 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.mechanic_edit_service_details"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/AppTheme_unique"/>
         <activity
             android:name=".views.show_all_mechanic_service"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_view_service_details"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_add_new_service_package"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.user_add_feed_back_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.show_all_type_of_feedback"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.show_all_mechanician_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.show_all_advertise_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_post_view_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_change_profile_image"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_add_wall"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_add_post_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.user_change_profile_picture"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_settings_panel"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_profile_dashboard_edit"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_shop_profile_edit"
             android:windowSoftInputMode="stateHidden"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_shop_profile_dashboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_profile_dashboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_dashboard"
             android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.user_delete_profile"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.user_change_email"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.user_change_password"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.settings_panel"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique"/>
         <activity
             android:name=".views.client_profile_edite"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme_unique"
             android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".views.client_profile_dashboard"
@@ -110,25 +110,25 @@
             android:label="@string/title_activity_client_map" />
         <activity
             android:name=".views.mechanic_signup_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique"/>
         <activity
             android:name=".views.client_signup_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.forget_password_provider_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.forget_password_client_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.select_login_type_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.mechanic_login_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.client_login_dash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.splash_screen_dash"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
