@@ -87,6 +87,7 @@
                 android:layout_marginBottom="15dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Delete My Account"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -145,6 +146,7 @@
                 android:layout_marginBottom="15dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Delete Account here..!!"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
