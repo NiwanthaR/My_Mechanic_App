@@ -25,6 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Post Details"
+                    android:fontFamily="@font/calistoga_regular"
                     android:textAlignment="center"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
@@ -36,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title Here"
+                    android:fontFamily="@font/exo_semibold"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
@@ -52,6 +54,22 @@
                     android:paddingRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:src="@drawable/loarding"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/baloo_chettan"
+                    android:paddingLeft="20dp"
+                    android:text="Advertisement Details"/>
 
             </LinearLayout>
 
@@ -79,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Description"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
@@ -90,6 +109,7 @@
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
+                        android:fontFamily="@font/philosopher_regular"
                         android:text="Description"/>
                 </LinearLayout>
 
@@ -125,6 +145,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Product Price"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -135,6 +156,7 @@
                             android:layout_marginRight="5dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Price"/>
                     </LinearLayout>
@@ -166,6 +188,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Product Condition"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -176,6 +199,7 @@
                             android:layout_marginRight="5dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Condition"/>
                     </LinearLayout>
@@ -208,6 +232,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Store Name"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
@@ -218,6 +243,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:text="Store"/>
                 </LinearLayout>
@@ -249,6 +275,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Store Location"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
@@ -259,6 +286,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:text="Location"/>
                 </LinearLayout>
@@ -289,6 +317,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Shop Owner Name"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
@@ -299,6 +328,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:text="Owner Name"/>
                 </LinearLayout>
@@ -329,6 +359,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Shop Contact Number"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
@@ -339,8 +370,10 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
-                        android:text="Contact Number"/>
+                        android:text="Contact Number"
+                        android:layout_marginBottom="20dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -349,7 +382,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit Add"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/button_shape"/>
@@ -359,7 +391,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Delete Add"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="45dp"
                 android:layout_marginLeft="30dp"

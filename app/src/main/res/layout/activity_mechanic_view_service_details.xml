@@ -14,6 +14,7 @@
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
+        android:fontFamily="@font/calistoga_regular"
         style="@style/TextAppearance.AppCompat.Headline"
         android:background="@color/colorPrimary"/>
 
@@ -33,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Title Here"
+                android:fontFamily="@font/exo_semibold"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:paddingLeft="20dp"
@@ -52,8 +54,8 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="35dp"
-                android:paddingRight="35dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:paddingTop="10dp"
                 android:src="@drawable/loarding"/>
 
@@ -97,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
-                        android:textSize="12dp"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:text="Service Description"
                         android:layout_marginLeft="2dp"/>
 
@@ -110,6 +112,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:hint="Service Package Name"/>
                 </LinearLayout>
@@ -155,8 +158,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
-                            android:textSize="12dp"
                             android:text="Service Price"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -167,6 +170,7 @@
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:hint="Price"/>
                     </LinearLayout>
@@ -204,8 +208,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
-                            android:textSize="12dp"
                             android:text="Contact"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -216,6 +220,7 @@
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:hint="Contact"/>
                     </LinearLayout>
@@ -258,7 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
-                        android:textSize="12dp"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:text="Service Store Name"
                         android:layout_marginLeft="2dp"/>
 
@@ -270,6 +275,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:hint="Service Package Name"/>
                 </LinearLayout>
@@ -309,7 +315,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
-                        android:textSize="12dp"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:text="Service Store Location"
                         android:layout_marginLeft="2dp"/>
 
@@ -321,6 +327,7 @@
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
+                        android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
                         android:hint="Service Package Name"/>
                 </LinearLayout>

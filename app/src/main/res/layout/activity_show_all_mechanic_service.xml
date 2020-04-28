@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Service Packages"
+        android:fontFamily="@font/calistoga_regular"
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
@@ -31,6 +32,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/philosopher_regular"
         android:drawableRight="@drawable/ic_search"
         android:background="@drawable/text_view_design"/>
 
@@ -42,7 +44,7 @@
         android:gravity="center_horizontal"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/baloo_chettan"
         android:text="Show Advance Search"/>
 
 
@@ -64,6 +66,7 @@
             android:layout_height="wrap_content"
             android:text="Search By"
             android:textStyle="bold"
+            android:fontFamily="@font/baloobhai2_semibold"
             android:paddingRight="20dp"/>
 
         <RadioGroup
@@ -79,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:buttonTint="@color/colorPrimary"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Search by Title"
                 android:checked="true"/>
 
@@ -87,6 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:buttonTint="@color/colorPrimary"
                 android:text="Search by Store Name"/>
 
@@ -95,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:buttonTint="@color/colorPrimary"
                 android:text="Search By City"/>
 
@@ -109,7 +115,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:paddingBottom="5dp"
-        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/baloo_chettan"
         android:text="Hide Advance Search"/>
 
 
