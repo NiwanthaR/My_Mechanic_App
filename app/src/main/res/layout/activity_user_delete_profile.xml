@@ -48,6 +48,7 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="25dp"
+                    android:fontFamily="@font/exo_semibold"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/delete_account_img"
                     android:enabled="true"
@@ -88,13 +89,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Delete My Account"
                 android:textStyle="bold"
+                android:fontFamily="@font/baloo_chettan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:textAlignment="gravity"
                 android:layout_marginBottom="15dp"
-                android:textSize="14dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="If you want to change password you need to enter your current password again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -104,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Your Password"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:inputType="textPassword"
                 android:singleLine="true"/>
@@ -147,13 +151,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Delete Account here..!!"
                 android:textStyle="bold"
+                android:fontFamily="@font/baloo_chettan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:textAlignment="gravity"
                 android:layout_marginBottom="15dp"
-                android:textSize="16dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="If you want to Delete this account you need to enter confirm it here..!!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -163,6 +169,7 @@
                 android:id="@+id/et_email_display_dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Confirm Password"
                 android:gravity="center_horizontal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"

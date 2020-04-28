@@ -48,6 +48,7 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="25dp"
+                    android:fontFamily="@font/exo_semibold"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/img_user_change_image"
                     android:enabled="true"
@@ -87,10 +88,11 @@
                 <TextView
                     android:textAlignment="center"
                     android:layout_marginBottom="15dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textSize="18dp"
                     android:text="To change Profile Picture you need to select New Image"
                     android:textColor="@android:color/black"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/baloo_chettan"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
@@ -123,6 +125,8 @@
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@android:color/black"
+                    android:fontFamily="@font/amaranth_italic"
+                    android:textSize="15dp"
                     android:text="Please click image to chooses your image....!"/>
 
                 <Button

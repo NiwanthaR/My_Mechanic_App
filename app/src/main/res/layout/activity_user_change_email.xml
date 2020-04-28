@@ -46,6 +46,7 @@
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/exo_semibold"
                     android:textColor="@android:color/white"
                     android:textSize="25dp"
                     android:layout_centerHorizontal="true"
@@ -86,6 +87,7 @@
                 android:textAlignment="center"
                 android:layout_marginBottom="15dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:fontFamily="@font/baloo_chettan"
                 android:text="Change Your Email Here..!"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -94,7 +96,8 @@
             <TextView
                 android:textAlignment="gravity"
                 android:layout_marginBottom="15dp"
-                android:textSize="14dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="If you want to change Email you need to enter your current password again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -105,6 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Password"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:inputType="textPassword"
                 android:singleLine="true"/>
@@ -145,6 +149,7 @@
             <TextView
                 android:textAlignment="center"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/baloo_chettan"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Enter your new email address here..!"
                 android:textStyle="bold"
@@ -154,7 +159,8 @@
             <TextView
                 android:textAlignment="gravity"
                 android:layout_marginBottom="15dp"
-                android:textSize="14dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="It must be an email address that is not currently used in this application."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -165,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="New Email"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"/>

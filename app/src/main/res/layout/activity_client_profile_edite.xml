@@ -50,6 +50,7 @@
                     android:textSize="25dp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/exo_semibold"
                     android:textColor="@color/cardview_light_background"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/client_pe_profilepic"/>
@@ -79,17 +80,19 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/baloo_chettan"
             android:text="Profile Information Edit"/>
 
         <TextView
             android:id="@+id/sss"
-            android:paddingTop="5dp"
+            android:paddingBottom="8dp"
             android:paddingLeft="20dp"
             android:layout_below="@id/pto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textSize="15dp"
+            android:fontFamily="@font/amaranth_italic"
             android:text="Some Details you cant edit because of security propose you can edite using Settings "/>
 
 
@@ -129,6 +132,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Your Email"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -136,8 +140,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="@color/fade_colour"
                             android:text="User Email"/>
 
@@ -170,6 +175,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="First Name"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -177,8 +183,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="First Name"/>
 
                     </LinearLayout>
@@ -209,6 +216,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Second Name"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -216,8 +224,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Last Name"/>
 
                     </LinearLayout>
@@ -249,6 +258,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="NIC Number"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -256,8 +266,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="@color/fade_colour"
                             android:text="NIC"/>
 
@@ -290,6 +301,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Gender"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -297,8 +309,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="@color/fade_colour"
                             android:text="Gender"/>
 
@@ -331,6 +344,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Date Of Birth"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -338,8 +352,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="@color/fade_colour"
                             android:text="Birthday"/>
 
@@ -372,6 +387,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Contact Number"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -379,8 +395,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Contact"/>
 
                     </LinearLayout>
@@ -411,7 +428,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
-                            android:text="Home Town"
+                            android:text="Home Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -420,9 +438,10 @@
                             android:layout_gravity="top|left"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
                             android:textColor="#1C2833"
                             android:maxLines="5"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Address"/>
 
                     </LinearLayout>
@@ -454,6 +473,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Home Town"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -461,7 +481,8 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="20dp"
+                            android:paddingLeft="2dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Home Town"/>
 
@@ -476,6 +497,8 @@
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="15dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:text="If uou want to edit more details please contact developer team because its security reason."/>
 
                 <Button
