@@ -46,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Owner Name"
+                    android:fontFamily="@font/exo_semibold"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
@@ -79,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:fontFamily="@font/baloo_chettan"
             android:text="Profile Information"/>
 
         <TextView
@@ -89,6 +91,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textSize="15dp"
+            android:fontFamily="@font/amaranth_italic"
             android:text="This is a seller Information panel you can see all details he was entered. "/>
 
 
@@ -128,6 +132,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Shop Name"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -138,6 +143,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Shop Name"/>
                     </LinearLayout>
 
@@ -167,6 +173,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Shop Contact No"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -177,6 +184,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Shop Contact No"/>
                     </LinearLayout>
 
@@ -205,6 +213,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -214,6 +223,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Location Address"/>
                     </LinearLayout>
@@ -254,6 +264,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Location city"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -264,6 +275,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="City"/>
 
                             </LinearLayout>
@@ -278,6 +290,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="City Postalcode"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -288,6 +301,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Postal code"/>
 
                             </LinearLayout>
@@ -318,6 +332,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Email Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -328,6 +343,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Shop Email"/>
                     </LinearLayout>
 
@@ -356,6 +372,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Website"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -366,6 +383,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Shop Web Site"/>
                     </LinearLayout>
 
@@ -382,6 +400,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/baloo_chettan"
                         android:text="Service Details"/>
 
                 </LinearLayout>
@@ -420,6 +439,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Shop Open"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -430,6 +450,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Open Time"/>
 
                             </LinearLayout>
@@ -444,6 +465,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Shop Close"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -454,6 +476,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Close Time"/>
 
                             </LinearLayout>
@@ -484,6 +507,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Poya Day State"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -493,6 +517,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Result"/>
                     </LinearLayout>
@@ -521,6 +546,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Other Holiday Note"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -531,6 +557,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Result"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -558,6 +585,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Break Down Place Visit"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -568,6 +596,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Result"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -595,6 +624,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Service Information"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -605,6 +635,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:text="Result"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -620,6 +651,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/baloo_chettan"
                         android:text="Other Details"/>
 
                 </LinearLayout>
@@ -659,6 +691,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Start Date"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -669,6 +702,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Start Date"/>
 
                             </LinearLayout>
@@ -683,6 +717,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Register No"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -693,6 +728,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Register No"/>
 
                             </LinearLayout>

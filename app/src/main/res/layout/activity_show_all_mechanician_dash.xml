@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="All Mechanicians"
+        android:fontFamily="@font/calistoga_regular"
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
@@ -37,6 +38,7 @@
             android:paddingRight="20dp"
             android:paddingTop="8dp"
             android:textSize="21dp"
+            android:fontFamily="@font/philosopher_regular"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:layout_marginTop="15dp"
@@ -52,9 +54,9 @@
         android:text="Advance Search"
         android:textAlignment="center"
         android:paddingBottom="5dp"
+        android:fontFamily="@font/baloo_chettan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:id="@+id/ll_all_seller_search_type"
@@ -72,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search By"
+            android:fontFamily="@font/baloobhai2_semibold"
             android:textStyle="bold"
             android:paddingRight="20dp"/>
 
@@ -89,6 +92,7 @@
                 android:layout_marginRight="20dp"
                 android:buttonTint="@color/colorPrimary"
                 android:text="Store Name"
+                android:fontFamily="@font/amaranth_italic"
                 android:checked="true"/>
 
             <RadioButton
@@ -97,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:buttonTint="@color/colorPrimary"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Location (City)"/>
 
             <RadioButton
@@ -105,12 +110,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:buttonTint="@color/colorPrimary"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Owner Name"/>
 
             <RadioButton
                 android:id="@+id/radio_visit_service_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth_italic"
                 android:layout_marginRight="15dp"
                 android:buttonTint="@color/colorPrimary"
                 android:text="Visit Servicers"/>
@@ -124,11 +131,11 @@
         android:paddingTop="4dp"
         android:text="Show Less"
         android:textSize="16dp"
+        android:fontFamily="@font/baloo_chettan"
         android:textAlignment="center"
         android:paddingBottom="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

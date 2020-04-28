@@ -49,6 +49,7 @@
                     android:textSize="25dp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/exo_semibold"
                     android:textColor="@color/cardview_light_background"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/img_mechanic_se_shop_logo"/>
@@ -79,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:fontFamily="@font/baloo_chettan"
             android:text="Profile Information"/>
 
         <TextView
@@ -89,6 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/amaranth_italic"
             android:text="This is the your Shop Profile information. Always update with correcy Details."/>
 
 
@@ -128,6 +132,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Shop Name"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -137,6 +142,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Shop Name"/>
                     </LinearLayout>
@@ -154,7 +160,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/contact_icon"/>/>
+                        android:src="@drawable/contact_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -167,6 +173,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Shop Contact No"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -177,6 +184,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:hint="Shop Contact No"/>
                     </LinearLayout>
 
@@ -186,6 +194,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
+                    android:fontFamily="@font/amaranth_italic"
+                    android:textSize="14dp"
                     android:text="Please enter valid contact this is important"/>
 
                 <LinearLayout
@@ -199,7 +209,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/addres_icon"/>/>
+                        android:src="@drawable/addres_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -211,6 +221,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -220,6 +231,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:hint="Location Address"/>
                     </LinearLayout>
@@ -237,7 +249,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/city_icon"/>/>
+                        android:src="@drawable/city_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -260,6 +272,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Location city"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -270,6 +283,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:hint="City"/>
 
                             </LinearLayout>
@@ -284,6 +298,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="City Postalcode"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -294,6 +309,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:hint="Postal code"/>
 
                             </LinearLayout>
@@ -312,7 +328,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/email_icon"/>/>
+                        android:src="@drawable/email_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -324,6 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Email Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -334,6 +351,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:hint="Shop Email"/>
                     </LinearLayout>
 
@@ -350,7 +368,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/website_icon"/>/>
+                        android:src="@drawable/website_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -362,6 +380,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Shop Website"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -372,6 +391,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:hint="Shop Web Site"/>
                     </LinearLayout>
 
@@ -403,7 +423,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/time_icon"/>/>
+                        android:src="@drawable/time_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -426,6 +446,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Shop Open"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -435,6 +456,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:textColor="#1C2833"
                                     android:hint="Open Time"/>
 
@@ -450,6 +472,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Shop Close"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -460,6 +483,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:hint="Close Time"/>
 
                             </LinearLayout>
@@ -470,6 +494,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:text="Please enter correct time after 'AM' or 'PM'"/>
 
                 <LinearLayout
@@ -483,7 +509,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/poya_icon"/>/>
+                        android:src="@drawable/poya_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -495,6 +521,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Poya Day State"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -503,6 +530,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
                             android:hint="Result"/>
@@ -513,6 +541,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:text="Please enter answer 'Yes' or 'No'"/>
 
                 <LinearLayout
@@ -526,7 +556,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/holiday_icon"/>/>
+                        android:src="@drawable/holiday_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -537,6 +567,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="Other Holiday Note"
                             android:layout_marginLeft="2dp"/>
 
@@ -547,6 +578,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:hint="Result"/>
                     </LinearLayout>
@@ -556,6 +588,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:text="Please enter answer 'Yes' or 'No'"/>
 
                 <LinearLayout
@@ -569,7 +603,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/visit_icon"/>/>
+                        android:src="@drawable/visit_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -580,6 +614,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="Break Down Place Visit"
                             android:layout_marginLeft="2dp"/>
 
@@ -591,6 +626,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:hint="Result"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -599,6 +635,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:text="Please enter answer 'Yes' or 'No'"/>
 
                 <LinearLayout
@@ -612,7 +650,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_service_package"/>/>
+                        android:src="@drawable/ic_service_package"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -624,6 +662,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Service Information"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <EditText
@@ -634,6 +673,7 @@
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/philosopher_regular"
                             android:hint="Result"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -649,6 +689,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/baloo_chettan"
                         android:text="Other Details"/>
 
                 </LinearLayout>
@@ -664,7 +705,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/rate_icon"/>/>
+                        android:src="@drawable/rate_icon"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -687,6 +728,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Start Date"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -697,6 +739,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Start Date"/>
 
                             </LinearLayout>
@@ -711,6 +754,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Register No"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <TextView
@@ -721,6 +765,7 @@
                                     android:textSize="18dp"
                                     android:paddingLeft="2dp"
                                     android:textColor="#1C2833"
+                                    android:fontFamily="@font/philosopher_regular"
                                     android:text="Register No"/>
 
                             </LinearLayout>

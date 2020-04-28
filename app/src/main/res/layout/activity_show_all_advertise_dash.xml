@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="All Advertise Blog"
+        android:fontFamily="@font/calistoga_regular"
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
@@ -41,6 +42,7 @@
                 android:paddingRight="20dp"
                 android:paddingTop="8dp"
                 android:textSize="21dp"
+                android:fontFamily="@font/philosopher_regular"
                 android:paddingBottom="5dp"
                 android:paddingLeft="15dp"
                 android:layout_marginTop="15dp"
@@ -76,7 +78,7 @@
         android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:fontFamily="@font/baloo_chettan"/>
 
     <LinearLayout
         android:id="@+id/ll_all_post_search_type"
@@ -94,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search By"
-            android:textStyle="bold"
+            android:fontFamily="@font/baloobhai2_semibold"
             android:paddingRight="20dp"/>
 
         <RadioGroup
@@ -111,6 +113,7 @@
                 android:layout_marginRight="20dp"
                 android:buttonTint="@color/colorPrimary"
                 android:text="Title"
+                android:fontFamily="@font/amaranth_italic"
                 android:checked="true"/>
 
             <RadioButton
@@ -119,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:buttonTint="@color/colorPrimary"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Store Name"/>
         </RadioGroup>
     </LinearLayout>
@@ -128,6 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Price Range"
+        android:fontFamily="@font/baloobhai2_semibold"
         android:textStyle="bold"
         android:layout_below="@id/ll_all_post_search_type"
         android:textAlignment="center"
@@ -154,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:text="Min"/>
 
         </LinearLayout>
@@ -166,8 +172,10 @@
             <EditText
                 android:id="@+id/et_all_post_min_value"
                 android:singleLine="true"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="15dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Minimum value"/>
 
         </LinearLayout>
@@ -181,6 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:text="Max"/>
 
         </LinearLayout>
@@ -193,7 +202,9 @@
             <EditText
                 android:id="@+id/et_all_post_max_value"
                 android:singleLine="true"
-                android:layout_width="wrap_content"
+                android:fontFamily="@font/philosopher_regular"
+                android:layout_width="match_parent"
+                android:layout_marginRight="15dp"
                 android:layout_height="wrap_content"
                 android:hint="Maximum value"/>
 
@@ -211,7 +222,7 @@
         android:paddingBottom="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:fontFamily="@font/baloo_chettan"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
