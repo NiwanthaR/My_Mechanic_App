@@ -49,6 +49,7 @@
                     android:textSize="25dp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/exo_semibold"
                     android:textColor="@color/cardview_light_background"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/mechanic_u_profile_img"/>
@@ -73,22 +74,25 @@
 
         <TextView
             android:textStyle="bold"
-            android:paddingLeft="30dp"
+            android:paddingLeft="20dp"
             android:id="@+id/pto"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:fontFamily="@font/baloo_chettan"
             android:text="Profile Information"/>
 
         <TextView
             android:id="@+id/dis_lable"
-            android:paddingLeft="30dp"
+            android:paddingLeft="20dp"
             android:layout_below="@id/pto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/amaranth_italic"
+            android:layout_marginBottom="8dp"
             android:text="This is the your Profile information. This view also can view your customer."/>
 
 
@@ -109,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -127,6 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="Email Address"
                             android:layout_marginLeft="2dp"/>
 
@@ -136,6 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:layout_marginLeft="2dp"
                             android:textColor="#1C2833"
                             android:text="User Email"/>
@@ -149,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -161,6 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="20dp">
 
                         <TextView
@@ -176,6 +183,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:layout_marginLeft="2dp"
                             android:textColor="#1C2833"
                             android:text="NIC"/>
@@ -190,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -208,6 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="Gender"
                             android:layout_marginLeft="2dp"/>
 
@@ -218,6 +227,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Gender"/>
 
@@ -231,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -250,6 +260,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Date Of Birth"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -259,6 +270,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Birthday"/>
 
@@ -272,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -291,6 +303,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Contact Number"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -300,6 +313,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Contact"/>
 
@@ -313,7 +327,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -332,6 +346,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Home Address"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -341,6 +356,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Address"/>
 
@@ -354,7 +370,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="50dp">
+                    android:paddingLeft="25dp">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
@@ -373,6 +389,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#1C2833"
                             android:text="Home Town"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
@@ -382,6 +399,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Home Town"/>
 
