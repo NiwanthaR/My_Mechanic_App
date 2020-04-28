@@ -84,7 +84,7 @@
                 android:id="@+id/cb_service_show_password_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Show my password..!!"
+                android:text="@string/login_password_show"
                 android:buttonTint="@color/button_colour"/>
 
         </LinearLayout>

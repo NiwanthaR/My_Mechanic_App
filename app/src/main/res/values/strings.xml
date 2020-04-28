@@ -41,4 +41,14 @@
         <item>Negative</item>
     </string-array>
 
+
+    <string name="login_type_user">User Account</string>
+    <string name="login_type_mechanic">Service Provider</string>
+
+    <string name="mechanic_login_title">Service Provider Login</string>
+    <string name="login_password_show">Show my password..!!</string>
+
+    <string name="forget_title">Password Reset</string>
+    <string name="login_password_hint"></string>
+
 </resources>
