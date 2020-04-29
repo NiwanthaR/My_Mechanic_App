@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="23dp"
         android:text="User Name"
+        android:fontFamily="@font/philosopher_regular"
         android:paddingTop="5dp"
         android:textColor="@color/black_text"
         android:textStyle="bold"/>
@@ -28,5 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14dp"
+        android:fontFamily="@font/amaranth_italic"
         android:text="useremail@gmail.com" />
 </LinearLayout>
