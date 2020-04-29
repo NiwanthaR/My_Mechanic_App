@@ -63,6 +63,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/headlandone_regular"
                 android:layout_marginLeft="5dp"
                 android:text="search"/>
         </LinearLayout>

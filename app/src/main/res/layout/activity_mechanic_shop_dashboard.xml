@@ -745,6 +745,7 @@
                     android:layout_marginRight="70dp"
                     android:layout_marginLeft="70dp"
                     android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/headlandone_regular"
                     android:background="@drawable/button_shape"
                     />
 
@@ -756,6 +757,7 @@
                     android:layout_marginRight="70dp"
                     android:layout_marginLeft="70dp"
                     android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/headlandone_regular"
                     android:background="@drawable/button_shape"
                     />
 

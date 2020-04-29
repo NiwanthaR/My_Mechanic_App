@@ -137,6 +137,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_height="50dp"
+                    android:fontFamily="@font/headlandone_regular"
                     android:background="@drawable/button_shape"/>
 
             </LinearLayout>
