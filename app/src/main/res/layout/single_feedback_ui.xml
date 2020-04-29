@@ -26,7 +26,7 @@
                 android:id="@+id/img_feedback_single_ui_img"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/loarding"/>
 
@@ -63,7 +63,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
-                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/baloo_chettan"
                         android:text="Customer Name"
                         android:layout_marginLeft="2dp"/>
 
@@ -74,7 +75,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:textColor="#1C2833"
                         android:text="Customer Name"/>
                 </LinearLayout>
@@ -106,7 +108,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
-                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/baloo_chettan"
                         android:text="Customer Satisfaction"
                         android:layout_marginLeft="2dp"/>
 
@@ -117,7 +120,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="25dp"
                         android:paddingLeft="2dp"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:textColor="#1C2833"
                         android:text="Positive"/>
                 </LinearLayout>
@@ -155,7 +159,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#1C2833"
-                android:textStyle="bold"
+                android:textSize="15dp"
+                android:fontFamily="@font/baloo_chettan"
                 android:text="Description"
                 android:layout_marginLeft="6dp"/>
 
@@ -165,10 +170,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="4"
+                android:fontFamily="@font/amaranth_italic"
                 android:gravity="left"
                 android:layout_marginRight="25dp"
                 android:paddingLeft="6dp"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textColor="#1C2833"
                 android:hint="Your Comment"/>
         </LinearLayout>

@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="Store Name"
+                android:fontFamily="@font/exo_semibold"
                 android:paddingLeft="4dp"
                 android:textSize="16dp"
                 android:textStyle="bold"
@@ -56,6 +57,8 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/addres_icon"
                 android:paddingLeft="4dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:layout_marginTop="2dp"
                 android:drawablePadding="10dp"
                 android:text="Location"/>
@@ -76,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="3dp"
                         android:text="Qwener Name"
+                        android:fontFamily="@font/amaranth_italic"
                         android:paddingLeft="5dp"
                         android:maxLines="2"
                         android:drawableLeft="@drawable/profile1_icon"
@@ -96,6 +100,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="3dp"
                         android:text="0779650000"
+                        android:fontFamily="@font/amaranth_italic"
                         android:paddingLeft="8dp"
                         android:drawableLeft="@drawable/contact_icon"
                         android:drawablePadding="5dp"
@@ -111,10 +116,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Click Here to More..."
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:paddingLeft="5dp"
                 android:paddingTop="4dp"
                 android:textStyle="bold"
-                android:textSize="14dp"/>
+                android:textSize="15dp"/>
 
 
         </LinearLayout>

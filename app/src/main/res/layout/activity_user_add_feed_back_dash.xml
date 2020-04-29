@@ -14,6 +14,7 @@
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
+        android:fontFamily="@font/calistoga_regular"
         style="@style/TextAppearance.AppCompat.Headline"
         android:background="@color/colorPrimary"/>
 
@@ -60,6 +61,7 @@
                             android:textColor="#1C2833"
                             android:textSize="12dp"
                             android:textStyle="bold"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="Mechanic Store Name"
                             android:layout_marginLeft="2dp"/>
 
@@ -71,6 +73,7 @@
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="Store Name"/>
                     </LinearLayout>
@@ -111,6 +114,7 @@
                             android:textColor="#1C2833"
                             android:textStyle="bold"
                             android:textSize="12dp"
+                            android:fontFamily="@font/baloobhai2_semibold"
                             android:text="User Name"
                             android:layout_marginLeft="2dp"/>
 
@@ -122,6 +126,7 @@
                             android:layout_marginRight="25dp"
                             android:paddingLeft="2dp"
                             android:textSize="18dp"
+                            android:fontFamily="@font/philosopher_regular"
                             android:textColor="#1C2833"
                             android:text="User Name"/>
                     </LinearLayout>
@@ -149,9 +154,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
                 android:background="#FCF3CF"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Add Image Here..!!"/>
 
             <ImageView
@@ -213,6 +218,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#1C2833"
                         android:text="Description"
+                        android:fontFamily="@font/baloobhai2_semibold"
                         android:paddingBottom="5dp"
                         android:layout_marginLeft="6dp"/>
 
@@ -222,6 +228,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left"
+                        android:fontFamily="@font/philosopher_regular"
                         android:layout_marginRight="25dp"
                         android:paddingLeft="6dp"
                         android:textSize="18dp"
@@ -295,6 +302,7 @@
                     android:id="@+id/tv_feedback_upload_progress_presantage"
                     android:layout_width="match_parent"
                     android:textStyle="bold"
+                    android:fontFamily="@font/philosopher_regular"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mechanic_upload_progess"
                     android:gravity="center" />
@@ -321,6 +329,7 @@
                 android:layout_marginLeft="70dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginBottom="40dp"
+                android:fontFamily="@font/headlandone_regular"
                 android:background="@drawable/button_shape"
                 android:text="Submit"/>
 

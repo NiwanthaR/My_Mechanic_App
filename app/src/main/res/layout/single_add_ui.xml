@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_margin="4dp"
-    android:background="@drawable/single_ui_shape"
+    android:background="@drawable/single_ui_seller_new"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="Add Title Here.....!!"
+                android:fontFamily="@font/exo_semibold"
                 android:paddingLeft="10dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
@@ -53,8 +54,10 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_shop_wall"
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dp"
+                android:textSize="15dp"
                 android:layout_marginBottom="1dp"
                 android:text="Store Name"/>
 
@@ -77,10 +80,11 @@
                         android:text="Price"
                         android:paddingLeft="5dp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/amaranth_italic"
                         android:drawableLeft="@drawable/ic_doller"
                         android:drawablePadding="5dp"
                         android:paddingRight="25dp"
-                        android:textSize="14dp"/>
+                        android:textSize="15dp"/>
 
                 </LinearLayout>
 
@@ -95,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="3dp"
                         android:text="Condition"
+                        android:fontFamily="@font/amaranth_italic"
                         android:paddingLeft="5dp"
                         android:drawableLeft="@drawable/service_icon"
                         android:drawablePadding="5dp"
@@ -110,9 +115,9 @@
                 android:layout_height="wrap_content"
                 android:text="Click Here to More..."
                 android:paddingLeft="5dp"
+                android:fontFamily="@font/baloobhai2_semibold"
                 android:drawablePadding="5dp"
-                android:textStyle="bold"
-                android:textSize="14dp"/>
+                android:textSize="15dp"/>
 
 
         </LinearLayout>

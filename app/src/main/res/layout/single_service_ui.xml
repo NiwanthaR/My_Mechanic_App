@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_margin="4dp"
-    android:background="@drawable/single_ui_shape">
+    android:background="@drawable/single_ui_seller_new">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_weight="3">
 
             <ImageView
                 android:id="@+id/single_service_ui_img"
@@ -25,6 +25,7 @@
                 android:src="@drawable/loarding"
                 android:layout_marginLeft="8dp"
                 android:scaleType="fitCenter"
+                android:paddingLeft="3dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginTop="6dp"/>
 
@@ -35,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="3">
+            android:layout_weight="4">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,12 +48,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Title Here"
+                    android:fontFamily="@font/exo_semibold"
                     android:gravity="center_vertical"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:singleLine="true"
-                    android:paddingTop="10dp"
+                    android:paddingTop="8dp"
                     android:drawableLeft="@drawable/ic_service_package"
                     android:drawablePadding="4dp"
                     android:paddingRight="5dp"/>
@@ -69,6 +71,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Store Name"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/baloobhai2_semibold"
                     android:gravity="center_vertical"
                     android:paddingLeft="5dp"
                     android:drawableLeft="@drawable/ic_shop_wall"
@@ -93,6 +97,8 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="Price"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:textSize="16dp"
                         android:paddingLeft="5dp"
                         android:drawableLeft="@drawable/ic_doller"
                         android:drawablePadding="5dp"
@@ -112,6 +118,8 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:paddingLeft="5dp"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:textSize="16dp"
                         android:drawableLeft="@drawable/addres_icon"
                         android:drawablePadding="5dp"
                         android:text="Location"/>
@@ -131,8 +139,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="Click to more..."
-                    android:textStyle="bold"
+                    android:fontFamily="@font/baloo_chettan"
                     android:paddingLeft="5dp"
+                    android:textSize="15dp"
                     android:drawableLeft="@drawable/ic_go"
                     android:drawablePadding="5dp"/>
 
