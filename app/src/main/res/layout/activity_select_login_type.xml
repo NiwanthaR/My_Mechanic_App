@@ -44,6 +44,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:text="@string/login_type_user"
+            android:fontFamily="@font/headlandone_regular"
             android:textSize="16dp"
             android:background="@drawable/button_shape" />
 
@@ -55,6 +56,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:text="@string/login_type_mechanic"
+            android:fontFamily="@font/headlandone_regular"
             android:textSize="16dp"
             android:background="@drawable/button_shape"/>
 

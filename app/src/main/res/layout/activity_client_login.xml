@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="User Login"
+                android:fontFamily="@font/calistoga_regular"
                 android:layout_marginLeft="35dp"
                 android:textColor="@color/round_button_text"
                 android:layout_gravity="bottom"/>
@@ -60,6 +61,7 @@
             android:layout_marginRight="35dp"
             android:layout_height="50dp"
             android:background="@drawable/text_view_design"
+            android:fontFamily="@font/philosopher_regular"
             android:hint="@string/email"/>
 
         <EditText
@@ -71,6 +73,7 @@
             android:layout_height="50dp"
             android:background="@drawable/text_view_design"
             android:inputType="textPassword"
+            android:fontFamily="@font/philosopher_regular"
             android:hint="@string/password"/>
 
         <LinearLayout
@@ -85,6 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Show my password..!!"
+                android:textSize="16dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:buttonTint="@color/button_colour"/>
 
         </LinearLayout>
@@ -95,8 +100,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/wrong_message"
+            android:fontFamily="@font/philosopher_regular"
             android:textAlignment="center"
-            android:textSize="15dp"
+            android:textSize="16dp"
             android:layout_gravity="center"/>
 
         <Button
@@ -107,6 +113,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/button_shape"
+            android:fontFamily="@font/headlandone_regular"
             android:text="@string/loginbtn"/>
 
         <LinearLayout
@@ -128,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/nobackgroundbtn"
                     android:text="@string/forgetbtn"
+                    android:fontFamily="@font/exo_semibold"
                     android:clickable="true"
                     android:textColor="@color/black_text" />
             </LinearLayout>
@@ -142,6 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/nobackgroundbtn"
+                    android:fontFamily="@font/exo_semibold"
                     android:text="Sign up Now !"
                     android:clickable="true"
                     android:textColor="@color/black_text" />

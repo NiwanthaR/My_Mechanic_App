@@ -37,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
+                android:fontFamily="@font/calistoga_regular"
                 android:text="Service Provider Login"
                 android:layout_marginLeft="35dp"
                 android:textColor="@color/round_button_text"
@@ -59,6 +60,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_height="50dp"
+            android:fontFamily="@font/philosopher_regular"
             android:background="@drawable/text_view_design"
             android:hint="@string/email"/>
 
@@ -69,6 +71,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_height="50dp"
+            android:fontFamily="@font/philosopher_regular"
             android:background="@drawable/text_view_design"
             android:inputType="textPassword"
             android:hint="@string/password"/>
@@ -85,6 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_password_show"
+                android:textSize="16dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:buttonTint="@color/button_colour"/>
 
         </LinearLayout>
@@ -96,7 +101,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/wrong_message"
             android:textAlignment="center"
-            android:textSize="15dp"
+            android:textSize="16dp"
+            android:fontFamily="@font/philosopher_regular"
             android:layout_gravity="center"/>
 
         <Button
@@ -106,6 +112,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:fontFamily="@font/headlandone_regular"
             android:background="@drawable/button_shape"
             android:text="@string/loginbtn"/>
 
@@ -128,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/nobackgroundbtn"
                     android:text="@string/forgetbtn"
+                    android:fontFamily="@font/exo_semibold"
                     android:clickable="true"
                     android:textColor="@color/black_text" />
             </LinearLayout>
@@ -143,6 +151,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/nobackgroundbtn"
                     android:text="Sign up Now !"
+                    android:fontFamily="@font/exo_semibold"
                     android:clickable="true"
                     android:textColor="@color/black_text" />
 

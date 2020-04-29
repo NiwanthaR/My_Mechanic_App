@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:text="Sign Up Service Provider"
+                android:fontFamily="@font/calistoga_regular"
                 android:textColor="@color/black_text"/>
 
             <ImageView
@@ -42,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="22dp"
+                android:fontFamily="@font/baloo_chettan"
                 android:text="Shop Details"/>
 
             <EditText
@@ -52,6 +53,7 @@
                 android:layout_height="40dp"
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:hint="Your Shop's Name"/>
 
@@ -71,6 +73,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginRight="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="Register Number"/>
 
                 <EditText
@@ -83,6 +86,7 @@
                     android:focusable="false"
                     android:inputType="text"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:background="@drawable/text_view_design"
                     android:hint="Start Date"/>
             </LinearLayout>
@@ -93,6 +97,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Shop Address"
                 android:gravity="top|left"
                 android:maxLines="6"
@@ -113,6 +118,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginRight="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="City"/>
 
                 <EditText
@@ -123,6 +129,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginLeft="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="Postal Code"/>
             </LinearLayout>
 
@@ -133,6 +140,7 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Contact Number"/>
 
             <EditText
@@ -142,6 +150,7 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Shop Email"/>
 
             <EditText
@@ -151,6 +160,7 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Shop Web Site"/>
 
             <LinearLayout
@@ -168,6 +178,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginRight="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="Open AM"/>
 
                 <EditText
@@ -178,6 +189,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginLeft="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="Close PM"/>
 
             </LinearLayout>
@@ -186,8 +198,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15dp"
+                android:textSize="16dp"
                 android:textAlignment="center"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="You want to enter your service station open time and close time it's show your customer"/>
 
             <LinearLayout
@@ -204,6 +217,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Poya Day"
+                    android:fontFamily="@font/baloobhai2_semibold"
+                    android:textSize="15dp"
                     android:textColor="@color/black_text"
                     android:paddingRight="20dp"/>
 
@@ -220,6 +235,7 @@
                         android:layout_marginRight="20dp"
                         android:buttonTint="@color/button_colour"
                         android:text="Open"
+                        android:fontFamily="@font/amaranth_italic"
                         android:checked="true"/>
 
                     <RadioButton
@@ -227,6 +243,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/amaranth_italic"
                         android:buttonTint="@color/button_colour"
                         android:text="Cloesd"/>
                 </RadioGroup>
@@ -240,6 +257,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
                 android:hint="Special Holidays"
+                android:fontFamily="@font/philosopher_regular"
                 android:gravity="top|left"
                 android:maxLines="6"
                 android:layout_gravity="top|left"/>
@@ -258,6 +276,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Visits and Service"
+                    android:fontFamily="@font/baloobhai2_semibold"
+                    android:textSize="15dp"
                     android:textColor="@color/black_text"
                     android:paddingRight="20dp"/>
 
@@ -274,6 +294,7 @@
                         android:layout_marginRight="20dp"
                         android:buttonTint="@color/button_colour"
                         android:text="Yes"
+                        android:fontFamily="@font/amaranth_italic"
                         android:checked="true"/>
 
                     <RadioButton
@@ -281,6 +302,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/amaranth_italic"
                         android:buttonTint="@color/button_colour"
                         android:text="No"/>
                 </RadioGroup>
@@ -291,8 +313,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15dp"
+                android:textSize="16dp"
                 android:textAlignment="center"
+                android:fontFamily="@font/amaranth_italic"
                 android:text="Visite and service mean mechanisation go to break down place and do reparse"/>
 
             <EditText
@@ -302,6 +325,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
                 android:hint="Special Service Information"
+                android:fontFamily="@font/philosopher_regular"
                 android:gravity="top|left"
                 android:maxLines="6"
                 android:layout_gravity="top|left"/>
@@ -310,7 +334,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:textAlignment="center"
                 android:text="After verify Your Account You Can Complete Your Profile include more details."/>
 
@@ -318,8 +343,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="22dp"
+                android:fontFamily="@font/baloo_chettan"
                 android:text="Owner Details"/>
 
             <LinearLayout
@@ -337,6 +362,7 @@
                     android:layout_marginRight="5dp"
                     android:hint="@string/fname"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:background="@drawable/text_view_design"/>
 
                 <EditText
@@ -347,6 +373,7 @@
                     android:layout_weight="1"
                     android:hint="@string/lname"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:background="@drawable/text_view_design"/>
             </LinearLayout>
 
@@ -365,6 +392,7 @@
                     android:background="@drawable/text_view_design"
                     android:layout_marginRight="5dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:hint="Your Nic Number"/>
 
                 <EditText
@@ -377,6 +405,7 @@
                     android:focusable="false"
                     android:inputType="text"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:background="@drawable/text_view_design"
                     android:hint="YYYY/MM/DD"/>
             </LinearLayout>
@@ -395,6 +424,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gender"
+                    android:fontFamily="@font/baloobhai2_semibold"
+                    android:textSize="16dp"
                     android:textColor="@color/black_text"
                     android:paddingRight="20dp"/>
 
@@ -411,6 +442,7 @@
                         android:layout_marginRight="20dp"
                         android:buttonTint="@color/button_colour"
                         android:text="Male"
+                        android:fontFamily="@font/amaranth_italic"
                         android:checked="true"/>
 
                     <RadioButton
@@ -418,6 +450,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/amaranth_italic"
                         android:buttonTint="@color/button_colour"
                         android:text="Female"/>
                 </RadioGroup>
@@ -431,6 +464,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/text_view_design"
                 android:hint="@string/address"
+                android:fontFamily="@font/philosopher_regular"
                 android:gravity="top|left"
                 android:maxLines="6"
                 android:layout_gravity="top|left"/>
@@ -449,6 +483,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/text_view_design"
                     android:hint="City"
+                    android:fontFamily="@font/philosopher_regular"
                     android:singleLine="true"
                     android:layout_marginRight="5dp"/>
 
@@ -458,6 +493,7 @@
                     android:layout_weight="1"
                     android:layout_height="40dp"
                     android:singleLine="true"
+                    android:fontFamily="@font/philosopher_regular"
                     android:background="@drawable/text_view_design"
                     android:hint="Contact Number"
                     android:layout_marginLeft="5dp"/>
@@ -471,6 +507,7 @@
                 android:layout_height="40dp"
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:hint="Your Email"/>
 
@@ -481,6 +518,7 @@
                 android:layout_marginTop="20dp"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:fontFamily="@font/philosopher_regular"
                 android:background="@drawable/text_view_design"
                 android:hint="Your Password"/>
 
@@ -488,7 +526,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/amaranth_italic"
                 android:textAlignment="center"
                 android:text="Your password want to have capital letter,simple letter,number,special character and more than 8 digits"/>
 
@@ -500,6 +539,7 @@
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:background="@drawable/text_view_design"
+                android:fontFamily="@font/philosopher_regular"
                 android:hint="Again Password"/>
 
             <LinearLayout
@@ -514,6 +554,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show my password..!!"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/amaranth_italic"
                     android:buttonTint="@color/button_colour"/>
 
             </LinearLayout>
@@ -525,7 +567,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/wrong_message"
                 android:textAlignment="center"
-                android:textSize="15dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/philosopher_regular"
                 android:layout_gravity="center"/>
 
             <Button
@@ -534,6 +577,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/register"
+                android:fontFamily="@font/headlandone_regular"
                 android:background="@drawable/button_shape"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>
@@ -543,6 +587,7 @@
                 android:gravity="center_horizontal|center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/exo_semibold"
                 android:background="@drawable/nobackgroundbtn"
                 android:text="@string/signin"
                 android:textColor="@color/black_text" />
