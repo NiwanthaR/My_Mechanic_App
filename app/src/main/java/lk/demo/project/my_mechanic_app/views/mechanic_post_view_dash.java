@@ -25,7 +25,7 @@ public class mechanic_post_view_dash extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     private ImageView advertise_image;
-    private Button btn_delete_add,btn_edit_add;
+    private Button btn_delete_add,btn_edit_add,btn_get_call;
     private TextView add_title,add_description,add_price,add_condition,add_store,add_store_location,add_store_owner_name,add_store_owner_contact;
 
     private String owner_key;
@@ -63,6 +63,7 @@ public class mechanic_post_view_dash extends AppCompatActivity {
                     {
                         btn_delete_add.setVisibility(View.VISIBLE);
                         btn_edit_add.setVisibility(View.VISIBLE);
+                        btn_get_call.setVisibility(View.GONE);
                     }
 
                     add_title.setText(post_title);
@@ -103,6 +104,7 @@ public class mechanic_post_view_dash extends AppCompatActivity {
         //Buttons
         btn_delete_add=findViewById(R.id.btn_post_details_delete_add);
         btn_edit_add=findViewById(R.id.btn_post_details_edit_add);
+        btn_get_call = findViewById(R.id.btn_post_details_edit_call);
 
         //Firebase
         firebaseAuth=FirebaseAuth.getInstance();
