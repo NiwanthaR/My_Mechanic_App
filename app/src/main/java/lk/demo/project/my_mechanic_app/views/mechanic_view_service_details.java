@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class mechanic_view_service_details extends AppCompatActivity {
     private ImageView imageView;
 
     //Button
-    private Button delete_button;
+    private Button edit_button;
 
     //Service key
     private String Service_Key;
@@ -54,6 +55,17 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
         //owner key
         final String Owner_Key = firebaseAuth.getUid();
+
+        //go to edite
+        edit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(mechanic_view_service_details.this,mechanic_view_service_details_edit.class);
+                intent.putExtra("Service_Key",Service_Key);
+                startActivity(intent);
+            }
+        });
 
 
         DataRef.addValueEventListener(new ValueEventListener() {
@@ -108,7 +120,7 @@ public class mechanic_view_service_details extends AppCompatActivity {
         imageView = findViewById(R.id.img_service_details_image);
 
         //delete_btn
-        delete_button = findViewById(R.id.btn_service_details_delete);
+        edit_button = findViewById(R.id.btn_service_details_edit_details);
         //delete_button.setVisibility(View.GONE);
 
         //database

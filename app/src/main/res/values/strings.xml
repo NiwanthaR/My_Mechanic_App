@@ -29,26 +29,26 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_client_map">Map</string>
 
-    <string-array name="Post_type">
-        <item>Brand New</item>
-        <item>Re-Condition</item>
-    </string-array>
-
-    <string-array name="satify_typr">
-        <item>-Select Answer-</item>
-        <item>Positive</item>
-        <item>Neutral</item>
-        <item>Negative</item>
-    </string-array>
-
-
     <string name="login_type_user">User Account</string>
+
     <string name="login_type_mechanic">Service Provider</string>
+
 
     <string name="mechanic_login_title">Service Provider Login</string>
     <string name="login_password_show">Show my password..!!</string>
 
     <string name="forget_title">Password Reset</string>
     <string name="login_password_hint"></string>
+
+    <string-array name="Post_type">
+        <item>Brand New</item>
+        <item>Re-Condition</item>
+    </string-array>
+    <string-array name="satify_typr">
+        <item>-Select Answer-</item>
+        <item>Positive</item>
+        <item>Neutral</item>
+        <item>Negative</item>
+    </string-array>
 
 </resources>

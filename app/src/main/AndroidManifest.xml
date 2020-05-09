@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.mechanic_view_service_details_edit"
+            android:theme="@style/AppTheme_unique"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
             android:name=".views.mechanic_edit_service_details"
-            android:theme="@style/AppTheme_unique"/>
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.show_all_mechanic_service"
             android:theme="@style/AppTheme_unique"
@@ -64,8 +68,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_shop_profile_edit"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme_unique" />
+            android:theme="@style/AppTheme_unique"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.mechanic_shop_profile_dashboard"
             android:theme="@style/AppTheme_unique" />
@@ -86,14 +90,14 @@
             android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.settings_panel"
-            android:theme="@style/AppTheme_unique"/>
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.client_profile_edite"
             android:theme="@style/AppTheme_unique"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.client_profile_dashboard"
-            android:theme="@style/AppTheme_unique"/>
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.client_dashboard"
             android:theme="@style/AppTheme_unique" />
@@ -110,7 +114,7 @@
             android:label="@string/title_activity_client_map" />
         <activity
             android:name=".views.mechanic_signup_dash"
-            android:theme="@style/AppTheme_unique"/>
+            android:theme="@style/AppTheme_unique" />
         <activity
             android:name=".views.client_signup_dash"
             android:theme="@style/AppTheme_unique" />
@@ -150,9 +154,9 @@
             android:resource="@array/preloaded_fonts" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
