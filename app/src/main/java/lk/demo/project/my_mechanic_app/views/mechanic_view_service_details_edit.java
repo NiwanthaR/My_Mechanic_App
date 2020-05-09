@@ -34,7 +34,7 @@ public class mechanic_view_service_details_edit extends AppCompatActivity {
     private void UI_Declare() {
 
         //Layouts
-        button_layout = findViewById(R.id.ll_et_service_details_edit_buttons);
+        button_layout = findViewById(R.id.ll_service_details_edit_buttons);
         state_layout = findViewById(R.id.ll_et_service_details_edit_upload_state);
 
         //Hide

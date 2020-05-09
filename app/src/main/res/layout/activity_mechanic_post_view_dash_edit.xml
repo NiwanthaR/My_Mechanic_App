@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".views.mechanic_post_view_dash">
+    tools:context=".views.mechanic_post_view_dash_edit">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Details Edite"
+        android:fontFamily="@font/calistoga_regular"
+        android:textAlignment="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:background="@color/colorPrimary"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,32 +32,53 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Post Details"
-                    android:fontFamily="@font/calistoga_regular"
-                    android:textAlignment="center"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    style="@style/TextAppearance.AppCompat.Headline"
-                    android:background="@color/colorPrimary"/>
 
-                <TextView
-                    android:id="@+id/tv_post_details_title"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Title Here"
-                    android:fontFamily="@font/exo_semibold"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:paddingLeft="25dp">
+
+                    <ImageView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/service_icon"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1C2833"
+                            android:text="Post Title"
+                            android:fontFamily="@font/baloobhai2_semibold"
+                            android:layout_marginLeft="2dp"/>
+
+                        <EditText
+                            android:id="@+id/et_mechanic_post_details_edit_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Title Here"
+                            android:fontFamily="@font/exo_semibold"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:paddingLeft="4dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginBottom="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/img_post_details_image"
+                    android:id="@+id/img_mechanic_post_details_edit_image"
                     android:layout_gravity="center"
                     android:layout_width="400dp"
                     android:layout_height="250dp"
@@ -67,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:fontFamily="@font/baloo_chettan"
+                    android:fontFamily="@font/baloobhai2_semibold"
                     android:paddingLeft="20dp"
                     android:text="Advertisement Details"/>
 
@@ -100,8 +132,8 @@
                         android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
-                    <TextView
-                        android:id="@+id/tv_post_details_description"
+                    <EditText
+                        android:id="@+id/et_mechanic_post_details_edit__description"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,6 +141,7 @@
                         android:paddingLeft="2dp"
                         android:textSize="18dp"
                         android:textColor="#1C2833"
+                        android:maxLines="10"
                         android:fontFamily="@font/philosopher_regular"
                         android:text="Description"/>
                 </LinearLayout>
@@ -148,8 +181,8 @@
                             android:fontFamily="@font/baloobhai2_semibold"
                             android:layout_marginLeft="2dp"/>
 
-                        <TextView
-                            android:id="@+id/tv_post_details_price"
+                        <EditText
+                            android:id="@+id/et_mechanic_post_details_edit_price"
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -192,7 +225,7 @@
                             android:layout_marginLeft="2dp"/>
 
                         <TextView
-                            android:id="@+id/tv_shop_details_condition"
+                            android:id="@+id/tv_mechanic_post_details_edit_condition"
                             android:layout_gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -236,7 +269,7 @@
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
-                        android:id="@+id/tv_post_details_store_name"
+                        android:id="@+id/tv_mechanic_post_details_edit_store_name"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -279,7 +312,7 @@
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
-                        android:id="@+id/tv_post_details_store_location"
+                        android:id="@+id/tv_mechanic_post_details_edit_store_location"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -321,7 +354,7 @@
                         android:layout_marginLeft="2dp"/>
 
                     <TextView
-                        android:id="@+id/tv_post_details_owner_name"
+                        android:id="@+id/tv_mechanic_post_details_edit_owner_name"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -362,8 +395,8 @@
                         android:fontFamily="@font/baloobhai2_semibold"
                         android:layout_marginLeft="2dp"/>
 
-                    <TextView
-                        android:id="@+id/tv_post_details_contact_number"
+                    <EditText
+                        android:id="@+id/tv_mechanic_post_details_edit_contact_number"
                         android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -372,33 +405,109 @@
                         android:textSize="18dp"
                         android:fontFamily="@font/philosopher_regular"
                         android:textColor="#1C2833"
-                        android:text="Contact Number"
-                        android:layout_marginBottom="20dp"/>
+                        android:text="Contact Number"/>
                 </LinearLayout>
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_post_details_edit_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Edit Add"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginBottom="45dp"
-                android:fontFamily="@font/headlandone_regular"
-                android:background="@drawable/button_shape"/>
 
-            <Button
-                android:id="@+id/btn_post_details_edit_call"
+            <LinearLayout
+                android:id="@+id/ll_mechanic_post_details_edit_upload_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Get Call"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="45dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:fontFamily="@font/headlandone_regular"
-                android:background="@drawable/button_shape"/>
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="45dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:id="@+id/et_mechanic_post_details_edit_upload_progess_bar"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/et_mechanic_post_details_edit_progress_presantage"
+                            android:layout_width="match_parent"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:fontFamily="@font/baloo_chettan"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mechanic_upload_progess"
+                            android:gravity="center" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/li_mechanic_post_details_edit_Buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_mechanic_post_details_edit_wrong_details"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/wrong_message"
+                    android:fontFamily="@font/philosopher_regular"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/btn_mechanic_post_details_edit_edit_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Update Details"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/headlandone_regular"
+                    android:background="@drawable/button_shape"/>
+
+
+                <Button
+                    android:id="@+id/btn_mechanic_post_details_edit_delete_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delete Add"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="45dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/headlandone_regular"
+                    android:background="@drawable/button_shape"/>
+
+            </LinearLayout>
+
+
 
 
         </LinearLayout>

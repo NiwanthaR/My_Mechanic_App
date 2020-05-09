@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,10 +26,11 @@ public class mechanic_post_view_dash extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     private ImageView advertise_image;
-    private Button btn_delete_add,btn_edit_add,btn_get_call;
+    private Button btn_edit_add,btn_get_call;
     private TextView add_title,add_description,add_price,add_condition,add_store,add_store_location,add_store_owner_name,add_store_owner_contact;
 
     private String owner_key;
+    private String Item_Key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,19 @@ public class mechanic_post_view_dash extends AppCompatActivity {
 
         owner_key=firebaseAuth.getUid();
 
-        String Item_Key =getIntent().getStringExtra("Item_Key");
+        Item_Key =getIntent().getStringExtra("Item_Key");
+
+
+        //go to edit
+        btn_edit_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mechanic_post_view_dash.this,mechanic_post_view_dash_edit.class);
+                intent.putExtra("AD_Number",Item_Key);
+                startActivity(intent);
+            }
+        });
+
 
         databaseReference.child(Item_Key).addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,7 +75,6 @@ public class mechanic_post_view_dash extends AppCompatActivity {
 
                     if (seller_id.equals(owner_key))
                     {
-                        btn_delete_add.setVisibility(View.VISIBLE);
                         btn_edit_add.setVisibility(View.VISIBLE);
                         btn_get_call.setVisibility(View.GONE);
                     }
@@ -102,7 +115,6 @@ public class mechanic_post_view_dash extends AppCompatActivity {
         add_store_owner_contact=findViewById(R.id.tv_post_details_contact_number);
 
         //Buttons
-        btn_delete_add=findViewById(R.id.btn_post_details_delete_add);
         btn_edit_add=findViewById(R.id.btn_post_details_edit_add);
         btn_get_call = findViewById(R.id.btn_post_details_edit_call);
 
@@ -112,7 +124,6 @@ public class mechanic_post_view_dash extends AppCompatActivity {
         databaseReference=firebaseDatabase.getReference().child("Mechanicians wall posts");
 
         //Arrange user display
-        btn_delete_add.setVisibility(View.GONE);
         btn_edit_add.setVisibility(View.GONE);
 
     }

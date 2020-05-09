@@ -33,7 +33,7 @@
                         android:id="@+id/post_edit_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Add New Service"
+                        android:text="Edit My Service"
                         android:fontFamily="@font/calistoga_regular"
                         android:textAlignment="center"
                         android:paddingTop="15dp"
@@ -99,7 +99,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#1C2833"
-                                android:fontFamily="@font/baloo_chettan"
+                                android:fontFamily="@font/baloobhai2_semibold"
                                 android:text="Service Package Name"
                                 android:layout_marginLeft="2dp"/>
 
@@ -113,7 +113,6 @@
                                 android:textSize="18dp"
                                 android:textColor="#1C2833"
                                 android:fontFamily="@font/philosopher_regular"
-                                android:background="@drawable/text_view_design"
                                 android:hint="Service Package Name"/>
                         </LinearLayout>
 
@@ -170,7 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="#1C2833"
                                 android:text="Description"
-                                android:fontFamily="@font/baloo_chettan"
+                                android:fontFamily="@font/baloobhai2_semibold"
                                 android:paddingBottom="5dp"
                                 android:layout_marginLeft="6dp"/>
 
@@ -185,8 +184,7 @@
                                 android:fontFamily="@font/philosopher_regular"
                                 android:textSize="18dp"
                                 android:textColor="#1C2833"
-                                android:hint="Your Description"
-                                android:background="@drawable/text_view_design"/>
+                                android:hint="Your Description"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -229,7 +227,7 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#1C2833"
                                     android:text="Service Price"
-                                    android:fontFamily="@font/baloo_chettan"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -239,7 +237,6 @@
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="4dp"
                                     android:textSize="18dp"
-                                    android:background="@drawable/text_view_design"
                                     android:fontFamily="@font/philosopher_regular"
                                     android:textColor="#1C2833"
                                     android:hint="Price"/>
@@ -279,7 +276,7 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#1C2833"
                                     android:text="Contact"
-                                    android:fontFamily="@font/baloo_chettan"
+                                    android:fontFamily="@font/baloobhai2_semibold"
                                     android:layout_marginLeft="2dp"/>
 
                                 <EditText
@@ -290,7 +287,6 @@
                                     android:layout_marginRight="25dp"
                                     android:paddingLeft="4dp"
                                     android:textSize="18dp"
-                                    android:background="@drawable/text_view_design"
                                     android:fontFamily="@font/philosopher_regular"
                                     android:textColor="#1C2833"
                                     android:hint="Contact"/>
@@ -334,7 +330,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#1C2833"
-                                android:fontFamily="@font/baloo_chettan"
+                                android:fontFamily="@font/baloobhai2_semibold"
                                 android:text="Service Store Name"
                                 android:layout_marginLeft="2dp"/>
 
@@ -376,7 +372,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#1C2833"
-                                android:fontFamily="@font/baloo_chettan"
+                                android:fontFamily="@font/baloobhai2_semibold"
                                 android:text="Service Store Location"
                                 android:layout_marginLeft="2dp"/>
 
@@ -401,14 +397,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/ll_et_service_details_edit_upload_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="45dp"
                         android:orientation="vertical">
 
@@ -454,7 +450,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/ll_et_service_details_edit_buttons"
+                    android:id="@+id/ll_service_details_edit_buttons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
@@ -462,30 +458,28 @@
                     android:layout_marginRight="30dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/tv_service_details_edit_wrong_details"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/wrong_message"
+                        android:fontFamily="@font/philosopher_regular"
+                        android:textAlignment="center"
+                        android:textSize="16dp"
+                        android:layout_gravity="center"/>
+
 
                         <Button
                             android:id="@+id/btn_et_service_details_edit_update"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/headlandone_regular"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
                             android:background="@drawable/button_shape"
                             android:text="Update Details"/>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
 
                         <Button
@@ -495,22 +489,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginTop="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginBottom="25dp"
                             android:background="@drawable/button_shape"
                             android:text="Delete AD"/>
 
-                    </LinearLayout>
 
                 </LinearLayout>
-
 
             </LinearLayout>
 
         </ScrollView>
-
-
 
     </RelativeLayout>
 
