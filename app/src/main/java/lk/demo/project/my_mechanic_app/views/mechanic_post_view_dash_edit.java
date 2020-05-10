@@ -123,7 +123,7 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
 
                     if (adpost_title.isEmpty() || adpost_description.isEmpty() || adpost_price.isEmpty() || adpost_contact.isEmpty())
                     {
-                        Toast.makeText(getApplicationContext(),"Fill Details",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"Fill Details",Toast.LENGTH_SHORT).show();
                         wrong_details.setText("Fill Details");
                     }else {
 
@@ -199,7 +199,9 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),mechanic_add_post_dash.class));
+                                Intent intent = new Intent(getApplicationContext(),mechanic_post_view_dash.class);
+                                intent.putExtra("Item_Key",AD_Number);
+                                startActivity(intent);
                                 finish();
 
                             }
@@ -210,7 +212,7 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
 
                             }
                         });
-                        
+
     }
 
 }
