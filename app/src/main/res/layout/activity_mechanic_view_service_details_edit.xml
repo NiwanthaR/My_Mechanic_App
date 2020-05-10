@@ -335,7 +335,7 @@
                                 android:layout_marginLeft="2dp"/>
 
                             <TextView
-                                android:id="@+id/tv_service_details_store_name"
+                                android:id="@+id/tv_service_details_edit_store_name"
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -377,7 +377,7 @@
                                 android:layout_marginLeft="2dp"/>
 
                             <TextView
-                                android:id="@+id/tv_service_details_location"
+                                android:id="@+id/tv_service_details_edit_location"
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
