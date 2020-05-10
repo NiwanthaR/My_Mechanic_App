@@ -1,10 +1,16 @@
 package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
+import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,13 +18,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 public class mechanic_post_view_dash_edit extends AppCompatActivity {
 
@@ -37,6 +51,7 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
     //Buttons
     private Button btn_update,btn_delete;
 
+
     //Firebase
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -54,6 +69,7 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
 
         //Ui Declare
         UI_Declare();
+
 
         //Loard Data
         databaseReference.child(AD_Number).addValueEventListener(new ValueEventListener() {
@@ -95,11 +111,35 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
 
 
 
+        //Read Update Data
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                adpost_title = post_title.getText().toString().trim();
+                adpost_description = post_description.getText().toString().trim();
+                adpost_price = post_price.getText().toString().trim();
+                adpost_contact = post_contact.getText().toString().trim();
 
+                    if (adpost_title.isEmpty() || adpost_description.isEmpty() || adpost_price.isEmpty() || adpost_contact.isEmpty())
+                    {
+                        Toast.makeText(getApplicationContext(),"Fill Details",Toast.LENGTH_SHORT).show();
+                        wrong_details.setText("Fill Details");
+                    }else {
 
-
-
+                        if (validation_client_signup.is_contact(adpost_contact))
+                        {
+                            //Upload Database
+                            Upload_Details();
+                            //wrong_details.setText("Details Ok");
+                        }else
+                        {
+                            //Toast.makeText(getApplicationContext(),"Fill Details",Toast.LENGTH_SHORT).show();
+                            wrong_details.setText("Please Check Your Contact Number");
+                        }
+                    }
+            }
+        });
 
 
     }
@@ -138,4 +178,39 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Mechanicians wall posts");
     }
+
+
+    //Update Data
+    private void Upload_Details(){
+
+                        HashMap hashMap = new HashMap();
+                        hashMap.put("Owner_UID",adseller_id);
+                        hashMap.put("Post_Title",adpost_title);
+                        hashMap.put("Post_Description",adpost_description);
+                        hashMap.put("Post_Cost",adpost_price);
+                        hashMap.put("Post_Type",adpost_condition);
+                        hashMap.put("Store_Name",adpost_store_name);
+                        hashMap.put("Store_Contact",adpost_contact);
+                        hashMap.put("Post_Store_Owner_Name",adpost_owner_name);
+                        hashMap.put("ImageUri",adpost_imageUri);
+                        hashMap.put("Post_Store_Location",adpost_store_location);
+
+                        databaseReference.child(AD_Number).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(),mechanic_add_post_dash.class));
+                                finish();
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(),"Upload Failed",Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                        
+    }
+
 }
