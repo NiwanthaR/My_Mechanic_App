@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ public class mechanic_view_service_details extends AppCompatActivity {
     private ImageView imageView;
 
     //Button
-    private Button edit_button;
+    private Button edit_button,call_button;
 
     //Service key
     private String Service_Key;
@@ -67,7 +68,22 @@ public class mechanic_view_service_details extends AppCompatActivity {
             }
         });
 
+        //get call button
+        call_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                String number =  tv_contact.getText().toString().trim();
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+number));
+                startActivity(intent);
+            }
+        });
+
+
+
+        //Read values
         DataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,7 +137,7 @@ public class mechanic_view_service_details extends AppCompatActivity {
 
         //delete_btn
         edit_button = findViewById(R.id.btn_service_details_edit_details);
-        //delete_button.setVisibility(View.GONE);
+        call_button = findViewById(R.id.btn_service_details_call);
 
         //database
         DataRef = FirebaseDatabase.getInstance().getReference().child("Mechanic Upload Service Package").child(Service_Key);
