@@ -2,10 +2,12 @@ package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -27,7 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -55,6 +59,7 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
     //Firebase
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseStorage firebaseStorage;
 
     //String
     private String adseller_id,adpost_title,adpost_description,adpost_price,adpost_condition,adpost_store_name,adpost_imageUri,adpost_contact,adpost_owner_name,adpost_store_location;
@@ -142,6 +147,77 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
         });
 
 
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(mechanic_post_view_dash_edit.this);
+                builder.setTitle("Are you sure...??");
+                builder.setMessage("Delete this AD will result in completely removing your" +
+                        "account from the system and you wan't be able to access this AD again.");
+                builder.setPositiveButton("Delete Now", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        //get service details
+                        DatabaseReference add_data = firebaseDatabase.getReference().child("Mechanicians wall posts").child(AD_Number);
+
+                        //delete data
+                        add_data.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                //get service image
+                                StorageReference add_img_remove = firebaseStorage.getReference().child("Mechanicians wall posts").child(AD_Number+"jpg");
+
+                                add_img_remove.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                        Toast.makeText(mechanic_post_view_dash_edit.this,"AD Remove Successfully",Toast.LENGTH_SHORT).show();
+
+                                        //go back
+                                        startActivity(new Intent(mechanic_post_view_dash_edit.this,mechanic_add_wall.class));
+                                        finish();
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                        //go back
+                                        Toast.makeText(mechanic_post_view_dash_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                                //go back
+                                //Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(mechanic_post_view_dash_edit.this,"Can't remove this movement",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
+
+
     }
 
     private void UI_Declare() {
@@ -177,6 +253,8 @@ public class mechanic_post_view_dash_edit extends AppCompatActivity {
         //firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Mechanicians wall posts");
+        firebaseStorage = FirebaseStorage.getInstance();
+
     }
 
 
