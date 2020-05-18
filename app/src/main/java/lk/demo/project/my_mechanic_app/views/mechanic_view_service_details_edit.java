@@ -25,7 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -51,6 +53,7 @@ public class mechanic_view_service_details_edit extends AppCompatActivity {
     //Firebase
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseStorage firebaseStorage;
 
     //String Value
     private String seller_id,title,description,price,contact,store,location,image_uri;
@@ -126,6 +129,53 @@ public class mechanic_view_service_details_edit extends AppCompatActivity {
         });
 
 
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //get service details
+                DatabaseReference service_data = firebaseDatabase.getReference().child("Mechanic Upload Service Package").child(Service_Key);
+
+                //delete data
+                service_data.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        //get service image
+                        StorageReference service_img_remove = firebaseStorage.getReference().child("Mechanic Upload Service Package").child(Service_Key+"jpg");
+
+                        service_img_remove.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                Toast.makeText(mechanic_view_service_details_edit.this,"AD Remove Succesfully",Toast.LENGTH_SHORT).show();
+
+                                //go back
+                                startActivity(new Intent(mechanic_view_service_details_edit.this,mechanic_edit_service_details.class));
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                //go back
+                                Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        //go back
+                        //Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(mechanic_view_service_details_edit.this,"Can't remove this movement",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
     }
 
     private void UI_Declare() {
@@ -160,6 +210,7 @@ public class mechanic_view_service_details_edit extends AppCompatActivity {
         //firbase
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Mechanic Upload Service Package");
+        firebaseStorage = FirebaseStorage.getInstance();
     }
 
 
