@@ -1,10 +1,12 @@
 package lk.demo.project.my_mechanic_app.views;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.control.validation_client_signup;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,8 +19,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -133,45 +137,69 @@ public class mechanic_view_service_details_edit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //get service details
-                DatabaseReference service_data = firebaseDatabase.getReference().child("Mechanic Upload Service Package").child(Service_Key);
 
-                //delete data
-                service_data.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mechanic_view_service_details_edit.this);
+                builder.setTitle("Are you sure...??");
+                builder.setMessage("Delete this AD will result in completely removing your" +
+                        "account from the system and you wan't be able to access this AD again.");
+                builder.setPositiveButton("Delete Now", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
+                    public void onClick(DialogInterface dialog, int which) {
 
-                        //get service image
-                        StorageReference service_img_remove = firebaseStorage.getReference().child("Mechanic Upload Service Package").child(Service_Key+"jpg");
 
-                        service_img_remove.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        //get service details
+                        DatabaseReference service_data = firebaseDatabase.getReference().child("Mechanic Upload Service Package").child(Service_Key);
+
+                        //delete data
+                        service_data.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                Toast.makeText(mechanic_view_service_details_edit.this,"AD Remove Succesfully",Toast.LENGTH_SHORT).show();
+                                //get service image
+                                StorageReference service_img_remove = firebaseStorage.getReference().child("Mechanic Upload Service Package").child(Service_Key+"jpg");
+
+                                service_img_remove.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                        Toast.makeText(mechanic_view_service_details_edit.this,"AD Remove Succesfully",Toast.LENGTH_SHORT).show();
+
+                                        //go back
+                                        startActivity(new Intent(mechanic_view_service_details_edit.this,mechanic_edit_service_details.class));
+                                        finish();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                        //go back
+                                        Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
                                 //go back
-                                startActivity(new Intent(mechanic_view_service_details_edit.this,mechanic_edit_service_details.class));
-                                finish();
+                                //Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
-                                //go back
-                                Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mechanic_view_service_details_edit.this,"Can't remove this movement",Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                        //go back
-                        //Toast.makeText(mechanic_view_service_details_edit.this,"Something Wrong",Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(mechanic_view_service_details_edit.this,"Can't remove this movement",Toast.LENGTH_SHORT).show();
                     }
                 });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
 

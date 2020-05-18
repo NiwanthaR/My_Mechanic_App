@@ -62,6 +62,9 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
     //Button
     private Button submit_details;
 
+    //Layout
+    private  LinearLayout btn_layout;
+
     //image part
     private Uri imageuri;
     private boolean Isimage_Added = false;
@@ -126,6 +129,7 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
 
         //upload layout
         upload_state_layout.setVisibility(View.VISIBLE);
+        btn_layout.setVisibility(View.GONE);
 
         final String key = databaseReference.push().getKey();
 
@@ -153,7 +157,7 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(mechanic_add_new_service_package.this,"Upload Complete",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(mechanic_add_new_service_package.this,mechanic_dashboard.class));
+                                startActivity(new Intent(mechanic_add_new_service_package.this,mechanic_edit_service_details.class));
                                 finish();
                             }
                         });
@@ -214,6 +218,8 @@ public class mechanic_add_new_service_package extends AppCompatActivity {
         //Linear Layout
         upload_state_layout = findViewById(R.id.ll_add_new_service_upload_state);
         upload_state_layout.setVisibility(View.GONE);
+
+        btn_layout = findViewById(R.id.add_new_service_btn_panel);
     }
 
     private void Read_value()
