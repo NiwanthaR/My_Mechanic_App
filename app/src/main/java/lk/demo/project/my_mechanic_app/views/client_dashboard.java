@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import lk.demo.project.my_mechanic_app.R;
 import lk.demo.project.my_mechanic_app.model.client_profile;
+import lk.demo.project.my_mechanic_app.model.mechanic_profile;
 
 import android.Manifest;
 import android.content.Intent;
@@ -96,9 +97,12 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
     //component
     private TextView header_name, header_email;
     private ImageView heder_pic;
-    private Button make_request;
+    private Button make_request,get_details;
 
+    private String store_name;
 
+    //service station key
+    private String service_station_ID;
 
     //Marker
     private Marker service_marker;
@@ -170,17 +174,56 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                     }
                 });
 
+                get_details.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        get_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                DatabaseReference databaseReference = firebaseDatabase.getReference().child("User's Details").child("User Profile").child(service_station_ID);
+
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mechanic_profile mechanicProfile = dataSnapshot.getValue(mechanic_profile.class);
+
+                        String shop_name = mechanicProfile.getShop_name();
+                        store_name = shop_name;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(client_dashboard.this,"Can't Connect Database now..!!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                if (store_name==null) {
+                    Toast.makeText(client_dashboard.this, "Please waite...!", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    Intent intent = new Intent(client_dashboard.this,mechanic_shop_profile_dashboard.class);
+                    intent.putExtra("Seller_Store",store_name.toString());
+                    intent.putExtra("Seller_Key",service_station_ID.toString());
+                    intent.putExtra("User_Name",header_name.getText().toString());
+                    startActivity(intent);
+                }
+
             }
         });
     }
+
     // service station searching area
     private int radius = 1;
 
     // service station state
     private Boolean service_found = false;
 
-    //service station key
-    private String service_station_ID;
+
 
     private void Find_Near_Service() {
 
@@ -278,7 +321,9 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
                     float distance = loc1.distanceTo(loc2);
                     make_request.setText("Distance "+String.valueOf(distance));
 
-                    service_marker = mMap.addMarker(new MarkerOptions().position(serviceLatLan).title("Hear Your Mechanic..!!"));
+
+                    //set marker name
+                    service_marker = mMap.addMarker(new MarkerOptions().position(serviceLatLan).title("Service station is Here"));
                 }
 
             }
@@ -371,6 +416,8 @@ public class client_dashboard extends AppCompatActivity implements NavigationVie
         firebaseStorage=FirebaseStorage.getInstance();
 
         make_request = findViewById(R.id.btn_client_request_service);
+        get_details = findViewById(R.id.btn_client_request_details);
+        get_details.setVisibility(View.GONE);
     }
 
 
