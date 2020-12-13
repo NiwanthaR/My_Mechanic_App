@@ -96,8 +96,10 @@
 
   #### Login Interface
   
-  <p align="left" ><img src="UI/splash.png" width="300" height="600"> <img src="UI/user login.png" width="300" height="600"> <img src="UI/password reset.png" width="300" height="600"> </p>
+  <p align="left" > <img src="UI/splash.png" width="300" height="600"> <img src="UI/user login.png" width="300" height="600"></p>
    
-  <p align="left" ><img src="UI/technician login.png" width="300" height="600"> <img src="UI/user signup.png" width="300" height="600"> <img src="UI/technisian signup.png" width="300" height="600"> </p>
+  <p align="left" > <img src="UI/technician login.png" width="300" height="600"> <img src="UI/password reset.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/user signup.png" width="300" height="600"> <img src="UI/technisian signup.png" width="300" height="600"></p>
   
      
