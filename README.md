@@ -10,30 +10,16 @@
 
 <div>
       <body>
-            Today, a vehicle is becoming an integral part of a home. Many people in Sri Lanka are now using personal vehicles to save time and for their convenience. Due to this, 
-            the number of vehicles on the road is increasing. As a result, the number of vehicle service stations is increasing exponentially. Despite the increase in the number 
-            of workstations, no classification or grading system exists. Customers are not yet able to find out the quality of these service stations. Further, in Sri Lanka, there
-            is no mechanism to find the nearest service point in case of a breakdown. What is still being done is inquiring about the nearest service station from a nearby person.
-            This cannot be considered a practical method. This can be even more difficult at night or when you are faced with such an incident outside your living area. Here you 
-            will have to inquire several people to get some information. Finally, if you have found a place, it is difficult to find the location, phone number or any other 
-            information about it.
+            Today, a vehicle is becoming an integral part of a home. Many people in Sri Lanka are now using personal vehicles to save time and for their convenience. Due to                 this, the number of vehicles on the road is increasing. As a result, the number of vehicle service stations is increasing exponentially. Despite the increase in the             number of workstations, no classification or grading system exists. Customers are not yet able to find out the quality of these service stations. Further, in Sri                 Lanka, there is no mechanism to find the nearest service point in case of a breakdown. What is still being done is inquiring about the nearest service station from a             nearby person. This cannot be considered a practical method. This can be even more difficult at night or when you are faced with such an incident outside your living             area. Here you will have to inquire several people to get some information. Finally, if you have found a place, it is difficult to find the location, phone number or             any other information about it.
       </body>
             <br><br><br>
       <body>
-            This mobile app can be used as a remedy. This enables the user to locate the workstation closest to where the user is located. You can also see the telephone numbers,
-            open hours and other information at the service station. Also, the customer will be able to see the feedback received by people who have previously worked through the 
-            service station. This will help you find the right place to do your work. You can also make sure that the service station can get the quality of service that you 
-            expect. It also makes it easy to see through the app the location of the service station and the shortest way to reach it. The technician can see where his client is. 
-            If necessary, the mechanic can find the way to get to the customer's location. (Only if you go to the break down place and serve) This app makes it easy for the 
-            customer to pay the technician. This will enable the customer to solve the problems caused by the money. Therefore, you can find a solution to your financial need in 
-            the event of an emergency breakdown.
+            This mobile app can be used as a remedy. This enables the user to locate the workstation closest to where the user is located. You can also see the telephone                     numbers, open hours and other information at the service station. Also, the customer will be able to see the feedback received by people who have previously worked               through the service station. This will help you find the right place to do your work. You can also make sure that the service station can get the quality of service             that you expect. It also makes it easy to see through the app the location of the service station and the shortest way to reach it. The technician can see where his             client is.If necessary, the mechanic can find the way to get to the customer's location. (Only if you go to the break down place and serve) This app makes it easy               for the customer to pay the technician. This will enable the customer to solve the problems caused by the money. Therefore, you can find a solution to your                       financial need in the event of an emergency breakdown.
       </body>
             <br><br><br>
       <body>
             This enables the technician to disseminate information about his service station to all users. No need to spend money on this. As an additional service, technicians 
-            can offer the services and information provided by their workplace. If you have any spare parts you can use this app to sell it. You can disseminate information at your 
-            workstation to more people at no cost. Another advantage is that the technician can view the services and prices of other technicians. It also helps control the price of 
-            some services.
+            can offer the services and information provided by their workplace. If you have any spare parts you can use this app to sell it. You can disseminate information at               your workstation to more people at no cost. Another advantage is that the technician can view the services and prices of other technicians. It also helps control the             price of some services.
       </body>
       
 </div>
@@ -102,4 +88,51 @@
   
   <p align="left" > <img src="UI/user signup.png" width="300" height="600"> <img src="UI/technisian signup.png" width="300" height="600"></p>
   
-     
+  #### User and Technician Dashboard
+  
+  <p align="left" > <img src="UI/dashboard.png" width="300" height="600"> <img src="UI/seller dashboard.png" width="350" height="580"></p>
+  
+  #### Shop and Technician Profile
+   
+  <p align="left" > <img src="UI/seller profile 4.png" width="350" height="580"> <img src="UI/seller profile.png" width="300" height="600"></p>
+  
+  #### Users Profile
+  
+  <p align="left" > <img src="UI/profile.png" width="300" height="600"> <img src="UI/1606317018769(1).png" width="300" height="600"></p>
+  
+   #### Feedback
+  
+  <p align="left" > <img src="UI/feedback all.png" width="300" height="600"> <img src="UI/feedback green.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/feedback red.png" width="300" height="600"> <img src="UI/feedback yellow.png" width="300" height="600"></p>
+  
+   #### Other Service
+  
+  <p align="left" > <img src="UI/parts add.png" width="300" height="600"> <img src="UI/parts add show.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/service ad show.png" width="300" height="600"> <img src="UI/give feedback.png" width="300" height="600"></p>
+  
+   #### User Function
+  
+  <p align="left" > <img src="UI/cp.png" height="600"> <img src="UI/up.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/da.png" width="300" height="600"> <img src="UI/dac.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/cpp.png" width="300" height="600"> <img src="UI/ue.png" width="300" height="600"></p>
+  
+  <p align="left" > <img src="UI/cpp.png" width="300" height="600"> <img src="UI/map dashboard.png" width="300" height="600"></p>
+  
+  
+  #### Error Handle
+  
+  <p align="left" > <img src="UI/er1.png" width="350" height="580"> <img src="UI/er2.png" width="350" height="580"></p>
+  
+  <p align="left" > <img src="UI/er3.png" width="350" height="580"> <img src="UI/er4.png" width="350" height="580"></p>
+  
+  
+  ## Have More Functions and Features
+  
+  ### Thank You....!!
+  
+  
+ 
